@@ -28,7 +28,6 @@
 
       homeConfigurations.matetamasi = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        #inherit nixvim;
         modules = [./home.nix];
         extraSpecialArgs = {
           inherit nixvim;
