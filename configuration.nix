@@ -2,6 +2,7 @@
   system ? builtins.currentSystem,
   config,
   pkgs ? import <nixpkgs> {inherit system;},
+  kerml-pkgs,
   ...
 }:
 
@@ -255,6 +256,7 @@
   pkgs.htop-vim
   pkgs.libsecret
   pkgs.xorg.xhost
+  kerml-pkgs.eclipses.eclipse-dsl
   #eclipse_dsl_4_30.eclipses.eclipse-dsl
   #eclipse_dsl_4_30.jdk17
   ];
