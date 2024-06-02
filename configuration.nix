@@ -2,7 +2,6 @@
   system ? builtins.currentSystem,
   config,
   pkgs ? import <nixpkgs> {inherit system;},
-  kerml-pkgs,
   ...
 }:
 
@@ -23,16 +22,13 @@
   # Systemd
   systemd.enableEmergencyMode = false;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Europe/Budapest";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -47,10 +43,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # File system
   fileSystems."/".options = ["compress-force=zstd:3" "noatime"];
 
-  # ZSH
+  # Zsh
   programs.zsh.enable = true;
 
   # Zram
@@ -170,9 +165,6 @@
 	package = pkgs.jdk17;
   };
 
-  # gsettings dconf (for eclipse)
-  programs.dconf.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.matetamasi = {
     isNormalUser = true;
@@ -190,7 +182,6 @@
       caprine-bin
       androidStudioPackages.beta
       zoxide
-      graphviz
       xclip
       sqlcmd
       gitkraken
@@ -216,17 +207,6 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages =
- # let #TODO: put eclipse back in config
- #   eclipse_dsl_4_30 = import (builtins.fetchGit {
- #     name = "eclipse-dsl-4_30-stable-version";
- #     url = "https://github.com/NixOS/nixpkgs/";
- #     ref = "refs/heads/nixpkgs-unstable";
- #     rev = "e89cf1c932006531f454de7d652163a9a5c86668";
- #   }) { inherit system; };
- #   #nixpkgs.overlays = [ (final: prev: {
- #     #jdk = prev.jdk.override { package = eclipse_dsl_4_30.jdk17; };
- #   #}) ];
- # in
   [
   pkgs.file
   pkgs.gtk3
@@ -256,9 +236,6 @@
   pkgs.htop-vim
   pkgs.libsecret
   pkgs.xorg.xhost
-  kerml-pkgs.eclipses.eclipse-dsl
-  #eclipse_dsl_4_30.eclipses.eclipse-dsl
-  #eclipse_dsl_4_30.jdk17
   ];
 
   # This value determines the NixOS release from which the default

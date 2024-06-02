@@ -28,8 +28,6 @@
         inherit system;
         modules = [./configuration.nix];
         specialArgs = {
-          #inherit eclipse-kerml;
-          inherit kerml-pkgs;
         };
       };
 
@@ -38,8 +36,27 @@
         modules = [./home.nix];
         extraSpecialArgs = {
           inherit nixvim;
-          
         };
+      };
+
+      devShells."${system}".kerml =
+      kerml-pkgs.mkShell {
+        buildInputs =
+        let
+          ec = kerml-pkgs.eclipses.eclipse-dsl.overrideAttrs (finalAttrs: previousAttrs: {
+            jdk = kerml-pkgs.jdk17;
+          });
+        in
+        with kerml-pkgs;
+        [
+          dconf
+          gtk2
+          gtk3
+          gtk4
+          maven
+          gradle
+          graphviz
+        ] ++ [ec];
       };
     };
 
