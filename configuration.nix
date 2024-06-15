@@ -2,6 +2,7 @@
   system ? builtins.currentSystem,
   config,
   pkgs ? import <nixpkgs> {inherit system;},
+  pkgs-stable,
   ...
 }:
 
@@ -100,6 +101,15 @@
     variant = "";
   };
 
+  # Herbstluftwm
+  services.xserver.windowManager.herbstluftwm.enable = true;
+  # Only really needed in case of HLWM (and possibly other tiling X wms)
+  services.libinput = {
+    enable = true;
+    mouse.accelProfile = "flat";
+    mouse.accelSpeed = "0";
+  };
+
   # Nix-ld
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -111,6 +121,17 @@
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.defaultSession = "plasma";
   services.desktopManager.plasma6.enable = true;
+
+  # Create desktop manager entry for herbstluftwm
+  services.xserver.displayManager.session = [
+      {
+        manage = "desktop";
+        name = "herbstluft";
+        start = ''
+        ${pkgs.herbstluftwm}/bin/herbstluftwm & waitPID=$!
+        '';
+      }
+    ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -156,9 +177,6 @@
     ];
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # java
   programs.java = {
     enable = true;
@@ -171,10 +189,9 @@
     description = "Tamási Máté";
     extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" ];
     shell = pkgs.zsh;
-    packages = with pkgs;
-    [
+    packages = 
+    (with pkgs; [
       firefox
-      ungoogled-chromium
       discord
       signal-desktop
       keepass
@@ -199,7 +216,11 @@
            }
          ];
        })
-    ];
+    ])
+    ++
+    (with pkgs-stable; [
+      ungoogled-chromium #TODO use unstable once bugfix is merged
+    ]);
   };
 
 
@@ -210,7 +231,7 @@
   [
   pkgs.file
   pkgs.gtk3
-  pkgs.neovim
+  pkgs.vim
   pkgs.git
   pkgs.jetbrains.idea-community-bin
   pkgs.tree
@@ -236,6 +257,19 @@
   pkgs.htop-vim
   pkgs.libsecret
   pkgs.xorg.xhost
+
+  # For herbstluftwm - TODO: move to separate file, import conditionally
+  # TODO: with pkgs;
+  pkgs.pamixer
+  pkgs.arandr
+  pkgs.xorg.xbacklight
+  pkgs.playerctl
+  pkgs.scrot
+  pkgs.blueman
+  pkgs.networkmanagerapplet
+  pkgs.xorg.xinit
+  pkgs.rofi
+  pkgs.polybarFull
   ];
 
   # This value determines the NixOS release from which the default
