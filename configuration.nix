@@ -58,10 +58,9 @@
   };
 
   # Nvidia
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   services.xserver.videoDrivers = ["nvidia"];
@@ -83,6 +82,8 @@
     };
   };
 
+  services.teamviewer.enable = true;
+
   # Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -97,24 +98,21 @@
       languages = ["hu" "en"];
       symbolsFile = /home/matetamasi/.local/share/keymaps/xkb/hp;
     };
-    layout = "hp";
+    layout = "hp,hu";
     variant = "";
   };
 
-  # Herbstluftwm
-  services.xserver.windowManager.herbstluftwm.enable = true;
-  # Only really needed in case of HLWM (and possibly other tiling X wms)
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = ["9f77fc393ecc1ecc"];
+  };
+
   services.libinput = {
     enable = true;
     mouse.accelProfile = "flat";
     mouse.accelSpeed = "0";
+    touchpad.naturalScrolling = true;
   };
-
-  # Nix-ld
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    swt
-  ];
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -122,22 +120,22 @@
   services.displayManager.defaultSession = "plasma";
   services.desktopManager.plasma6.enable = true;
 
-  # Create desktop manager entry for herbstluftwm
-  services.xserver.displayManager.session = [
-      {
-        manage = "desktop";
-        name = "herbstluft";
-        start = ''
-        ${pkgs.herbstluftwm}/bin/herbstluftwm & waitPID=$!
-        '';
-      }
-    ];
+  # Nix-ld
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    swt
+  ];
+
+  programs.weylus = {
+    enable = true;
+    openFirewall = true;
+    users = ["matetamasi"];
+  }; 
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -146,6 +144,9 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  # QMK
+  hardware.keyboard.qmk.enable = true;
 
   # Virtualisation
   virtualisation.libvirtd = {
@@ -180,17 +181,23 @@
   # java
   programs.java = {
     enable = true;
-	package = pkgs.jdk17;
+    package = pkgs.jdk17;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.matetamasi = {
     isNormalUser = true;
     description = "Tamási Máté";
-    extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" ];
     shell = pkgs.zsh;
     packages = 
     (with pkgs; [
+      #THESE REALLY SHOULD NOT BE HERE
+      ffmpeg
+      xorg.libSM
+      libGL
+
+      #THESE SHOULD BE IN HOME INSTEAD
       firefox
       discord
       signal-desktop
@@ -229,6 +236,7 @@
 
   environment.systemPackages =
   [
+  pkgs.ripgrep
   pkgs.file
   pkgs.gtk3
   pkgs.vim
@@ -270,6 +278,7 @@
   pkgs.xorg.xinit
   pkgs.rofi
   pkgs.polybarFull
+  pkgs.qmk-udev-rules
   ];
 
   # This value determines the NixOS release from which the default
