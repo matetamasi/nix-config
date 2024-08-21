@@ -12,6 +12,9 @@
       ./hardware-configuration.nix
     ];
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # Bootloader
   boot.loader.systemd-boot.enable = false;
   boot.loader.grub.enable = true;
@@ -105,6 +108,7 @@
   services.zerotierone = {
     enable = true;
     joinNetworks = ["9f77fc393ecc1ecc"];
+    package = pkgs-stable.zerotierone;
   };
 
   services.libinput = {
@@ -193,8 +197,6 @@
   };
 
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages =
   [

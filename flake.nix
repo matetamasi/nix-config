@@ -23,7 +23,8 @@
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+      #pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+      pkgs-stable = import nixpkgs-stable {system = "x86_64-linux"; config.allowUnfree = true;};
       kerml-pkgs = eclipse-kerml.legacyPackages.${system};
     in
     {
@@ -39,6 +40,7 @@
         inherit pkgs;
         modules = [./home.nix];
         extraSpecialArgs = {
+          inherit pkgs-stable;
           inherit nixvim;
         };
       };
