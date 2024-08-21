@@ -190,44 +190,6 @@
     description = "Tamási Máté";
     extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" ];
     shell = pkgs.zsh;
-    packages = 
-    (with pkgs; [
-      #THESE REALLY SHOULD NOT BE HERE
-      ffmpeg
-      xorg.libSM
-      libGL
-
-      #THESE SHOULD BE IN HOME INSTEAD
-      firefox
-      discord
-      signal-desktop
-      keepass
-      maestral
-      caprine-bin
-      androidStudioPackages.beta
-      zoxide
-      xclip
-      sqlcmd
-      gitkraken
-
-      (vscode-with-extensions.override {
-         vscode = vscodium;
-         vscodeExtensions = with vscode-extensions; [
-           vscodevim.vim
-         ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-           {
-             name = "remote-ssh-edit";
-             publisher = "ms-vscode-remote";
-             version = "0.47.2";
-             sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
-           }
-         ];
-       })
-    ])
-    ++
-    (with pkgs-stable; [
-      ungoogled-chromium #TODO use unstable once bugfix is merged
-    ]);
   };
 
 
