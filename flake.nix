@@ -14,18 +14,23 @@
       url = "github:nix-community/nixvim/nixos-24.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    wezterm = {
+      url = "github:wez/wezterm/main?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     eclipse-kerml.url = "github:NixOS/nixpkgs/e89cf1c932006531f454de7d652163a9a5c86668";
   };
 
-  outputs = {self, nixpkgs, nixpkgs-stable, home-manager, nixvim, eclipse-kerml, ...}:
+  outputs = {self, nixpkgs, nixpkgs-stable, home-manager, nixvim, ...} @inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       #pkgs-stable = nixpkgs-stable.legacyPackages.${system};
       pkgs-stable = import nixpkgs-stable {system = "x86_64-linux"; config.allowUnfree = true;};
-      kerml-pkgs = eclipse-kerml.legacyPackages.${system};
+      kerml-pkgs = inputs.eclipse-kerml.legacyPackages.${system};
+      wezterm-pkg = inputs.wezterm.packages.${system}.default;
     in
     {
       nixosConfigurations.nixos = lib.nixosSystem {
@@ -42,6 +47,7 @@
         extraSpecialArgs = {
           inherit pkgs-stable;
           inherit nixvim;
+          inherit wezterm-pkg;
         };
       };
 
