@@ -7,6 +7,7 @@
     extraConfig = ''
       local config = {}
       local act = wezterm.action
+      config.enable_wayland = false
       config.scrollback_lines = 100000
       config.color_scheme = 'Afterglow'
       config.bold_brightens_ansi_colors = "No"
