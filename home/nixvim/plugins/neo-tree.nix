@@ -5,7 +5,7 @@
       #open/close tree
       {
         action = "<cmd>Neotree toggle<CR>";
-        key = "<Space>t";
+        key = "<leader>t";
         options.silent = true;
         mode = ["n" "v"];
       }

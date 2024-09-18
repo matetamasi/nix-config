@@ -7,5 +7,6 @@
       rainbow-delimiters.enable = true;
       which-key.enable = true;
       gitsigns.enable = true;
+      telescope.enable = true;
     };
 }

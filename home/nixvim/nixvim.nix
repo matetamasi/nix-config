@@ -12,11 +12,17 @@
         relativenumber = true;
         cursorline = true;
         autoindent = true;
+        breakindent = true;
         scrolloff = 6;
+        sidescrolloff = 8;
         foldlevel = 3;
-        autochdir = true;
         foldminlines = 3;
+        foldmethod = "expr";
+        foldexpr = "nvim_treesitter#foldexpr()";
+        virtualedit = "block";
+        autochdir = true;
         ignorecase = true;
+        smartcase = true;
         shell = "zsh";
         shiftround = true;
         shiftwidth = 4;
@@ -24,6 +30,7 @@
         softtabstop = 4;
         tabstop = 4;
         expandtab = true;
+        termguicolors = true;
       };
     filetype = {
         pattern = { __raw = ''{

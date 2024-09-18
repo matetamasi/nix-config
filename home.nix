@@ -52,7 +52,7 @@
     qmk
     qmk_hid
     firefox
-    discord
+    vesktop
     signal-desktop
     keepass
     maestral
