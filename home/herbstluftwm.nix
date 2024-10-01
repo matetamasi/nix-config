@@ -1,9 +1,12 @@
-{ config, pkgs, nixvim, ... }:
-
 {
+  config,
+  pkgs,
+  nixvim,
+  ...
+}: {
   xsession.windowManager.herbstluftwm = {
     enable = true;
-    
+
     settings = {
       default_frame_layout = 2;
       frame_gap = 10;
@@ -30,7 +33,7 @@
 
       frame_border_active_color = "#ebdbb2";
       frame_bg_active_color = "#ebdbb2";
-      window_border_active_color ="#ebdbb2";
+      window_border_active_color = "#ebdbb2";
       window_border_urgent_color = "#b16286";
       frame_border_inner_color = "black";
       window_border_inner_color = "black";
@@ -48,7 +51,7 @@
       Mod4-Control-q = "quit";
       Mod4-Control-r = "reload";
       Mod4-Control-x = "spawn systemctl suspend";
-      
+
       # Window Focusing
       Mod4-Left = "focus left";
       Mod4-Down = "focus down";
@@ -74,7 +77,7 @@
 
       # switch between layered windows in the same frame
       Mod4-Tab = "cycle";
-      
+
       # Window actions
       Mod4-q = "close";
       Mod4-Shift-Left = "shift left";
@@ -88,7 +91,7 @@
       Mod4-f = "fullscreen toggle";
       Mod4-y = "set_attr clients.focus.floating toggle";
       Mod4-p = "pseudotile toggle";
-      
+
       # Frame operations
       Mod4-s = "chain , split auto , cycle_frame 1";
       Mod4-c = "remove";
@@ -102,7 +105,7 @@
       Mod4-Alt-l = "chain , split right 0.5 , focus -e right";
       Mod4-b = "chain , lock , rotate , unlock";
       Mod4-n = "chain , lock , rotate , rotate , rotate , unlock";
-      
+
       # Resizing frames
       Mod4-Control-Left = "resize left +0.05";
       Mod4-Control-Down = "resize down +0.05";
@@ -112,18 +115,17 @@
       Mod4-Control-j = "resize down +0.05";
       Mod4-Control-k = "resize up +0.05";
       Mod4-Control-l = "resize right +0.05";
-      
+
       Mod4-period = "cycle_value frame_gap 0 5 10 15 20 25 30 35 40";
       Mod4-comma = "cycle_value frame_gap 40 35 30 25 20 15 10 5 0";
-      
+
       Mod4-Control-f = "floating toggle";
       Mod4-Shift-f = "set_attr clients.focus.floating toggle";
-      
+
       # Application launching
       Mod4-Return = "spawn wezterm"; #TODO: use $TERM instead
       Mod4-r = "spawn .config/polybar/scripts/launcher.sh";
       Mod4-Control-p = "spawn .config/polybar/scripts/powermenu.sh";
-      
 
       #screenshot (using scrot)
       #mkdir -p $HOME/screenshots
@@ -132,14 +134,14 @@
       Ctrl-Print = "spawn scrot 'Pictures/Screenshots/%Y-%m-%d_%H-%M-%S_$wx$h.png' --select --freeze";
       Shift-Print = "spawn scrot -e 'xclip -selection clipboard -t image/png -i $f && rm $f'";
       Ctrl-Shift-Print = "spawn scrot --select --freeze -e 'xclip -selection clipboard -t image/png -i $f && rm $f'";
-      
+
       # Media keys
       XF86AudioRaiseVolume = "spawn pamixer -i 5";
       XF86AudioLowerVolume = "spawn pamixer -d 5";
       XF86AudioMute = "spawn pamixer -t";
       XF86MonBrightnessUp = "spawn xbacklight -inc 5";
       XF86MonBrightnessDown = "spawn xbacklight -dec 5";
-      
+
       XF86AudioPlay = "spawn playerctl play-pause";
       XF86AudioPrev = "spawn playerctl previous";
       XF86AudioNext = "spawn playerctl next";
@@ -152,11 +154,11 @@
     };
 
     tags = [
-    "1"
-    "2"
-    "3"
-    "4"
-    "5"
+      "1"
+      "2"
+      "3"
+      "4"
+      "5"
     ];
 
     extraConfig = ''
@@ -172,17 +174,17 @@
       for k in "''${app_keys[@]}" Escape ; do
       	unbind+=( , keyunbind "$k" )
       done
-      
+
       # Set apps to launch
       herbstclient keybind Mod4-a chain \
       	'->' keybind "''${app_keys[0]}" chain "''${unbind[@]}" , spawn firefox \
       	'->' keybind "''${app_keys[1]}" chain "''${unbind[@]}" , spawn steam \
       	'->' keybind Escape chain "''${unbind[@]}"
-      
+
       #enable ibus to type unicode symbols
       ibus-daemon -rxRd
     '';
-    
+
     rules = [
       "focus=on" # Normally focus new clients
       "windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on"

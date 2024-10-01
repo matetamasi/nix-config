@@ -1,43 +1,42 @@
-{pkgs, ...}:
-
-{
+{pkgs, ...}: {
   imports = [
     ./plugins
     ./keymaps.nix
   ];
   programs.nixvim = {
-      enable = true;
-      opts = {
-        number = true;
-        relativenumber = true;
-        cursorline = true;
-        autoindent = true;
-        breakindent = true;
-        scrolloff = 6;
-        sidescrolloff = 8;
-        foldlevel = 3;
-        foldminlines = 3;
-        foldmethod = "expr";
-        foldexpr = "nvim_treesitter#foldexpr()";
-        virtualedit = "block";
-        autochdir = true;
-        ignorecase = true;
-        smartcase = true;
-        shell = "zsh";
-        shiftround = true;
-        shiftwidth = 4;
-        smarttab = true;
-        softtabstop = 4;
-        tabstop = 4;
-        expandtab = true;
-        termguicolors = true;
-      };
+    enable = true;
+    opts = {
+      number = true;
+      relativenumber = true;
+      cursorline = true;
+      autoindent = true;
+      breakindent = true;
+      scrolloff = 6;
+      sidescrolloff = 8;
+      foldlevel = 3;
+      foldminlines = 3;
+      foldmethod = "expr";
+      foldexpr = "nvim_treesitter#foldexpr()";
+      virtualedit = "block";
+      autochdir = true;
+      ignorecase = true;
+      smartcase = true;
+      shell = "zsh";
+      shiftround = true;
+      shiftwidth = 4;
+      smarttab = true;
+      softtabstop = 4;
+      tabstop = 4;
+      expandtab = true;
+      termguicolors = true;
+    };
     filetype = {
-        pattern = { __raw = ''{
-            ['*.typ'] = 'typst'
-            }
+      pattern = {
+        __raw = ''          {
+                      ['*.typ'] = 'typst'
+                      }
         '';
-        };
+      };
     };
     autoCmd = [
       {
@@ -50,8 +49,6 @@
         event = "BufEnter";
       }
     ];
-
-
 
     #colorschemes.oxocarbon.enable = true;
     #colorschemes.rose-pine.enable = true;

@@ -1,6 +1,4 @@
-{pkgs-stable, ...}:
-
-{
+{pkgs-stable, ...}: {
   programs.nixvim = {
     plugins.lsp = {
       enable = true;
@@ -17,9 +15,9 @@
           package = pkgs-stable.typst-lsp;
         };
         #rust-analyzer = {
-          #enable = true;
-          #installCargo = true;
-          #installRustc = true;
+        #enable = true;
+        #installCargo = true;
+        #installRustc = true;
         #};
       };
     };
@@ -116,7 +114,6 @@
         options.desc = "LSP: [F]ormat";
         mode = ["n"];
       }
-
     ];
   };
 }

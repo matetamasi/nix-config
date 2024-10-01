@@ -1,8 +1,8 @@
 {
   programs.nixvim = {
     globals = {
-        mapleader = " ";
-        maplocalleader = " ";
+      mapleader = " ";
+      maplocalleader = " ";
     };
 
     keymaps = [

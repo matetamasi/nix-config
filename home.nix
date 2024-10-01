@@ -1,6 +1,10 @@
-{ config, pkgs, pkgs-stable, nixvim, ... }:
-
 {
+  config,
+  pkgs,
+  pkgs-stable,
+  nixvim,
+  ...
+}: {
   imports = [
     nixvim.homeManagerModules.nixvim
     ./home
@@ -10,7 +14,6 @@
   home.homeDirectory = "/home/matetamasi";
 
   programs = {
-
     home-manager.enable = true;
 
     zoxide = {
@@ -67,7 +70,7 @@
     #(pkgs.writeShellScriptBin "my-hello" ''
     #  echo "Hello, ${config.home.username}!"
     #'')
-    ];
+  ];
 
   fonts.fontconfig.enable = true;
 
@@ -90,8 +93,8 @@
 
   # Environment variables
   home.sessionVariables = {
-     EDITOR = "nvim";
-     TERM = "wezterm";
+    EDITOR = "nvim";
+    TERM = "wezterm";
   };
 
   home.stateVersion = "23.11";
