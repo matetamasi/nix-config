@@ -47,7 +47,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  fileSystems."/".options = ["compress-force=zstd:3" "noatime"];
+  #fileSystems."/".options = ["compress-force=zstd:3" "noatime"];
 
   # Zsh
   programs.zsh.enable = true;
@@ -61,29 +61,29 @@
   };
 
   # Nvidia
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
+  #hardware.graphics = {
+    #enable = true;
+    #enable32Bit = true;
+  #};
+#
+  #services.xserver.videoDrivers = ["nvidia"];
+  #hardware.nvidia = {
+    #modesetting.enable = true;
+    #powerManagement.enable = false;
+    #powerManagement.finegrained = false;
+    #open = false;
+    #nvidiaSettings = true;
+    #package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-    prime = {
-      offload = {
-        enable = true;
-	enableOffloadCmd = true;
-      };
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
+    #prime = {
+      #offload = {
+        #enable = true;
+	#enableOffloadCmd = true;
+      #};
+      #intelBusId = "PCI:0:2:0";
+      #nvidiaBusId = "PCI:1:0:0";
+    #};
+  #};
 
   services.teamviewer.enable = true;
 
@@ -188,12 +188,19 @@
     package = pkgs.jdk17;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.matetamasi = {
-    isNormalUser = true;
-    description = "Tamási Máté";
-    extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" ];
-    shell = pkgs.zsh;
+  users.mutableUsers = false;
+  users.users = {
+    # password: temp a
+    root.initialHashedPassword = "$6$FRmKgElD/80xQiXn$aF.tKv0VOLj9D3aUJjoYsj3AzSj1rq5fVooE7tgtNuTawt8ZWgaRyUUxsikX5whbna4jrzXrDZmVFqik.kyc2/";
+
+    matetamasi = {
+      # password: temp b
+      initialHashedPassword = "$6$iLmo7C9VoAnJZ6v1$qCSORkbiY44IbcrrF1DcTnJtpOkqeD2tGgUoaDgtzPdFqKWKJ28AhJqmuOf8IWoSNu2DQJM.QlWO1Ok05kFgp0";
+      isNormalUser = true;
+      description = "Tamási Máté";
+      extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" ];
+      shell = pkgs.zsh;
+    };
   };
 
 
@@ -229,6 +236,7 @@
   pkgs.htop-vim
   pkgs.libsecret
   pkgs.xorg.xhost
+  pkgs.qmk-udev-rules
 
   # For herbstluftwm - TODO: move to separate file, import conditionally
   # TODO: with pkgs;
@@ -242,7 +250,6 @@
   pkgs.xorg.xinit
   pkgs.rofi
   pkgs.polybarFull
-  pkgs.qmk-udev-rules
   ];
 
   # This value determines the NixOS release from which the default

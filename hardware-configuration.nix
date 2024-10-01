@@ -5,48 +5,61 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  boot.supportedFilesystems = ["ntfs"];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/72fab4e1-6b77-4fd0-b2e7-d94f97ee19c4";
-      fsType = "btrfs";
-      options = [ "subvol=@" ];
+    {
+      device = "none";
+      fsType = "tmpfs";
+      options = [ "defaults" "size=25%" "mode=755" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/1A3B-E376";
+    {
+      device = "/dev/disk/by-uuid/600A-E467";
       fsType = "vfat";
+      #options = [ "umask=0077" ];
+      options = [ "umask=0077" "fmask=0077" "dmask=0077" ];
     };
 
-#  fileSystems."/mnt/Data" =
-#    { device = "/dev/disk/by-uuid/EE0080E60080B6DD";
-#      fsType = "ntfs3";
-#      options = ["uid=matetamasi" "gid=users"];
-#    };
+  fileSystems."/nix" =
+    {
+      device = "/dev/disk/by-uuid/66a117bb-68c3-4811-ac70-8a2c9836ca64";
+      fsType = "btrfs";
+    };
 
-  swapDevices = [ ];
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/d8f2c7a6-eeaa-4be1-b12e-b282aa74a5b5";
 
-  # Make modmic work when joined into combo
-  environment.etc."modprobe.d/alsa-base.conf" = {
-    text = "options snd-hda-intel model=dell-headset-multi";
-    mode = "0440";
-  };
+  fileSystems."/etc/nixos" =
+    {
+      device = "/persist/etc/nixos";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
+  fileSystems."/var/log" =
+    {
+      device = "/persist/var/log";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
+  swapDevices =
+    [{ device = "/dev/disk/by-uuid/0b8262e1-fb1b-4d1b-a9e8-e31fc526a1eb"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

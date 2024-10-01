@@ -18,11 +18,12 @@
       url = "github:wez/wezterm/main?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    impermanence.url = "github:nix-community/impermanence";
 
     eclipse-kerml.url = "github:NixOS/nixpkgs/e89cf1c932006531f454de7d652163a9a5c86668";
   };
 
-  outputs = {self, nixpkgs, nixpkgs-stable, home-manager, nixvim, ...} @inputs:
+  outputs = {self, nixpkgs, nixpkgs-stable, home-manager, impermanence, nixvim, ...} @inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -35,7 +36,10 @@
     {
       nixosConfigurations.nixos = lib.nixosSystem {
         inherit system;
-        modules = [./configuration.nix];
+        modules = [
+        impermanence.nixosModules.impermanence
+        ./configuration.nix
+];
         specialArgs = {
           inherit pkgs-stable;
         };
