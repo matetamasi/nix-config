@@ -5,6 +5,7 @@
     directories = [
       "/var/log"
       "/var/lib/systemd/coredump"
+      "/var/lib/nixos"
       "/etc/NetworkManager/system-connections"
     ];
     files = [
