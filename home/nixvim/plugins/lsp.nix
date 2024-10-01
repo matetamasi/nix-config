@@ -5,6 +5,7 @@
     plugins.lsp = {
       enable = true;
       servers = {
+        elixirls.enable = true;
         nil-ls.enable = true;
         bashls.enable = true;
         clangd.enable = true;

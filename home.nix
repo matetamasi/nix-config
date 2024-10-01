@@ -23,6 +23,7 @@
 
   home.packages = with pkgs; [
     monaspace
+    elixir
     poppins
     masterpdfeditor4
     dotnet-sdk_8
@@ -56,6 +57,7 @@
     signal-desktop
     keepass
     maestral
+    rclone
     caprine-bin
     androidStudioPackages.beta
     zoxide
