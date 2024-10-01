@@ -95,15 +95,15 @@
   services.xserver.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    extraLayouts.hp = {
-      description = "Hungarian programmer's (US with hu characters on alt)";
-      languages = ["hu" "en"];
-      symbolsFile = /home/matetamasi/.local/share/keymaps/xkb/hp;
-    };
-    layout = "hp,hu";
-    variant = "";
-  };
+  #services.xserver.xkb = {
+    #extraLayouts.hp = {
+      #description = "Hungarian programmer's (US with hu characters on alt)";
+      #languages = ["hu" "en"];
+      #symbolsFile = /home/matetamasi/.local/share/keymaps/xkb/hp;
+    #};
+    #layout = "hp,hu";
+    #variant = "";
+  #};
 
   services.zerotierone = {
     enable = true;
