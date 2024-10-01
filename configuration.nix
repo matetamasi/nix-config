@@ -10,6 +10,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./persist.nix
     ];
 
   # Allow unfree packages
@@ -105,11 +106,11 @@
     #variant = "";
   #};
 
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = ["9f77fc393ecc1ecc"];
-    package = pkgs-stable.zerotierone;
-  };
+  #services.zerotierone = {
+    #enable = true;
+    #joinNetworks = ["9f77fc393ecc1ecc"];
+    #package = pkgs-stable.zerotierone;
+  #};
 
   services.libinput = {
     enable = true;
