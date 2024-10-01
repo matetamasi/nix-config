@@ -1,7 +1,6 @@
 { 
-  system ? builtins.currentSystem,
   config,
-  pkgs ? import <nixpkgs> {inherit system;},
+  pkgs,
   pkgs-stable,
   ...
 }:
@@ -54,12 +53,12 @@
   programs.zsh.enable = true;
 
   # Zram
-  zramSwap = {
-    enable = true;
-    priority = 100;
-    algorithm = "zstd";
-    memoryPercent = 150;
-  };
+  #zramSwap = {
+    #enable = true;
+    #priority = 100;
+    #algorithm = "zstd";
+    #memoryPercent = 150;
+  #};
 
   # Nvidia
   #hardware.graphics = {

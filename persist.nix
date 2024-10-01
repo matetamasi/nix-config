@@ -17,6 +17,8 @@
         ".local/share/sddm"
         ".local/share/zoxide"
         "Downloads"
+        "nix-config"
+        "dot"
       ];
       files = [
         ".bash_history"
