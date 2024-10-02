@@ -211,6 +211,8 @@
   pkgs.file
   pkgs.gtk3
   pkgs.vim
+  pkgs.alejandra
+  pkgs.nix-output-monitor
   pkgs.git
   pkgs.jetbrains.idea-community-bin
   pkgs.tree
