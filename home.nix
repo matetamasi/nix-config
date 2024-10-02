@@ -6,8 +6,8 @@
   ...
 }: {
   imports = [
-    nixvim.homeManagerModules.nixvim
-    ./home
+    #nixvim.homeManagerModules.nixvim
+    #./home
     #./home/herbstluftwm.nix
   ];
   home.username = "matetamasi";
@@ -30,6 +30,7 @@
     masterpdfeditor4
     dotnet-sdk_8
     postman
+    bat
     maven
     gsettings-desktop-schemas
     libreoffice-qt

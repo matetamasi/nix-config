@@ -46,21 +46,17 @@
     nixosConfigurations.nixos = lib.nixosSystem {
       inherit system;
       modules = [
+        home-manager.nixosModules.home-manager
+	{
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.matetamasi = import ./home.nix;
+        }
         impermanence.nixosModules.impermanence
         ./configuration.nix
       ];
       specialArgs = {
         inherit pkgs-stable;
-      };
-    };
-
-    homeConfigurations.matetamasi = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [./home.nix];
-      extraSpecialArgs = {
-        inherit pkgs-stable;
-        inherit nixvim;
-        inherit wezterm-pkg;
       };
     };
 

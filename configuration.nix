@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgs-stable,
+  #nixvim,
   ...
 }:
 
@@ -162,7 +163,6 @@
   # Docker
   virtualisation.docker = {
     enable = true;
-    storageDriver = "btrfs";
     extraPackages = with pkgs;
     [
       alsa-utils
