@@ -13,14 +13,10 @@
   home.username = "matetamasi";
   home.homeDirectory = "/home/matetamasi";
 
-  programs = {
-    home-manager.enable = true;
-
     zoxide = {
       enable = true;
       enableZshIntegration = true;
     };
-  };
 
   nixpkgs.config.allowUnfree = true;
 
