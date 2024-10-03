@@ -19,6 +19,7 @@
         "Downloads"
         "nix-config"
         "dot"
+        ".ssh"
       ];
       files = [
         ".bash_history"
