@@ -13,7 +13,7 @@
   home.username = "matetamasi";
   home.homeDirectory = "/home/matetamasi";
 
-    zoxide = {
+    programs.zoxide = {
       enable = true;
       enableZshIntegration = true;
     };
