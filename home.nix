@@ -6,8 +6,8 @@
   ...
 }: {
   imports = [
-    #nixvim.homeManagerModules.nixvim
-    #./home
+    nixvim.homeManagerModules.nixvim
+    ./home
     #./home/herbstluftwm.nix
   ];
   home.username = "matetamasi";

@@ -51,6 +51,11 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.matetamasi = import ./home.nix;
+            home-manager.extraSpecialArgs = {
+              inherit nixvim;
+              inherit wezterm-pkg;
+              inherit pkgs-stable;
+            };
         }
         impermanence.nixosModules.impermanence
         ./configuration.nix
