@@ -20,6 +20,9 @@
         "nix-config"
         "dot"
         ".ssh"
+        ".mozilla/firefox"
+        ".config/Signal"
+        ".config/vesktop"
       ];
       files = [
         ".bash_history"
