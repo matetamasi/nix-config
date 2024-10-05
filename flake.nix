@@ -3,7 +3,13 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+
     nixpkgs-stable.url = "nixpkgs/nixos-24.05";
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,10 +20,12 @@
       url = "github:nix-community/nixvim/nixos-24.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+
     wezterm = {
       url = "github:wez/wezterm/main?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     impermanence.url = "github:nix-community/impermanence";
 
     eclipse-kerml.url = "github:NixOS/nixpkgs/e89cf1c932006531f454de7d652163a9a5c86668";
@@ -27,6 +35,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    disko,
     home-manager,
     impermanence,
     nixvim,
@@ -46,6 +55,8 @@
     nixosConfigurations.nixos = lib.nixosSystem {
       inherit system;
       modules = [
+        disko.nixosModules.default
+	(import ./disko.nix {device = "/dev/nvme1n1";})
         home-manager.nixosModules.home-manager
 	{
             home-manager.useGlobalPkgs = true;
