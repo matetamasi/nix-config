@@ -13,10 +13,22 @@
   home.username = "matetamasi";
   home.homeDirectory = "/home/matetamasi";
 
-    programs.zoxide = {
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.git = {
+    enable = true;
+    userEmail = "matetamasi@protonmail.com";
+    userName = "Tamási Máté";
+    delta = {
       enable = true;
-      enableZshIntegration = true;
+      options = {
+        features = "navigation side-by-side";
+      };
     };
+  };
 
   nixpkgs.config.allowUnfree = true;
 
