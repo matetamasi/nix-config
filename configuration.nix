@@ -25,6 +25,9 @@
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Systemd
   systemd.enableEmergencyMode = false;
 
