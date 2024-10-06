@@ -6,6 +6,8 @@
 
     nixpkgs-stable.url = "nixpkgs/nixos-24.05";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +37,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    nixos-hardware,
     disko,
     home-manager,
     impermanence,
@@ -55,10 +58,12 @@
     nixosConfigurations.nixos = lib.nixosSystem {
       inherit system;
       modules = [
+        nixos-hardware.nixosModules.framework-16-7040-amd
+
         disko.nixosModules.default
-	(import ./disko.nix {device = "/dev/nvme1n1";})
-        home-manager.nixosModules.home-manager
-	{
+	      (import ./disko.nix {device = "/dev/nvme1n1";})
+
+        home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.matetamasi = import ./home.nix;
