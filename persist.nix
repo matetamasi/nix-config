@@ -10,6 +10,7 @@
     directories = [
       "/var/lib/systemd/coredump"
       "/var/lib/nixos"
+      "/var/lib/fprint"
       "/etc/NetworkManager/system-connections"
     ];
     files = [
