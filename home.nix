@@ -30,6 +30,22 @@
     };
   };
 
+  home.shellAliases = {
+    # Nix config management
+    nfu = "nix flake update /home/matetamasi/dot/";
+    nomb = "nom build /home/matetamasi/dot#nixosConfigurations.nixos.config.system.build.toplevel -o /home/matetamasi/dot/result";
+    # Git
+    gc  = "git commit -v";
+    gp = "git push";
+    gpf = "git push --force-with-lease";
+    gd = "git diff";
+    gs = "git status";
+    gcp = "git checkout -p";
+    gap = "git add -p";
+    gar = "git add `git rev-parse --show-toplevel`";
+    garp = "git add -p `git rev-parse --show-toplevel`";
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
