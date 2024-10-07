@@ -194,20 +194,16 @@
 
   users.mutableUsers = false;
   users.users = {
-    # password: temp a
-    root.initialHashedPassword = "$6$FRmKgElD/80xQiXn$aF.tKv0VOLj9D3aUJjoYsj3AzSj1rq5fVooE7tgtNuTawt8ZWgaRyUUxsikX5whbna4jrzXrDZmVFqik.kyc2/";
+    root.hashedPasswordFile = "/persist/passwords/root.pass";
 
     matetamasi = {
-      # password: temp b
-      initialHashedPassword = "$6$iLmo7C9VoAnJZ6v1$qCSORkbiY44IbcrrF1DcTnJtpOkqeD2tGgUoaDgtzPdFqKWKJ28AhJqmuOf8IWoSNu2DQJM.QlWO1Ok05kFgp0";
+      hashedPasswordFile = "/persist/passwords/matetamasi.pass";
       isNormalUser = true;
       description = "Tamási Máté";
       extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" ];
       shell = pkgs.zsh;
     };
   };
-
-
 
   environment.systemPackages =
   [
