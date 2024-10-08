@@ -129,6 +129,10 @@
   services.displayManager.defaultSession = "plasma";
   services.desktopManager.plasma6.enable = true;
 
+  # Fix bug where password login makes sddm have a 30s timeout
+  # See: https://github.com/NixOS/nixpkgs/issues/239770
+  security.pam.services.login.fprintAuth = false;
+
   # Nix-ld
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
