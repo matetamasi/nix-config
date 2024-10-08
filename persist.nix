@@ -18,16 +18,31 @@
     ];
     users.matetamasi = {
       directories = [
+        # Folders I usually work in
+        "Downloads"
+        "BME"
+        "MedveMatek"
+        "QMK"
+        "Prog_misc"
+        "dot"
+
+        # KDE Plasma stuff (should start using plasma-manager instead)
         ".local/share/kscreen"
         ".local/share/kwalletd"
         ".local/share/sddm"
         ".local/share/zoxide"
-        "Downloads"
-        "dot"
-        ".ssh"
+
+        # Login state for applications
         ".mozilla/firefox"
         ".config/Signal"
         ".config/vesktop"
+
+        # Chromium & PWAs
+        ".config/chromium"
+
+
+        # Other
+        ".ssh"
       ];
       files = [
         ".bash_history"
