@@ -36,11 +36,14 @@
     nomb = "nom build /home/matetamasi/dot#nixosConfigurations.nixos.config.system.build.toplevel -o /home/matetamasi/dot/result";
     # Git
     gc  = "git commit -v";
+    gcm = "git commit -m";
     gp = "git push";
     gpf = "git push --force-with-lease";
     gd = "git diff";
     gs = "git status";
+    glo = "git log --oneline";
     gcp = "git checkout -p";
+    ga = "git add";
     gap = "git add -p";
     gar = "git add `git rev-parse --show-toplevel`";
     garp = "git add -p `git rev-parse --show-toplevel`";
