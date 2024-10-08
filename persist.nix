@@ -39,15 +39,17 @@
 
         # Chromium & PWAs
         ".config/chromium"
-
+        ".local/share/applications"
+        ".local/share/icons"
 
         # Other
         ".ssh"
       ];
       files = [
+        ".local/share/desktop-directories/chrome-apps.directory"
+        ".zsh_history"
         ".bash_history"
         ".config/systemsettingsrc"
-        ".zsh_history"
       ];
     };
   };
