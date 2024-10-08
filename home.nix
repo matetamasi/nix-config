@@ -30,6 +30,19 @@
     };
   };
 
+  # Default applications
+  xdg.mimeApps = {
+    enable = true;
+    
+    defaultApplications = {
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+    };
+  };
+
   home.shellAliases = {
     # Nix config management
     nfu = "nix flake update /home/matetamasi/dot/";
@@ -123,6 +136,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     TERM = "wezterm";
+    DEFAULT_BROWSER = "firefox";
   };
 
   home.stateVersion = "23.11";
