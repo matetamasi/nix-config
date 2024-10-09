@@ -65,6 +65,7 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    elixir
     monaspace
     poppins
     masterpdfeditor4
