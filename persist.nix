@@ -42,6 +42,9 @@
         ".local/share/applications"
         ".local/share/icons"
 
+        # Steam
+        ".local/share/Steam"
+
         # Other
         ".ssh"
       ];
