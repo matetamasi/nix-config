@@ -49,7 +49,8 @@
         ".local/share/Steam"
 
         # Other
-        ".ssh"
+        ".config/Caprine" # Messenger client
+        ".ssh" # SSH
       ];
       files = [
         ".local/share/desktop-directories/chrome-apps.directory"
