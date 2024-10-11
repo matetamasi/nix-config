@@ -13,6 +13,7 @@
       "/var/lib/fprint"
       "/etc/NetworkManager/system-connections"
       "/var/lib/libvirt"
+      "/var/lib/bluetooth"
     ];
     files = [
       "/etc/machine-id" # for journalctl
