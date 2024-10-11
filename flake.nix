@@ -13,6 +13,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +41,7 @@
     nixpkgs-stable,
     nixos-hardware,
     disko,
+    nixos-cosmic,
     home-manager,
     impermanence,
     nixvim,
@@ -74,6 +77,15 @@
             };
         }
         impermanence.nixosModules.impermanence
+
+        {
+          nix.settings = {
+            substituters = [ "https://cosmic.cachix.org/" ];
+            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+          };
+        }
+        nixos-cosmic.nixosModules.default
+
         ./configuration.nix
       ];
       specialArgs = {
