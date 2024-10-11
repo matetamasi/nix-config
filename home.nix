@@ -67,6 +67,7 @@
   home.packages = with pkgs; [
     elixir
     monaspace
+    quickemu
     poppins
     masterpdfeditor4
     dotnet-sdk_8

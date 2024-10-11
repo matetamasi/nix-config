@@ -12,6 +12,7 @@
       "/var/lib/nixos"
       "/var/lib/fprint"
       "/etc/NetworkManager/system-connections"
+      "/var/lib/libvirt"
     ];
     files = [
       "/etc/machine-id" # for journalctl
@@ -20,6 +21,7 @@
       directories = [
         # Folders I usually work in
         "Downloads"
+        "Virtualization"
         "BME"
         "MedveMatek"
         "QMK"

@@ -164,7 +164,10 @@
   # Virtualisation
   virtualisation.libvirtd = {
     enable = true;
-    qemu.ovmf.enable = true;
+    qemu = {
+      runAsRoot = true;
+      ovmf.enable = true;
+    };
   };
   programs.virt-manager.enable = true;
 
@@ -204,13 +207,15 @@
       hashedPasswordFile = "/persist/passwords/matetamasi.pass";
       isNormalUser = true;
       description = "Tamási Máté";
-      extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "libvirtd" "dialout" ];
       shell = pkgs.zsh;
     };
   };
 
   environment.systemPackages =
   [
+  pkgs.virtiofsd
+  pkgs.virtio-win
   pkgs.ripgrep
   pkgs.file
   pkgs.gtk3
