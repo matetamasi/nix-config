@@ -36,6 +36,9 @@
         ".local/share/sddm"
         ".local/share/zoxide"
 
+        # Cosmic desktop
+        ".config/cosmic"
+
         # Login state for applications
         ".mozilla/firefox"
         ".config/Signal"
@@ -54,6 +57,7 @@
         ".ssh" # SSH
       ];
       files = [
+        ".local/state/cosmic-comp/outputs.ron" # Cosmic display configuration
         ".local/share/desktop-directories/chrome-apps.directory"
         ".zsh_history"
         ".bash_history"

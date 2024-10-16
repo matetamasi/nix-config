@@ -12,6 +12,7 @@
     [
       ./hardware-configuration.nix
       ./persist.nix
+      ./configuration
     ];
 
   # Allow unfree packages
@@ -122,16 +123,6 @@
     mouse.accelSpeed = "0";
     touchpad.naturalScrolling = true;
   };
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.defaultSession = "plasma";
-  services.desktopManager.plasma6.enable = true;
-
-  # Fix bug where password login makes sddm have a 30s timeout
-  # See: https://github.com/NixOS/nixpkgs/issues/239770
-  security.pam.services.login.fprintAuth = false;
 
   # Nix-ld
   programs.nix-ld.enable = true;
