@@ -97,7 +97,6 @@
       default = pkgs.mkShell {
         NIX_CONFIG = "experimental-features = nix-command flakes";
         packages = with pkgs; [
-          cowsay
           nom
         ];
       };
