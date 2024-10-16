@@ -22,6 +22,7 @@
       directories = [
         # Folders I usually work in
         "Downloads"
+        "Pictures"
         "Virtualization"
         "BME"
         "MedveMatek"
