@@ -152,16 +152,6 @@
   # QMK
   hardware.keyboard.qmk.enable = true;
 
-  # Virtualisation
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      runAsRoot = true;
-      ovmf.enable = true;
-    };
-  };
-  programs.virt-manager.enable = true;
-
   # Docker
   virtualisation.docker = {
     enable = true;
@@ -198,15 +188,13 @@
       hashedPasswordFile = "/persist/passwords/matetamasi.pass";
       isNormalUser = true;
       description = "Tamási Máté";
-      extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "libvirtd" "dialout" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" ];
       shell = pkgs.zsh;
     };
   };
 
   environment.systemPackages =
   [
-  pkgs.virtiofsd
-  pkgs.virtio-win
   pkgs.ripgrep
   pkgs.file
   pkgs.gtk3
