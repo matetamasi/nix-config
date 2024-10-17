@@ -105,7 +105,7 @@
     extraLayouts.hp = {
       description = "Hungarian programmer's (US with hu characters on alt)";
       languages = ["hu" "en"];
-      symbolsFile = /home/matetamasi/dot/keymaps/hp;
+      symbolsFile = ./keymaps/hp;
     };
     layout = "hp,hu";
     variant = "";
