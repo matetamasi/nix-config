@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   pkgs-stable,
   nixvim,
@@ -67,32 +66,24 @@
   home.packages = with pkgs; [
     elixir
     monaspace
-    quickemu
     poppins
     masterpdfeditor4
-    dotnet-sdk_8
-    postman
     bat
     maven
-    gsettings-desktop-schemas
     libreoffice-qt
     ncspot
+    spotify
     gimp
-    obs-studio
     haruna
     zathura
     filelight
     typst
     wl-clipboard
-    spotify
+    xclip
     steam
+    protonup-qt
     sc-controller
     prismlauncher #Minecraft launcher
-    protonup-qt
-    freerdp
-    remmina
-    plantuml
-    staruml
     piper
     pavucontrol
     qmk
@@ -105,30 +96,21 @@
     caprine-bin
     androidStudioPackages.beta
     zoxide
-    xclip
-    sqlcmd
     gitkraken
     ungoogled-chromium
-    # shell scripts
-    #(pkgs.writeShellScriptBin "my-hello" ''
-    #  echo "Hello, ${config.home.username}!"
-    #'')
   ];
 
   fonts.fontconfig.enable = true;
 
   #dotfiles
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    # Example: ".config/someFile".source = ./path/to/someFile;
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
+    # Example 2:
+    # ".config/someOtherFile".text = ''
+    #   contents
     # '';
+
     ".config/zathura/zathurarc".text = ''
       map <C-i> recolor
     '';
