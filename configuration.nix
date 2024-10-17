@@ -1,9 +1,6 @@
 { 
-  config,
   pkgs,
   pkgs-stable,
-  lib,
-  #nixvim,
   ...
 }:
 
@@ -57,39 +54,6 @@
 
   # Zsh
   programs.zsh.enable = true;
-
-  # Zram
-  #zramSwap = {
-    #enable = true;
-    #priority = 100;
-    #algorithm = "zstd";
-    #memoryPercent = 150;
-  #};
-
-  # Nvidia
-  #hardware.graphics = {
-    #enable = true;
-    #enable32Bit = true;
-  #};
-#
-  #services.xserver.videoDrivers = ["nvidia"];
-  #hardware.nvidia = {
-    #modesetting.enable = true;
-    #powerManagement.enable = false;
-    #powerManagement.finegrained = false;
-    #open = false;
-    #nvidiaSettings = true;
-    #package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-    #prime = {
-      #offload = {
-        #enable = true;
-	#enableOffloadCmd = true;
-      #};
-      #intelBusId = "PCI:0:2:0";
-      #nvidiaBusId = "PCI:1:0:0";
-    #};
-  #};
 
   services.teamviewer.enable = true;
 
@@ -193,62 +157,49 @@
     };
   };
 
-  environment.systemPackages =
+  environment.systemPackages = with pkgs;
   [
-  pkgs.ripgrep
-  pkgs.file
-  pkgs.gtk3
-  pkgs.vim
-  pkgs.alejandra
-  pkgs.nix-output-monitor
-  pkgs.git
-  pkgs.jetbrains.idea-community-bin
-  pkgs.tree
-  pkgs.warp-terminal
-  pkgs.coreutils-full
-  pkgs.pciutils
-  pkgs.lshw
-  pkgs.kotlin
-  pkgs.grub2
-  pkgs.efibootmgr
-  pkgs.glxinfo
-  (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
+  ripgrep
+  file
+  vim
+  alejandra
+  nix-output-monitor
+  git
+  jetbrains.idea-community-bin
+  tree
+  coreutils-full
+  pciutils
+  lshw
+  kotlin
+  glxinfo
+  (python3.withPackages (python-pkgs: with python-pkgs; [
     numpy
     matplotlib
   ]))
-  pkgs.glfw
-  pkgs.neofetch
-  pkgs.steam-run
-  pkgs.gsettings-desktop-schemas
-  pkgs.glib
-  pkgs.alsa-utils
-  pkgs.zsh
-  pkgs.htop-vim
-  pkgs.libsecret
-  pkgs.xorg.xhost
-  pkgs.qmk-udev-rules
+  neofetch
+  steam-run
+  glib
+  alsa-utils
+  zsh
+  htop-vim
+  libsecret
+  qmk-udev-rules
 
   # For herbstluftwm - TODO: move to separate file, import conditionally
   # TODO: with pkgs;
-  pkgs.pamixer
-  pkgs.arandr
-  pkgs.xorg.xbacklight
-  pkgs.playerctl
-  pkgs.scrot
-  pkgs.blueman
-  pkgs.networkmanagerapplet
-  pkgs.xorg.xinit
-  pkgs.rofi
-  pkgs.polybarFull
+  pamixer
+  arandr
+  xorg.xbacklight
+  playerctl
+  scrot
+  blueman
+  networkmanagerapplet
+  xorg.xinit
+  rofi
+  polybarFull
   ];
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.11";
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 }
