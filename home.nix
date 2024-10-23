@@ -65,6 +65,7 @@
 
   home.packages = with pkgs; [
     elixir
+    gprolog
     monaspace
     poppins
     masterpdfeditor4
