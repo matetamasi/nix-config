@@ -4,6 +4,7 @@
       enable = true;
       servers = {
         elixirls.enable = true;
+        prolog_ls.enable = true;
         nil-ls.enable = true;
         bashls.enable = true;
         clangd.enable = true;
