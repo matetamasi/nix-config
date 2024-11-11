@@ -5,17 +5,14 @@
       servers = {
         elixirls.enable = true;
         #prolog_ls.enable = true;
-        nil-ls.enable = true;
+        nil_ls.enable = true;
         bashls.enable = true;
         clangd.enable = true;
-        csharp-ls.enable = true;
+        csharp_ls.enable = true;
         #jsonls.enable = true;
-        kotlin-language-server.enable = true;
+        kotlin_language_server.enable = true;
         pyright.enable = true;
-        typst-lsp = {
-          enable = true;
-          package = pkgs-stable.typst-lsp;
-        };
+        typst_lsp.enable = true;
         #rust-analyzer = {
         #enable = true;
         #installCargo = true;
