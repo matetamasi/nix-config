@@ -192,7 +192,6 @@
   xorg.xbacklight
   playerctl
   scrot
-  blueman
   networkmanagerapplet
   xorg.xinit
   rofi
