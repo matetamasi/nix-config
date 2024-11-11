@@ -21,8 +21,8 @@
     };
     nixvim = {
       #changed to stable because of lsp breakage, unsure if it should stay so
-      url = "github:nix-community/nixvim/nixos-24.05";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     wezterm = {
