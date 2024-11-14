@@ -159,6 +159,7 @@
 
   environment.systemPackages = with pkgs;
   [
+  wineWowPackages.waylandFull
   ripgrep
   file
   vim

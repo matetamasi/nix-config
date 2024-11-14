@@ -30,6 +30,9 @@
         "Prog_misc"
         "dot"
 
+        # Wine
+        ".wine"
+
         # KDE Plasma stuff (should start using plasma-manager instead)
         ".local/share/kscreen"
         ".local/share/kwalletd"
