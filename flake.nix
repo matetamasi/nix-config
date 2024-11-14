@@ -19,10 +19,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixvim = {
-      #changed to stable because of lsp breakage, unsure if it should stay so
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     wezterm = {
@@ -43,8 +49,9 @@
     disko,
     nixos-cosmic,
     home-manager,
-    impermanence,
     nixvim,
+    plasma-manager,
+    impermanence,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
@@ -69,6 +76,7 @@
         home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
             home-manager.users.matetamasi = import ./home.nix;
             home-manager.extraSpecialArgs = {
               inherit nixvim;
