@@ -1,4 +1,5 @@
 { 
+  config,
   pkgs,
   pkgs-stable,
   ...
@@ -23,8 +24,6 @@
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Systemd
   systemd.enableEmergencyMode = false;
@@ -33,6 +32,24 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   networking.networkmanager.enable = true;
+
+  # ZFS
+  networking.hostId = "9aa64d3a";
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  boot.kernelParams = [
+    "nohibernate"
+    "zfs.zfs_arc_max=17179869184"
+  ];
+  boot.supportedFilesystems = ["vfat" "zfs"];
+  boot.zfs = {
+    devNodes = "/dev/disk/by-id/";
+    forceImportAll = true;
+    requestEncryptionCredentials = true;
+  };
+  services.zfs = {
+    autoScrub.enable = true;
+    trim.enable = true;
+  };
 
   time.timeZone = "Europe/Budapest";
 
@@ -159,6 +176,7 @@
 
   environment.systemPackages = with pkgs;
   [
+  zfs-prune-snapshots
   wineWowPackages.waylandFull
   ripgrep
   file

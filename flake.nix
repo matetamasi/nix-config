@@ -47,7 +47,7 @@
     nixpkgs-stable,
     nixos-hardware,
     disko,
-    nixos-cosmic,
+    #nixos-cosmic,
     home-manager,
     nixvim,
     plasma-manager,
@@ -86,13 +86,13 @@
         }
         impermanence.nixosModules.impermanence
 
-        {
-          nix.settings = {
-            substituters = [ "https://cosmic.cachix.org/" ];
-            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-          };
-        }
-        nixos-cosmic.nixosModules.default
+        #{
+          #nix.settings = {
+            #substituters = [ "https://cosmic.cachix.org/" ];
+            #trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+          #};
+        #}
+        #nixos-cosmic.nixosModules.default
 
         ./configuration.nix
       ];
