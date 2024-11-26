@@ -1,6 +1,6 @@
 {
   imports = [
-    #./cosmic.nix
+    ./cosmic.nix
     ./kde-plasma.nix
   ];
 }
