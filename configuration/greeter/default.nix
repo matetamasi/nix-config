@@ -1,3 +1,3 @@
 {
-  imports = [./cosmic.nix];
+  imports = [./kde-sddm.nix];
 }
