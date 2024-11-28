@@ -71,8 +71,9 @@
   };
 
 
-  # Reset root subvolume on boot
+  # Roll back to blank root on boot
   boot.initrd.postDeviceCommands = lib.mkAfter ''
+    zpool import zfspool
     zfs rollback -r zfspool/root@blank
   '';
 }
