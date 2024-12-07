@@ -66,7 +66,7 @@
   home.packages = with pkgs; [
     elixir
     gprolog
-    (nerdfonts.override { fonts = ["Monaspace"]; })
+    nerd-fonts.monaspace
     poppins
     masterpdfeditor4
     bat
