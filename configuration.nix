@@ -33,6 +33,15 @@
 
   networking.networkmanager.enable = true;
 
+  # Zram
+  zramSwap = {
+    enable = true;
+    priority = 100;
+    algorithm = "zstd";
+    memoryPercent = 150;
+  };
+
+
   # ZFS
   networking.hostId = "9aa64d3a";
   boot.kernelPackages = pkgs.linuxPackages_6_6;
