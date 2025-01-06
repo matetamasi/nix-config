@@ -2,6 +2,11 @@
   programs.nixvim.plugins.treesitter = {
     enable = true;
     folding = true;
-    settings.indent.enable = true;
+
+    settings = {
+      highlight.enable = true;
+      indent.enable = true;
+      auto_install =true;
+    };
   };
 }
