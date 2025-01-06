@@ -45,6 +45,7 @@
         pattern = [
           "*.typ"
           "*.nix"
+          "*.gleam"
         ];
         event = "BufEnter";
       }

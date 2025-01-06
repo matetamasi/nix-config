@@ -4,6 +4,7 @@
       enable = true;
       servers = {
         elixirls.enable = true;
+        gleam.enable = true;
         #prolog_ls.enable = true;
         nil_ls.enable = true;
         bashls.enable = true;
