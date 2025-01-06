@@ -57,6 +57,7 @@
         ".local/share/Steam"
 
         # Other
+        ".local/bin"
         ".config/Caprine" # Messenger client
         ".ssh" # SSH
       ];
