@@ -123,6 +123,9 @@
     TERM = "wezterm";
     DEFAULT_BROWSER = "firefox";
   };
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   home.stateVersion = "23.11";
 }
