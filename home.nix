@@ -64,6 +64,7 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    gleam
     elixir
     gprolog
     nerd-fonts.monaspace
