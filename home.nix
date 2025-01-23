@@ -85,6 +85,7 @@
     steam
     protonup-qt
     sc-controller
+    r2modman # mod manager for ror2 and others
     prismlauncher #Minecraft launcher
     piper
     pavucontrol
