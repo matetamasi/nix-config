@@ -56,6 +56,10 @@
         # Steam
         ".local/share/Steam"
 
+        # r2modman
+        ".config/r2modman"
+        ".config/r2modmanPlus-local"
+
         # Other
         ".local/bin"
         ".config/Caprine" # Messenger client
