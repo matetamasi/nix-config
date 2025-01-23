@@ -1,12 +1,12 @@
 {
-  programs.nixvim.plugins.nvim-colorizer = {
+  programs.nixvim.plugins.colorizer = {
     enable = true;
-    userDefaultOptions = {
+    settings.userDefaultOptions = {
       RGB = true;
       RRGGBB = true;
       RRGGBBAA = true;
       names = true;
-      mode = "background";
+      # mode = "background";
     };
   };
 }
