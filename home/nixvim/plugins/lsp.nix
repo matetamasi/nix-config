@@ -13,7 +13,7 @@
         #jsonls.enable = true;
         kotlin_language_server.enable = true;
         pyright.enable = true;
-        typst_lsp.enable = true;
+        tinymist.enable = true;
         #rust-analyzer = {
         #enable = true;
         #installCargo = true;
