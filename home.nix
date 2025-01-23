@@ -66,6 +66,7 @@
   home.packages = with pkgs; [
     gleam
     elixir
+    godot_4
     gprolog
     nerd-fonts.monaspace
     poppins
