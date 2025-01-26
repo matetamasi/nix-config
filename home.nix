@@ -102,6 +102,7 @@
     zoxide
     gitkraken
     ungoogled-chromium
+    qbittorrent
   ];
 
   fonts.fontconfig.enable = true;

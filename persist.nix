@@ -23,6 +23,7 @@
       directories = [
         # Folders I usually work in
         "Downloads"
+        "Downloads/Torrent"
         "Pictures"
         "Virtualization"
         "BME"
