@@ -31,6 +31,7 @@
         "QMK"
         "Prog_misc"
         "dot"
+        "Gaming"
 
         # Wine
         ".wine"
