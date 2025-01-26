@@ -65,6 +65,9 @@
         ".config/r2modman"
         ".config/r2modmanPlus-local"
 
+        # Prism launcher (minecraft)
+        ".local/share/PrismLauncher"
+
         # Other
         ".local/bin"
         ".config/Caprine" # Messenger client
