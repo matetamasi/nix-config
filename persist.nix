@@ -54,6 +54,10 @@
         ".local/share/applications"
         ".local/share/icons"
 
+        # Godot
+        ".config/godot"
+        ".local/share/godot"
+
         # Steam
         ".local/share/Steam"
 
