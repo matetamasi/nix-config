@@ -33,6 +33,12 @@
 
   networking.networkmanager.enable = true;
 
+  networking.firewall = {
+    enable = true;
+    allowedUDPPorts = [25565];
+    allowedTCPPorts = [25565];
+  };
+
   # Zram
   zramSwap = {
     enable = true;
@@ -101,11 +107,11 @@
     variant = "";
   };
 
-  #services.zerotierone = {
-    #enable = true;
-    #joinNetworks = ["9f77fc393ecc1ecc"];
-    #package = pkgs-stable.zerotierone;
-  #};
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = ["9f77fc393ecc1ecc"];
+    package = pkgs-stable.zerotierone;
+  };
 
   services.libinput = {
     enable = true;
