@@ -69,7 +69,8 @@
     godot_4
     gprolog
     nerd-fonts.monaspace
-    poppins
+    google-fonts
+    # poppins
     masterpdfeditor4
     bat
     maven
