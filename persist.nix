@@ -25,6 +25,7 @@
         "Downloads"
         "Downloads/Torrent"
         "Pictures"
+        "Documents"
         "Virtualization"
         "BME"
         "MedveMatek"
