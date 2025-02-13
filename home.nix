@@ -78,6 +78,7 @@
     ncspot
     spotify
     gimp
+    kcolorchooser
     haruna
     zathura
     filelight
