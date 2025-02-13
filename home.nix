@@ -97,6 +97,7 @@
     firefox
     vesktop
     signal-desktop
+    slack
     keepass
     maestral
     caprine-bin
