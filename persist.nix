@@ -39,6 +39,7 @@
         ".config/Signal"
         ".config/vesktop"
         ".config/rclone"
+        ".config/Slack"
         ".config/uppaal"
 
         # Chromium & PWAs
