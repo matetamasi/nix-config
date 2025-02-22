@@ -105,6 +105,8 @@
     signal-desktop
     slack
     keepass
+    rclone
+    restic
     maestral
     caprine-bin
     androidStudioPackages.beta

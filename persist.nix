@@ -38,6 +38,7 @@
         ".mozilla/firefox"
         ".config/Signal"
         ".config/vesktop"
+        ".config/rclone"
         ".config/uppaal"
 
         # Chromium & PWAs
