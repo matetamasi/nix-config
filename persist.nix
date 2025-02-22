@@ -38,6 +38,7 @@
         ".mozilla/firefox"
         ".config/Signal"
         ".config/vesktop"
+        ".config/Caprine" # Messenger client
         ".config/rclone"
         ".config/Slack"
         ".config/uppaal"
