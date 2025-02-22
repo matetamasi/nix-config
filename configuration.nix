@@ -176,6 +176,8 @@
     package = pkgs.jdk17;
   };
 
+  programs.adb.enable = true;
+
   users.mutableUsers = false;
   users.users = {
     root.hashedPasswordFile = "/persist/passwords/root.pass";
@@ -184,7 +186,7 @@
       hashedPasswordFile = "/persist/passwords/matetamasi.pass";
       isNormalUser = true;
       description = "Tamási Máté";
-      extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" "adbusers" ];
       shell = pkgs.zsh;
     };
   };

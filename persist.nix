@@ -62,6 +62,15 @@
         # Other
         ".ssh" # SSH
         ".gpg"
+
+        #Android development stuff
+        "Android"
+        ".android"
+        ".config/Google"
+        ".local/share/Google/consentOptions"
+        ".gitkraken"
+        ".config/GitKraken"
+        ".gradle"
       ];
       files = [
         ".local/state/cosmic-comp/outputs.ron" # Cosmic display configuration
