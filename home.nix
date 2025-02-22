@@ -17,6 +17,11 @@
     enableZshIntegration = true;
   };
 
+  programs.gpg = {
+    enable = true;
+    homedir = "/home/matetamasi/.gpg/";
+  };
+
   programs.git = {
     enable = true;
     userEmail = "matetamasi@protonmail.com";
