@@ -13,7 +13,6 @@
       "/var/lib/nixos"
       "/var/lib/fprint"
       "/etc/NetworkManager/system-connections"
-      "/var/lib/libvirt"
       "/var/lib/bluetooth"
     ];
     files = [
@@ -24,15 +23,7 @@
         # Folders I usually work in
         "Downloads"
         "Downloads/Torrent"
-        "Pictures"
-        "Documents"
-        "Virtualization"
-        "BME"
-        "MedveMatek"
-        "QMK"
-        "Prog_misc"
-        "dot"
-        "Gaming"
+        "Proton_drive"
 
         # Wine
         ".wine"
@@ -42,9 +33,6 @@
         ".local/share/kwalletd"
         ".local/share/sddm"
         ".local/share/zoxide"
-
-        # Cosmic desktop
-        ".config/cosmic"
 
         # Login state for applications
         ".mozilla/firefox"
@@ -67,21 +55,52 @@
         ".config/r2modman"
         ".config/r2modmanPlus-local"
 
+        # Other
+        ".ssh" # SSH
+        ".gpg"
+      ];
+      files = [
+        ".local/state/cosmic-comp/outputs.ron" # Cosmic display configuration
+        ".local/share/desktop-directories/chrome-apps.directory"
+      ];
+    };
+  };
+
+  environment.persistence."/persist/backup" = {
+    hideMounts = true;
+    directories = [
+      "/var/lib/libvirt"
+    ];
+    users.matetamasi = {
+
+      directories = [
+
+        # Folders I usually work in
+        "dot"
+        "BME"
+        "MedveMatek"
+        "QMK"
+        "Prog_misc"
+        "Gaming"
+        "Documents"
+        "Pictures"
+
+        # Cosmic desktop
+        ".config/cosmic"
+
         # Prism launcher (minecraft)
         ".local/share/PrismLauncher"
 
         # Other
         ".local/bin"
-        ".config/Caprine" # Messenger client
-        ".ssh" # SSH
+
       ];
+
       files = [
-        ".local/state/cosmic-comp/outputs.ron" # Cosmic display configuration
-        ".local/share/desktop-directories/chrome-apps.directory"
-        ".zsh_history"
         ".bash_history"
-        ".config/systemsettingsrc"
+        ".zsh_history"
       ];
+
     };
   };
 
