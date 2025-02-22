@@ -71,6 +71,7 @@
   home.packages = with pkgs; [
     gleam
     elixir
+    uppaal
     godot_4
     gprolog
     nerd-fonts.monaspace
