@@ -68,10 +68,14 @@
         "Android"
         ".android"
         ".config/Google"
-        ".local/share/Google/consentOptions"
+        ".local/share/Google"
         ".gitkraken"
         ".config/GitKraken"
         ".gradle"
+
+        #IntelliJ
+        ".local/share/JetBrains"
+        ".config/JetBrains"
       ];
       files = [
         ".local/state/cosmic-comp/outputs.ron" # Cosmic display configuration
