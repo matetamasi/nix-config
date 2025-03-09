@@ -80,6 +80,7 @@
       files = [
         ".local/state/cosmic-comp/outputs.ron" # Cosmic display configuration
         ".local/share/desktop-directories/chrome-apps.directory"
+        ".config/dconf/user" # virt-manager
       ];
     };
   };
