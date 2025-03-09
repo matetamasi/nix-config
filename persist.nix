@@ -14,6 +14,7 @@
       "/var/lib/fprint"
       "/etc/NetworkManager/system-connections"
       "/var/lib/bluetooth"
+      "/var/lib/zerotier-one"
     ];
     files = [
       "/etc/machine-id" # for journalctl
