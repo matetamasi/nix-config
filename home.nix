@@ -109,7 +109,7 @@
     restic
     maestral
     caprine-bin
-    android-studio-full
+    androidStudioPackages.stable
     zoxide
     gitkraken
     ungoogled-chromium
