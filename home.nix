@@ -72,6 +72,8 @@
     gleam
     elixir
     uppaal
+    staruml
+    plantuml
     godot_4
     gprolog
     nerd-fonts.monaspace
