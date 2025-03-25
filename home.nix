@@ -87,10 +87,10 @@
     ncspot
     spotify
     gimp
-    kcolorchooser
+    kdePackages.kcolorchooser
     haruna
     zathura
-    filelight
+    kdePackages.filelight
     typst
     wl-clipboard
     xclip
