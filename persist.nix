@@ -44,6 +44,8 @@
         ".config/Slack"
         ".config/uppaal"
 
+        ".zen" # Zen browser
+
         # Chromium & PWAs
         ".config/chromium"
         ".local/share/applications"

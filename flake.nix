@@ -36,6 +36,8 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
     impermanence.url = "github:nix-community/impermanence";
 
     eclipse-kerml.url = "github:NixOS/nixpkgs/e89cf1c932006531f454de7d652163a9a5c86668";
@@ -64,6 +66,7 @@
     };
     kerml-pkgs = inputs.eclipse-kerml.legacyPackages.${system};
     wezterm-pkg = inputs.wezterm.packages.${system}.default;
+    zen-browser-pkg = inputs.zen-browser.packages."${system}".beta;
   in {
     nixosConfigurations.nixos = lib.nixosSystem {
       inherit system;

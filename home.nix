@@ -2,6 +2,7 @@
   pkgs,
   pkgs-stable,
   nixvim,
+  zen-browser-pkg,
   ...
 }: {
   imports = [
@@ -116,6 +117,8 @@
     gitkraken
     ungoogled-chromium
     qbittorrent
+  ] ++ [
+    zen-browser-pkg
   ];
 
   fonts.fontconfig.enable = true;
