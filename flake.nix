@@ -125,6 +125,24 @@
             ]
             ++ [ec];
       };
+      kerml-new = pkgs-stable.mkShell {
+        buildInputs = let
+          ec = pkgs-stable.eclipses.eclipse-dsl.overrideAttrs (finalAttrs: previousAttrs: {
+            jdk = pkgs-stable.jdk17;
+          });
+        in
+          with pkgs-stable;
+            [
+              dconf
+              gtk2
+              gtk3
+              gtk4
+              maven
+              gradle
+              graphviz
+            ]
+            ++ [ec];
+      };
     };
 
     formatter.${system} = pkgs.alejandra;
