@@ -70,6 +70,7 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    gcc
     gleam
     elixir
     uppaal
