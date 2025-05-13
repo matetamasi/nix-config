@@ -112,6 +112,9 @@
         # Prism launcher (minecraft)
         ".local/share/PrismLauncher"
 
+        # Steam/proton configuration layer
+        ".config/steamtinkerlaunch"
+
         # Other
         ".local/bin"
 
