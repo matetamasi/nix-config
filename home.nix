@@ -119,6 +119,8 @@
     gitkraken
     ungoogled-chromium
     qbittorrent
+    wineWowPackages.stable
+    winetricks
   ] ++ [
     zen-browser-pkg
   ];
