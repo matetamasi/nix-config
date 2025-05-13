@@ -59,11 +59,7 @@
     lib = nixpkgs.lib;
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    #pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-    pkgs-stable = import nixpkgs-stable {
-      system = "x86_64-linux";
-      config.allowUnfree = true;
-    };
+    pkgs-stable = nixpkgs-stable.legacyPackages.${system};
     kerml-pkgs = inputs.eclipse-kerml.legacyPackages.${system};
     wezterm-pkg = inputs.wezterm.packages.${system}.default;
     zen-browser-pkg = inputs.zen-browser.packages."${system}".beta;
@@ -77,7 +73,6 @@
 	      (import ./disko.nix {device = "/dev/nvme1n1";})
 
         home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
             home-manager.users.matetamasi = import ./home.nix;
