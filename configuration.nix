@@ -193,7 +193,6 @@
   environment.systemPackages = with pkgs;
   [
   zfs-prune-snapshots
-  wineWowPackages.waylandFull
   ripgrep
   file
   vim
