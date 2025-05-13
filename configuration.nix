@@ -172,7 +172,7 @@
   # java
   programs.java = {
     enable = true;
-    package = pkgs.jdk21;
+    package = pkgs.jdk17;
   };
 
   programs.adb.enable = true;
