@@ -1,3 +1,4 @@
+{lib, ...}:
 {
   programs.zsh = {
     enable = true;
@@ -13,7 +14,7 @@
     historySubstringSearch.enable = true;
 
     syntaxHighlighting.enable = true;
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
           zstyle ':completion:*' completer _expand _complete _ignored _match
           zstyle ':completion:*' completions '_expand'
           zstyle ':completion:*' expand prefix
