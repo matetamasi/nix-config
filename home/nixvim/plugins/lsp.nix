@@ -14,12 +14,13 @@
         kotlin_language_server.enable = true;
         pyright.enable = true;
         tinymist.enable = true;
-        #rust-analyzer = {
-        #enable = true;
-        #installCargo = true;
-        #installRustc = true;
-        #};
+        rust_analyzer = {
+          enable = true;
+          installCargo = true;
+          installRustc = true;
+        };
       };
+
     };
     keymaps = [
       #rename
