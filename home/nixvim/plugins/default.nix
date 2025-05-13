@@ -3,7 +3,6 @@
     ./cmp.nix
     ./lsp.nix
     ./plantuml.nix
-    ./nvim-jdtls.nix
     ./treesitter.nix
     ./colorizer.nix
     ./others.nix
