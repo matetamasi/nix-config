@@ -133,6 +133,14 @@
         options.desc = "[B]ullshit (delete until eol)";
         mode = ["n"];
       }
+
+      {
+        action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+        key = "<leader>e";
+        options.silent = true;
+        options.desc = "Show diagnostic float";
+        mode = ["n"];
+      }
     ];
   };
 }
