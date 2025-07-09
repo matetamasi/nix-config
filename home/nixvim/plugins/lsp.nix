@@ -1,26 +1,61 @@
 {pkgs-stable, ...}: {
   programs.nixvim = {
-    plugins.lsp = {
-      enable = true;
-      servers = {
-        elixirls.enable = true;
-        gleam.enable = true;
-        #prolog_ls.enable = true;
-        nil_ls.enable = true;
-        bashls.enable = true;
-        clangd.enable = true;
-        csharp_ls.enable = true;
-        #jsonls.enable = true;
-        kotlin_language_server.enable = true;
-        pyright.enable = true;
-        tinymist.enable = true;
-        rust_analyzer = {
-          enable = true;
-          installCargo = true;
-          installRustc = true;
+    plugins = {
+      lsp = {
+        enable = true;
+        servers = {
+          elixirls.enable = true;
+          gleam.enable = true;
+          #prolog_ls.enable = true;
+          nil_ls.enable = true;
+          bashls.enable = true;
+          clangd.enable = true;
+          csharp_ls.enable = true;
+          #jsonls.enable = true;
+          kotlin_language_server.enable = true;
+          pyright.enable = true;
+          tinymist.enable = true;
+          rust_analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+            settings.rustfmt.enable = true;
+          };
         };
       };
 
+      conform-nvim = {
+        enable = true;
+
+        settings = {
+          format_on_save = {
+            lsp_fallback = "fallback";
+            timeout_ms = 500;
+          };
+          notify_on_error = true;
+          formatters_by_ft = {
+            python = ["black"];
+            nix = ["alejandra"];
+            #TODO: further formatters
+          };
+        };
+      };
+
+      none-ls = {
+        enable = true;
+        sources.formatting = {
+          black.enable = true;
+          alejandra.enable = true;
+        };
+      };
+
+      cmp-nvim-lsp.enable = true;
+      lspkind.enable = true;
+      lspkind.cmp.enable = true;
+      luasnip.enable = true;
+      cmp-buffer.enable = true;
+      cmp-path.enable = true;
+      cmp-treesitter.enable = true;
     };
     keymaps = [
       #rename
@@ -108,10 +143,9 @@
 
       #format
       {
-        action.__raw = "vim.lsp.buf.format";
+        action = "<cmd>lua require('conform').format()<CR>";
         key = "<leader>f";
         options.silent = true;
-        options.expr = true;
         options.desc = "LSP: [F]ormat";
         mode = ["n"];
       }

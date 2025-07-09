@@ -11,6 +11,16 @@
           require('luasnip').lsp_expand(args.body)
       end
     '';
+
+    settings.formatting = {
+      fields = [
+        "abbr"
+        "kind"
+        "menu"
+      ];
+
+    };
+
     settings.mapping = {
       "<CR>" = "cmp.mapping.confirm({ select = true })";
       "<C-Space>" = "cmp.mapping.complete()";
