@@ -149,6 +149,24 @@
         options.desc = "LSP: [F]ormat";
         mode = ["n"];
       }
+
+      #next diagnostic
+      {
+        action = "<cmd>lua vim.diagnostic.goto_next()<CR>";
+        key = "<leader>]";
+        options.silent = true;
+        options.desc = "LSP: Next diagnostic";
+        mode = ["n"];
+      }
+
+      #previous diagnostic
+      {
+        action = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
+        key = "<leader>[";
+        options.silent = true;
+        options.desc = "LSP: Previous diagnostic";
+        mode = ["n"];
+      }
     ];
   };
 }
