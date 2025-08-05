@@ -1,9 +1,5 @@
 # https://github.com/nix-community/impermanence#module-usage
-{
-  lib,
-  ...
-}:
-{
+{lib, ...}: {
   fileSystems."/persist".neededForBoot = true;
   fileSystems."/persist/backup".neededForBoot = true;
   environment.persistence."/persist" = {
@@ -93,9 +89,7 @@
       "/var/lib/libvirt"
     ];
     users.matetamasi = {
-
       directories = [
-
         # Folders I usually work in
         "dot"
         "BME"
@@ -117,17 +111,14 @@
 
         # Other
         ".local/bin"
-
       ];
 
       files = [
         ".bash_history"
-        ".zsh_history"
+        ".config/zsh/.zsh_history"
       ];
-
     };
   };
-
 
   # Roll back to blank root on boot
   boot.initrd.postDeviceCommands = lib.mkAfter ''
