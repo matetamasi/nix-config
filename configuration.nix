@@ -1,17 +1,14 @@
-{ 
+{
   config,
   pkgs,
   pkgs-stable,
   ...
-}:
-
-{
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./persist.nix
-      ./configuration
-    ];
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    ./persist.nix
+    ./configuration
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -23,7 +20,6 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
 
   # Systemd
   systemd.enableEmergencyMode = false;
@@ -47,10 +43,9 @@
     memoryPercent = 150;
   };
 
-
   # ZFS
   networking.hostId = "9aa64d3a";
-  boot.kernelPackages = pkgs.linuxPackages_6_13;
+  boot.kernelPackages = pkgs.linuxPackages_6_15;
   boot.kernelParams = [
     "nohibernate"
     "zfs.zfs_arc_max=17179869184"
@@ -129,7 +124,7 @@
     enable = true;
     openFirewall = true;
     users = ["matetamasi"];
-  }; 
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -150,8 +145,7 @@
   # Docker
   virtualisation.docker = {
     enable = true;
-    extraPackages = with pkgs;
-    [
+    extraPackages = with pkgs; [
       alsa-utils
       alsa-lib
       gtk2
@@ -185,51 +179,51 @@
       hashedPasswordFile = "/persist/passwords/matetamasi.pass";
       isNormalUser = true;
       description = "Tamási Máté";
-      extraGroups = [ "networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" "adbusers" ];
+      extraGroups = ["networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" "adbusers"];
       shell = pkgs.zsh;
     };
   };
 
-  environment.systemPackages = with pkgs;
-  [
-  zfs-prune-snapshots
-  ripgrep
-  file
-  vim
-  alejandra
-  nix-output-monitor
-  git
-  jetbrains.idea-community-bin
-  tree
-  coreutils-full
-  pciutils
-  lshw
-  kotlin
-  glxinfo
-  (python3.withPackages (python-pkgs: with python-pkgs; [
-    numpy
-    matplotlib
-  ]))
-  neofetch
-  steam-run
-  glib
-  alsa-utils
-  zsh
-  htop-vim
-  libsecret
-  qmk-udev-rules
+  environment.systemPackages = with pkgs; [
+    zfs-prune-snapshots
+    ripgrep
+    file
+    vim
+    alejandra
+    nix-output-monitor
+    git
+    jetbrains.idea-community-bin
+    tree
+    coreutils-full
+    pciutils
+    lshw
+    kotlin
+    glxinfo
+    (python3.withPackages (python-pkgs:
+      with python-pkgs; [
+        numpy
+        matplotlib
+      ]))
+    neofetch
+    steam-run
+    glib
+    alsa-utils
+    zsh
+    htop-vim
+    libsecret
+    qmk-udev-rules
 
-  # For herbstluftwm - TODO: move to separate file, import conditionally
-  # TODO: with pkgs;
-  pamixer
-  arandr
-  xorg.xbacklight
-  playerctl
-  scrot
-  networkmanagerapplet
-  xorg.xinit
-  rofi
-  polybarFull
+    # For herbstluftwm - TODO: move to separate file, import conditionally
+    # TODO: with pkgs;
+    pamixer
+    arandr
+    xorg.xbacklight
+    playerctl
+    scrot
+    networkmanagerapplet
+    xorg.xinit
+    rofi
+    polybarFull
   ];
 
   system.stateVersion = "23.11";
