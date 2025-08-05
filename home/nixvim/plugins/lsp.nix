@@ -30,7 +30,7 @@
         settings = {
           format_on_save = {
             lsp_fallback = "fallback";
-            timeout_ms = 500;
+            timeout_ms = 2000;
           };
           notify_on_error = true;
           formatters_by_ft = {
