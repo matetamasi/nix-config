@@ -1,6 +1,6 @@
 {wezterm-pkg, ...}: {
   programs.wezterm = {
-    enable = true;
+    enable = false;
     package = wezterm-pkg; #required due to https://github.com/wez/wezterm/issues/5990
     enableZshIntegration = true;
     extraConfig = ''
