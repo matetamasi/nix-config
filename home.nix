@@ -35,10 +35,16 @@
     };
   };
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   # Default applications
   xdg.mimeApps = {
     enable = true;
-    
+
     defaultApplications = {
       "text/html" = "zen-beta.desktop";
       "x-scheme-handler/http" = "zen-beta.desktop";
@@ -53,7 +59,7 @@
     nfu = "nix flake update /home/matetamasi/dot/";
     nomb = "nom build /home/matetamasi/dot#nixosConfigurations.nixos.config.system.build.toplevel -o /home/matetamasi/dot/result";
     # Git
-    gc  = "git commit -v";
+    gc = "git commit -v";
     gcm = "git commit -m";
     gp = "git push";
     gpf = "git push --force-with-lease";
@@ -69,62 +75,64 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = with pkgs; [
-    gcc
-    gleam
-    elixir
-    uppaal
-    staruml
-    plantuml
-    godot_4
-    gprolog
-    nerd-fonts.monaspace
-    google-fonts
-    # poppins
-    masterpdfeditor4
-    bat
-    maven
-    libreoffice-qt
-    ncspot
-    spotify
-    gimp
-    kdePackages.kcolorchooser
-    haruna
-    zathura
-    kdePackages.filelight
-    typst
-    wl-clipboard
-    xclip
-    steam
-    protontricks
-    steamtinkerlaunch
-    protonup-qt
-    sc-controller
-    r2modman # mod manager for ror2 and others
-    prismlauncher #Minecraft launcher
-    piper
-    pavucontrol
-    qmk
-    qmk_hid
-    firefox
-    vesktop
-    signal-desktop
-    slack
-    keepass
-    rclone
-    restic
-    maestral
-    caprine-bin
-    androidStudioPackages.stable
-    zoxide
-    gitkraken
-    ungoogled-chromium
-    qbittorrent
-    wineWowPackages.stable
-    winetricks
-  ] ++ [
-    zen-browser-pkg
-  ];
+  home.packages = with pkgs;
+    [
+      gcc
+      gleam
+      elixir
+      uppaal
+      staruml
+      plantuml
+      godot_4
+      gprolog
+      nerd-fonts.monaspace
+      google-fonts
+      # poppins
+      masterpdfeditor4
+      bat
+      maven
+      libreoffice-qt
+      ncspot
+      spotify
+      gimp
+      kdePackages.kcolorchooser
+      haruna
+      zathura
+      kdePackages.filelight
+      typst
+      wl-clipboard
+      xclip
+      steam
+      protontricks
+      steamtinkerlaunch
+      protonup-qt
+      sc-controller
+      r2modman # mod manager for ror2 and others
+      prismlauncher #Minecraft launcher
+      piper
+      pavucontrol
+      qmk
+      qmk_hid
+      firefox
+      vesktop
+      signal-desktop
+      slack
+      keepass
+      rclone
+      restic
+      maestral
+      caprine-bin
+      androidStudioPackages.stable
+      zoxide
+      gitkraken
+      ungoogled-chromium
+      qbittorrent
+      wineWowPackages.stable
+      winetricks
+    ]
+    ++ [
+      zen-browser-pkg
+    ];
 
   fonts.fontconfig.enable = true;
 
