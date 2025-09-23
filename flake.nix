@@ -67,24 +67,21 @@
         nixos-hardware.nixosModules.framework-16-7040-amd
 
         disko.nixosModules.default
-	      (import ./disko.nix {device = "/dev/nvme1n1";})
+        (import ./disko.nix {device = "/dev/nvme1n1";})
 
-        home-manager.nixosModules.home-manager {
-            home-manager.useUserPackages = true;
-            home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
-            home-manager.users.matetamasi = import ./home.nix;
-            home-manager.extraSpecialArgs = {
-              inherit nixvim;
-              inherit wezterm-pkg;
-              inherit zen-browser-pkg;
-              inherit pkgs-stable;
-            };
-        }
-        impermanence.nixosModules.impermanence
-
+        home-manager.nixosModules.home-manager
         {
+          home-manager.useUserPackages = true;
+          home-manager.sharedModules = [plasma-manager.homeModules.plasma-manager];
+          home-manager.users.matetamasi = import ./home.nix;
+          home-manager.extraSpecialArgs = {
+            inherit nixvim;
+            inherit wezterm-pkg;
+            inherit zen-browser-pkg;
+            inherit pkgs-stable;
           };
         }
+        impermanence.nixosModules.impermanence
 
         ./configuration.nix
       ];

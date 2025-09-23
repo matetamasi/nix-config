@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    nixvim.homeManagerModules.nixvim
+    nixvim.homeModules.nixvim
     ./home
     #./home/herbstluftwm.nix
   ];
