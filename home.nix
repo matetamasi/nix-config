@@ -85,6 +85,7 @@
       plantuml
       godot_4
       gprolog
+      bruno
       nerd-fonts.monaspace
       google-fonts
       # poppins
