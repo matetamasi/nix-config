@@ -11,6 +11,7 @@
       "/etc/NetworkManager/system-connections"
       "/var/lib/bluetooth"
       "/var/lib/zerotier-one"
+      "/var/lib/docker"
     ];
     files = [
       "/etc/machine-id" # for journalctl
