@@ -45,7 +45,7 @@
 
   # ZFS
   networking.hostId = "9aa64d3a";
-  boot.kernelPackages = pkgs.linuxPackages_6_15;
+  boot.kernelPackages = pkgs.linuxPackages_6_16;
   boot.kernelParams = [
     "nohibernate"
     "zfs.zfs_arc_max=17179869184"
