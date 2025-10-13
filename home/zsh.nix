@@ -1,8 +1,11 @@
-{lib, ...}:
 {
+  lib,
+  config,
+  ...
+}: {
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     history = {
       ignoreAllDups = true;
       ignoreSpace = false;
