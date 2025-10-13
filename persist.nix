@@ -63,7 +63,7 @@
         ".ssh" # SSH
         ".gpg"
 
-        #Android development stuff
+        # Android development stuff
         "Android"
         ".android"
         ".config/Google"
@@ -72,9 +72,12 @@
         ".config/GitKraken"
         ".gradle"
 
-        #IntelliJ
+        # IntelliJ
         ".local/share/JetBrains"
         ".config/JetBrains"
+
+        # Direnv
+        ".local/share/direnv/allow"
       ];
       files = [
         ".local/state/cosmic-comp/outputs.ron" # Cosmic display configuration
