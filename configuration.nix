@@ -82,6 +82,8 @@
   # Zsh
   programs.zsh.enable = true;
 
+  programs.gamemode.enable = true;
+
   services.teamviewer.enable = true;
 
   # Bluetooth
@@ -179,7 +181,7 @@
       hashedPasswordFile = "/persist/passwords/matetamasi.pass";
       isNormalUser = true;
       description = "Tamási Máté";
-      extraGroups = ["networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" "adbusers"];
+      extraGroups = ["networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" "adbusers" "gamemode"];
       shell = pkgs.zsh;
     };
   };
