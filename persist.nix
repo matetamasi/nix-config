@@ -102,6 +102,7 @@
         "BME"
         "MedveMatek"
         "QMK"
+        "ZMK"
         "Prog_misc"
         "Gaming"
         "Documents"
