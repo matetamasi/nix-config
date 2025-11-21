@@ -1,4 +1,8 @@
-{pkgs-stable, ...}: {
+{
+  pkgs,
+  pkgs-stable,
+  ...
+}: {
   programs.nixvim = {
     plugins = {
       lsp = {
@@ -12,8 +16,16 @@
           clangd.enable = true;
           csharp_ls.enable = true;
           #jsonls.enable = true;
-          kotlin_language_server.enable = true;
-          pyright.enable = true;
+          jdtls.enable = true;
+          kotlin_language_server = {
+            enable = true;
+            settings.root_markers = ["mvnw" "gradlew" ".git"];
+          };
+          pyright = {
+            enable = true;
+            package = pkgs.basedpyright;
+            cmd = ["basedpyright-langserver" "--stdio"];
+          };
           tinymist.enable = true;
           rust_analyzer = {
             enable = true;
