@@ -78,6 +78,9 @@
 
         # Direnv
         ".local/share/direnv/allow"
+
+        # Eclipse
+        ".eclipse"
       ];
       files = [
         ".local/state/cosmic-comp/outputs.ron" # Cosmic display configuration
