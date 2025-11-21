@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # Everything required to run Windows virtual machines
   # See: https://www.youtube.com/watch?v=rCVW8BGnYIc
   # See: https://github.com/TechsupportOnHold/Nixos-VM/
@@ -8,13 +7,14 @@
   programs.dconf.enable = true;
 
   # Add user to libvirtd group
-  users.users.matetamasi.extraGroups = [ "libvirtd" ];
+  users.users.matetamasi.extraGroups = ["libvirtd"];
 
   # Install necessary packages
   environment.systemPackages = with pkgs; [
     virt-manager
     virt-viewer
-    spice spice-gtk
+    spice
+    spice-gtk
     spice-protocol
     win-virtio
     win-spice
@@ -27,8 +27,6 @@
       enable = true;
       qemu = {
         swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
     spiceUSBRedirection.enable = true;
