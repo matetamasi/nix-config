@@ -157,7 +157,7 @@
   # Environment variables
   home.sessionVariables = {
     EDITOR = "nvim";
-    TERM = "wezterm";
+    TERM = "konsole";
     DEFAULT_BROWSER = "zen-beta";
   };
   home.sessionPath = [
