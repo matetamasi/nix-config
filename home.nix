@@ -116,6 +116,8 @@
       qmk_hid
       firefox
       vesktop
+      krita
+      meld
       signal-desktop
       slack
       keepass
@@ -130,6 +132,7 @@
       qbittorrent
       wineWowPackages.stable
       winetricks
+      helvum
     ]
     ++ [
       zen-browser-pkg
