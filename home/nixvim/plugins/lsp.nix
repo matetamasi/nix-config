@@ -33,6 +33,12 @@
             installRustc = true;
             settings.rustfmt.enable = true;
           };
+          dts_lsp = {
+            enable = true;
+            filetypes = ["dts" "dtsi" "overlay" "keymap"];
+            rootMarkers = [".git"];
+            package = pkgs.dts-lsp;
+          };
         };
       };
 
