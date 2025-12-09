@@ -25,13 +25,17 @@
 
   programs.git = {
     enable = true;
-    userEmail = "matetamasi@protonmail.com";
-    userName = "Tamási Máté";
-    delta = {
-      enable = true;
-      options = {
-        features = "navigation side-by-side";
-      };
+    settings.user = {
+      email = "matetamasi@protonmail.com";
+      name = "Tamási Máté";
+    };
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      features = "navigation side-by-side";
     };
   };
 
