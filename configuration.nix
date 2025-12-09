@@ -45,7 +45,7 @@
 
   # ZFS
   networking.hostId = "9aa64d3a";
-  boot.kernelPackages = pkgs.linuxPackages_6_16;
+  boot.kernelPackages = pkgs.linuxPackages_6_17;
   boot.kernelParams = [
     "nohibernate"
     "zfs.zfs_arc_max=17179869184"
@@ -55,6 +55,7 @@
     devNodes = "/dev/disk/by-id/";
     forceImportAll = true;
     requestEncryptionCredentials = true;
+    package = pkgs.zfs_unstable;
   };
   services.zfs = {
     autoScrub.enable = true;
