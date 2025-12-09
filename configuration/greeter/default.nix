@@ -1,6 +1,6 @@
 {
   imports = [
-    # ./kde-sddm.nix
-    ./cosmic.nix
+    ./kde-sddm.nix
+    # ./cosmic.nix
   ];
 }
