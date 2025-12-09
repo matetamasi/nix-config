@@ -108,6 +108,10 @@
         "Documents"
         "Pictures"
 
+        # # Winboat
+        "winboat"
+        ".winboat"
+
         # Cosmic desktop
         ".config/cosmic"
 
