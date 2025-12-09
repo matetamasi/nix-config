@@ -192,7 +192,7 @@
     pciutils
     lshw
     kotlin
-    glxinfo
+    mesa-demos
     (python3.withPackages (python-pkgs:
       with python-pkgs; [
         numpy
