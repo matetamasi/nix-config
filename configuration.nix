@@ -119,15 +119,6 @@
 
   # Nix-ld
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    swt
-  ];
-
-  programs.weylus = {
-    enable = true;
-    openFirewall = true;
-    users = ["matetamasi"];
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
