@@ -29,11 +29,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    wezterm = {
-      url = "github:wez/wezterm/main?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     impermanence.url = "github:nix-community/impermanence";
@@ -55,7 +50,6 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-    wezterm-pkg = inputs.wezterm.packages.${system}.default;
     zen-browser-pkg = inputs.zen-browser.packages."${system}".beta;
   in {
     nixosConfigurations.nixos = lib.nixosSystem {
@@ -73,7 +67,6 @@
           home-manager.users.matetamasi = import ./home.nix;
           home-manager.extraSpecialArgs = {
             inherit nixvim;
-            inherit wezterm-pkg;
             inherit zen-browser-pkg;
             inherit pkgs-stable;
           };
