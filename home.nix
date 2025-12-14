@@ -85,14 +85,8 @@
       gleam
       elixir
       uppaal
-      staruml
-      plantuml
-      godot_4
-      gprolog
-      bruno
       nerd-fonts.monaspace
       google-fonts
-      # poppins
       masterpdfeditor4
       bat
       maven
@@ -106,7 +100,6 @@
       kdePackages.filelight
       typst
       wl-clipboard
-      xclip
       steam
       protontricks
       steamtinkerlaunch
@@ -125,9 +118,6 @@
       signal-desktop
       slack
       keepass
-      rclone
-      restic
-      maestral
       caprine-bin
       androidStudioPackages.stable
       zoxide
