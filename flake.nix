@@ -37,8 +37,6 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     impermanence.url = "github:nix-community/impermanence";
-
-    eclipse-kerml.url = "github:NixOS/nixpkgs/e89cf1c932006531f454de7d652163a9a5c86668";
   };
 
   outputs = {
@@ -57,7 +55,6 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-    kerml-pkgs = inputs.eclipse-kerml.legacyPackages.${system};
     wezterm-pkg = inputs.wezterm.packages.${system}.default;
     zen-browser-pkg = inputs.zen-browser.packages."${system}".beta;
   in {
@@ -96,60 +93,6 @@
         packages = with pkgs; [
           nom
         ];
-      };
-      kerml = kerml-pkgs.mkShell {
-        buildInputs = let
-          ec = kerml-pkgs.eclipses.eclipse-dsl.overrideAttrs (finalAttrs: previousAttrs: {
-            jdk = kerml-pkgs.jdk17;
-          });
-        in
-          with kerml-pkgs;
-            [
-              dconf
-              gtk2
-              gtk3
-              gtk4
-              maven
-              gradle
-              graphviz
-            ]
-            ++ [ec];
-      };
-      kerml-modeling-stable = pkgs-stable.mkShell {
-        buildInputs = let
-          ec = pkgs-stable.eclipses.eclipse-modeling.overrideAttrs (finalAttrs: previousAttrs: {
-            jdk = pkgs-stable.jdk17;
-          });
-        in
-          with pkgs-stable;
-            [
-              dconf
-              gtk2
-              gtk3
-              gtk4
-              maven
-              gradle
-              graphviz
-            ]
-            ++ [ec];
-      };
-      kerml-stable = pkgs-stable.mkShell {
-        buildInputs = let
-          ec = pkgs-stable.eclipses.eclipse-dsl.overrideAttrs (finalAttrs: previousAttrs: {
-            jdk = pkgs-stable.jdk17;
-          });
-        in
-          with pkgs-stable;
-            [
-              dconf
-              gtk2
-              gtk3
-              gtk4
-              maven
-              gradle
-              graphviz
-            ]
-            ++ [ec];
       };
     };
 
