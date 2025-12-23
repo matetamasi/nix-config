@@ -91,6 +91,9 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
+  # Steam controller
+  hardware.steam-hardware.enable = true;
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
