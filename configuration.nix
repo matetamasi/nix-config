@@ -189,7 +189,7 @@
     alejandra
     nix-output-monitor
     git
-    jetbrains.idea-community-bin
+    jetbrains.idea-oss
     tree
     coreutils-full
     pciutils
