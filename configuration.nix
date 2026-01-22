@@ -157,6 +157,7 @@
       bison
       edk2
       xorg.xhost
+      android-tools
     ];
   };
 
@@ -165,8 +166,6 @@
     enable = true;
     package = pkgs.jdk17;
   };
-
-  programs.adb.enable = true;
 
   users.mutableUsers = false;
   users.users = {
