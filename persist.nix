@@ -40,6 +40,7 @@
         ".config/rclone"
         ".config/Slack"
         ".config/uppaal"
+        ".config/spotify"
 
         ".zen" # Zen browser
 
