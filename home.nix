@@ -59,9 +59,6 @@
   };
 
   home.shellAliases = {
-    # Nix config management
-    nfu = "nix flake update /home/matetamasi/dot/";
-    nomb = "nom build /home/matetamasi/dot#nixosConfigurations.nixos.config.system.build.toplevel -o /home/matetamasi/dot/result";
     # Git
     gc = "git commit -v";
     gcm = "git commit -m";

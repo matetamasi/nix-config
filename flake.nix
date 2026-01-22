@@ -4,6 +4,13 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
+    systems.url = "github:nix-systems/default";
+
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+
     nixpkgs-stable.url = "nixpkgs/nixos-24.05";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -37,6 +44,7 @@
   outputs = {
     self,
     nixpkgs,
+    flake-utils,
     nixpkgs-stable,
     nixos-hardware,
     disko,
@@ -80,14 +88,19 @@
       };
     };
 
-    devShells."${system}" = {
-      default = pkgs.mkShell {
+    devShells.${system}.default = let
+      nom-build = pkgs.writeShellScriptBin "nomb" ''
+        sudo nixos-rebuild switch --flake .#nixos --log-format internal-json -v |& nom --json
+      '';
+    in
+      pkgs.mkShell {
         NIX_CONFIG = "experimental-features = nix-command flakes";
         packages = with pkgs; [
-          nom
+          nix-output-monitor
+          expect
+          nom-build
         ];
       };
-    };
 
     formatter.${system} = pkgs.alejandra;
   };
