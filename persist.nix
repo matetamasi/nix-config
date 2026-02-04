@@ -23,6 +23,9 @@
         "Downloads/Torrent"
         "Proton_drive"
 
+        # Cache
+        ".cache"
+
         # Wine
         ".wine"
 
