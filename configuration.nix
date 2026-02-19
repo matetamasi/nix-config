@@ -49,6 +49,7 @@
   boot.kernelParams = [
     "nohibernate"
     "zfs.zfs_arc_max=17179869184"
+    "amdgpu.dcdebugmask=0x410"
   ];
   boot.supportedFilesystems = ["vfat" "zfs"];
   boot.zfs = {
