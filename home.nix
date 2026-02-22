@@ -110,6 +110,7 @@
       qmk_hid
       firefox
       vesktop
+      element-desktop
       krita
       meld
       signal-desktop

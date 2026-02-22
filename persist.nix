@@ -44,6 +44,7 @@
         ".config/Slack"
         ".config/uppaal"
         ".config/spotify"
+        ".config/Element"
 
         ".zen" # Zen browser
 
