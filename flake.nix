@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,6 +53,7 @@
     nixpkgs-stable,
     nixos-hardware,
     disko,
+    agenix,
     home-manager,
     nixvim,
     plasma-manager,
@@ -59,12 +65,13 @@
     pkgs = nixpkgs.legacyPackages.${system};
     pkgs-stable = nixpkgs-stable.legacyPackages.${system};
     zen-browser-pkg = inputs.zen-browser.packages."${system}".beta;
+    agenix-pkgs = agenix.packages."${system}";
   in {
     nixosConfigurations.nixos = lib.nixosSystem {
       inherit system;
       modules = [
         nixos-hardware.nixosModules.framework-16-7040-amd
-
+        agenix.nixosModules.default
         disko.nixosModules.default
         (import ./disko.nix {device = "/dev/nvme1n1";})
 
@@ -81,10 +88,11 @@
         }
         impermanence.nixosModules.impermanence
 
-        ./configuration.nix
+        ./configuration.nix 
       ];
       specialArgs = {
         inherit pkgs-stable;
+        inherit agenix-pkgs;
       };
     };
 
