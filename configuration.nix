@@ -114,6 +114,8 @@
     joinNetworks = ["9f77fc393ecc1ecc"];
   };
 
+  services.openssh.enable = true;
+
   services.libinput = {
     enable = true;
     mouse.accelProfile = "flat";
