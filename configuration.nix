@@ -118,7 +118,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  #fileSystems."/".options = ["compress-force=zstd:3" "noatime"];
+  services.udev.packages = [pkgs.headsetcontrol];
 
   # Zsh
   programs.zsh.enable = true;
@@ -246,13 +246,13 @@
     steam-run
     glib
     alsa-utils
+    headsetcontrol
     zsh
     htop-vim
     libsecret
     qmk-udev-rules
 
     # For herbstluftwm - TODO: move to separate file, import conditionally
-    # TODO: with pkgs;
     pamixer
     arandr
     xorg.xbacklight
