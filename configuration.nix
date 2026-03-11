@@ -242,7 +242,7 @@
         numpy
         matplotlib
       ]))
-    neofetch
+    fastfetch
     steam-run
     glib
     alsa-utils
