@@ -122,7 +122,7 @@
       gitkraken
       ungoogled-chromium
       qbittorrent
-      wineWowPackages.stable
+      wineWow64Packages.stable
       winetricks
       winboat
       crosspipe
