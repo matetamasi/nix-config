@@ -131,6 +131,9 @@
         # Steam/proton configuration layer
         ".config/steamtinkerlaunch"
 
+        # Don't Starve Together
+        ".klei"
+
         # Other
         ".local/bin"
       ];
