@@ -198,7 +198,7 @@
       flex
       bison
       edk2
-      xorg.xhost
+      xhost
       android-tools
     ];
   };
@@ -255,11 +255,11 @@
     # For herbstluftwm - TODO: move to separate file, import conditionally
     pamixer
     arandr
-    xorg.xbacklight
+    xbacklight
     playerctl
     scrot
     networkmanagerapplet
-    xorg.xinit
+    xinit
     rofi
     polybarFull
   ] ++ [
