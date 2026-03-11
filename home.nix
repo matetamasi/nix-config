@@ -125,7 +125,7 @@
       wineWowPackages.stable
       winetricks
       winboat
-      helvum
+      crosspipe
     ]
     ++ [
       zen-browser-pkg
