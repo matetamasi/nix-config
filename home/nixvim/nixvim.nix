@@ -49,6 +49,14 @@
         ];
         event = "BufEnter";
       }
+
+      {
+        command = "setlocal commentstring=%\\ %s";
+        pattern = [
+          "*.problem"
+        ];
+        event = "BufEnter";
+      }
     ];
 
     #colorschemes.oxocarbon.enable = true;
