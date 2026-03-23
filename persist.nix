@@ -134,6 +134,9 @@
         # Don't Starve Together
         ".klei"
 
+        # Unrailed
+        ".local/share/UnrailedGame"
+
         # Other
         ".local/bin"
       ];
