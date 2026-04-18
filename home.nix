@@ -82,7 +82,6 @@
       gcc
       gleam
       elixir
-      uppaal
       nerd-fonts.monaspace
       google-fonts
       masterpdfeditor4
