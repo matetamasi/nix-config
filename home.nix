@@ -29,6 +29,7 @@
       email = "matetamasi@protonmail.com";
       name = "Tamási Máté";
     };
+    signing.format = "openpgp";
   };
 
   programs.delta = {
