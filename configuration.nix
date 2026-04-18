@@ -22,6 +22,8 @@
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.initrd.systemd.enable = true;
+
   # Systemd
   systemd.enableEmergencyMode = false;
 

@@ -1,5 +1,9 @@
 # https://github.com/nix-community/impermanence#module-usage
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   fileSystems."/persist".neededForBoot = true;
   fileSystems."/persist/backup".neededForBoot = true;
   environment.persistence."/persist" = {
@@ -149,8 +153,25 @@
   };
 
   # Roll back to blank root on boot
-  boot.initrd.postDeviceCommands = lib.mkAfter ''
-    zpool import zfspool
-    zfs rollback -r zfspool/root@blank
-  '';
+  boot.initrd.systemd.services.rollback = {
+    description = "Rollback ZFS datasets";
+    wantedBy = [
+      "initrd.target"
+    ];
+    after = [
+      "systemd-cryptsetup@crypted.service"
+      "zfs-import-zfspool.service"
+    ];
+    before = [
+      "sysroot.mount"
+    ];
+    path = with pkgs; [
+      zfs
+    ];
+    unitConfig.DefaultDependencies = "no";
+    serviceConfig.Type = "oneshot";
+    script = ''
+      zfs rollback -r zfspool/root@blank
+    '';
+  };
 }
