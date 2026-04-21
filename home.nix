@@ -3,6 +3,7 @@
   pkgs-stable,
   nixvim,
   zen-browser-pkg,
+  config,
   ...
 }: {
   imports = [
@@ -11,7 +12,7 @@
     #./home/herbstluftwm.nix
   ];
   home.username = "matetamasi";
-  home.homeDirectory = "/home/matetamasi";
+  home.homeDirectory = "/home/${config.home.username}";
 
   programs.zoxide = {
     enable = true;
@@ -20,7 +21,7 @@
 
   programs.gpg = {
     enable = true;
-    homedir = "/home/matetamasi/.gpg/";
+    homedir = "${config.home.homeDirectory}/.gpg/";
   };
 
   programs.git = {
