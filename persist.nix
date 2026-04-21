@@ -57,8 +57,10 @@
 
         ".zen" # Zen browser
 
-        # Chromium & PWAs
+        # Chromium
         ".config/chromium"
+
+        # Desktop entries & icons
         ".local/share/applications"
         ".local/share/icons"
 
@@ -98,7 +100,6 @@
       ];
       files = [
         ".local/state/cosmic-comp/outputs.ron" # Cosmic display configuration
-        ".local/share/desktop-directories/chrome-apps.directory"
         ".config/dconf/user" # virt-manager
       ];
     };

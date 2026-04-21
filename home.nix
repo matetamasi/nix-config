@@ -78,7 +78,41 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = with pkgs;
+  home.packages =
+    let teams-for-linux-profiles =
+      pkgs.teams-for-linux.overrideAttrs (oldAttrs: {
+        desktopItems = [
+          (pkgs.makeDesktopItem {
+            name = "teams-for-linux-BME";
+            exec = "teams-for-linux --class teams-for-linux-BME --user-data-dir=${config.home.homeDirectory}/.local/share/teams-for-linux-profile/BME %U";
+            icon = "teams-for-linux";
+            desktopName = "BME Teams";
+            comment = oldAttrs.meta.description or "";
+            categories = [
+              "Network"
+              "InstantMessaging"
+              "Chat"
+              "Education"
+            ];
+            mimeTypes = [ "x-scheme-handler/msteams" ];
+          })
+          (pkgs.makeDesktopItem {
+            name = "teams-for-linux-MÖK";
+            exec = "teams-for-linux --class teams-for-linux-MÖK --user-data-dir=${config.home.homeDirectory}/.local/share/teams-for-linux-profile/MÖK %U";
+            icon = "teams-for-linux";
+            desktopName = "MÖK Teams";
+            comment = oldAttrs.meta.description or "";
+            categories = [
+              "Network"
+              "InstantMessaging"
+              "Chat"
+              "Education"
+            ];
+            mimeTypes = [ "x-scheme-handler/msteams" ];
+          })
+        ];
+      })
+    ; in with pkgs;
     [
       gcc
       gleam
@@ -116,6 +150,7 @@
       meld
       signal-desktop
       slack
+      teams-for-linux-profiles
       keepass
       caprine-bin
       androidStudioPackages.stable
