@@ -54,6 +54,7 @@
         ".config/uppaal"
         ".config/spotify"
         ".config/Element"
+        ".local/share/teams-for-linux-profile"
 
         ".zen" # Zen browser
 

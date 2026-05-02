@@ -79,39 +79,50 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages =
-    let teams-for-linux-profiles =
-      pkgs.teams-for-linux.overrideAttrs (oldAttrs: {
-        desktopItems = [
-          (pkgs.makeDesktopItem {
-            name = "teams-for-linux-BME";
-            exec = "teams-for-linux --class teams-for-linux-BME --user-data-dir=${config.home.homeDirectory}/.local/share/teams-for-linux-profile/BME %U";
-            icon = "teams-for-linux";
-            desktopName = "BME Teams";
-            comment = oldAttrs.meta.description or "";
-            categories = [
-              "Network"
-              "InstantMessaging"
-              "Chat"
-              "Education"
-            ];
-            mimeTypes = [ "x-scheme-handler/msteams" ];
-          })
-          (pkgs.makeDesktopItem {
-            name = "teams-for-linux-MÖK";
-            exec = "teams-for-linux --class teams-for-linux-MÖK --user-data-dir=${config.home.homeDirectory}/.local/share/teams-for-linux-profile/MÖK %U";
-            icon = "teams-for-linux";
-            desktopName = "MÖK Teams";
-            comment = oldAttrs.meta.description or "";
-            categories = [
-              "Network"
-              "InstantMessaging"
-              "Chat"
-              "Education"
-            ];
-            mimeTypes = [ "x-scheme-handler/msteams" ];
-          })
-        ];
-      })
+    let
+      teams-icons = pkgs.runCommand "teams-custom-icons" { nativeBuildInputs = [ pkgs.librsvg ]; } ''
+        mkdir -p $out/share/icons/hicolor/512x512/apps
+        rsvg-convert -w 512 -h 512 ${./resources/icons/teams/teams-for-linux-BME.svg} -o $out/share/icons/hicolor/512x512/apps/teams-for-linux-BME.png
+        rsvg-convert -w 512 -h 512 ${./resources/icons/teams/teams-for-linux-MOK.svg} -o $out/share/icons/hicolor/512x512/apps/teams-for-linux-MOK.png
+
+        mkdir -p $out/share/icons/hicolor/scalable/apps
+        cp ${./resources/icons/teams/teams-for-linux-BME.svg} $out/share/icons/hicolor/scalable/apps/teams-for-linux-BME.svg
+        cp ${./resources/icons/teams/teams-for-linux-MOK.svg} $out/share/icons/hicolor/scalable/apps/teams-for-linux-MOK.svg
+      '';
+
+      teams-for-linux-profiles =
+        pkgs.teams-for-linux.overrideAttrs (oldAttrs: {
+          desktopItems = [
+            (pkgs.makeDesktopItem {
+              name = "teams-for-linux-bme";
+              exec = "teams-for-linux --class=teams-for-linux-mok --user-data-dir=${config.home.homeDirectory}/.local/share/teams-for-linux-profile/BME --appIcon=${teams-icons}/share/icons/hicolor/512x512/apps/teams-for-linux-BME.png %U";
+              icon = "teams-for-linux-BME";
+              startupWMClass = "teams-for-linux-bme";
+              desktopName = "BME Teams";
+              comment = "Budapesti Műszaki Egyetem Teams";
+              categories = [
+                "Network"
+                "InstantMessaging"
+                "Chat"
+              ];
+              mimeTypes = [ "x-scheme-handler/msteams" ];
+            })
+            (pkgs.makeDesktopItem {
+              name = "teams-for-linux-mok";
+              exec = "teams-for-linux --class=teams-for-linux-mok --user-data-dir=${config.home.homeDirectory}/.local/share/teams-for-linux-profile/MOK --appIcon=${teams-icons}/share/icons/hicolor/512x512/apps/teams-for-linux-MOK.png %U";
+              icon = "teams-for-linux-MOK";
+              startupWMClass = "teams-for-linux-bme";
+              desktopName = "MÖK Teams";
+              comment = "MÖK Egyesület Teams";
+              categories = [
+                "Network"
+                "InstantMessaging"
+                "Chat"
+              ];
+              mimeTypes = [ "x-scheme-handler/msteams" ];
+            })
+          ];
+        })
     ; in with pkgs;
     [
       gcc
@@ -151,6 +162,7 @@
       signal-desktop
       slack
       teams-for-linux-profiles
+      teams-icons
       keepass
       caprine-bin
       androidStudioPackages.stable
