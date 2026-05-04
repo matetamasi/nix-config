@@ -107,6 +107,7 @@
           nix-output-monitor
           expect
           nom-build
+          statix
         ];
       };
 
