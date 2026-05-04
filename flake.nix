@@ -60,7 +60,7 @@
     impermanence,
     ...
   } @ inputs: let
-    lib = nixpkgs.lib;
+    inherit (nixpkgs) lib;
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     pkgs-stable = nixpkgs-stable.legacyPackages.${system};
@@ -77,13 +77,15 @@
 
         home-manager.nixosModules.home-manager
         {
-          home-manager.useUserPackages = true;
-          home-manager.sharedModules = [plasma-manager.homeModules.plasma-manager];
-          home-manager.users.matetamasi = import ./home.nix;
-          home-manager.extraSpecialArgs = {
-            inherit nixvim;
-            inherit zen-browser-pkg;
-            inherit pkgs-stable;
+          home-manager = {
+            useUserPackages = true;
+            sharedModules = [plasma-manager.homeModules.plasma-manager];
+            users.matetamasi = import ./home.nix;
+            extraSpecialArgs = {
+              inherit nixvim;
+              inherit zen-browser-pkg;
+              inherit pkgs-stable;
+            };
           };
         }
         impermanence.nixosModules.impermanence
