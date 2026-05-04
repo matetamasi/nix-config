@@ -174,6 +174,7 @@
       winetricks
       winboat
       crosspipe
+      gemini-cli
     ]
     ++ [
       zen-browser-pkg
