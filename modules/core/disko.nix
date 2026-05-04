@@ -1,7 +1,8 @@
 {
-  device ? throw "Set this to your disk device, e.g. /dev/sda",
   ...
-}: {
+}: let
+  device = "/dev/nvme1n1";
+in {
   disko.devices = {
     disk.main = {
       inherit device;

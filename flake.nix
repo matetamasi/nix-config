@@ -44,6 +44,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     impermanence.url = "github:nix-community/impermanence";
+    import-tree.url = "github:vic/import-tree";
   };
 
   outputs = {
@@ -58,6 +59,7 @@
     nixvim,
     plasma-manager,
     impermanence,
+    import-tree,
     ...
   } @ inputs: let
     inherit (nixpkgs) lib;
@@ -73,28 +75,17 @@
         nixos-hardware.nixosModules.framework-16-7040-amd
         agenix.nixosModules.default
         disko.nixosModules.default
-        (import ./disko.nix {device = "/dev/nvme1n1";})
-
         home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useUserPackages = true;
-            sharedModules = [plasma-manager.homeModules.plasma-manager];
-            users.matetamasi = import ./home.nix;
-            extraSpecialArgs = {
-              inherit nixvim;
-              inherit zen-browser-pkg;
-              inherit pkgs-stable;
-            };
-          };
-        }
         impermanence.nixosModules.impermanence
 
-        ./configuration.nix 
+        (import-tree ./modules)
       ];
       specialArgs = {
         inherit pkgs-stable;
         inherit agenix-pkgs;
+        inherit nixvim;
+        inherit zen-browser-pkg;
+        inherit plasma-manager;
       };
     };
 

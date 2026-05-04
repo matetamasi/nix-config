@@ -1,0 +1,158 @@
+{
+  ...
+}: {
+  # NixOS
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.defaultSession = "plasma";
+  security.pam.services.login.fprintAuth = false;
+
+  # Home Manager
+  home-manager.users.matetamasi = {
+    programs.plasma = {
+      enable = true;
+
+      hotkeys.commands."launch-konsole" = {
+        name = "Launch Konsole";
+        key = "Meta+Enter";
+        command = "konsole";
+      };
+
+      shortcuts = {
+        "kmix"."decrease_microphone_volume" = "Microphone Volume Down";
+        "kmix"."decrease_volume" = "Volume Down";
+        "kmix"."decrease_volume_small" = "Shift+Volume Down";
+        "kmix"."increase_microphone_volume" = "Microphone Volume Up";
+        "kmix"."increase_volume" = "Volume Up";
+        "kmix"."increase_volume_small" = "Shift+Volume Up";
+        "kmix"."mic_mute" = ["Microphone Mute" "Meta+Volume Mute,Microphone Mute" "Meta+Volume Mute,Mute Microphone"];
+        "kmix"."mute" = "Volume Mute";
+        "ksmserver"."Lock Session" = ["Meta+L" "Screensaver,Meta+L" "Screensaver,Lock Session"];
+        "ksmserver"."Log Out" = "Ctrl+Alt+Del";
+        "kwin"."Activate Window Demanding Attention" = "Meta+Ctrl+A";
+        "kwin"."Edit Tiles" = "Meta+T";
+        "kwin"."Expose" = "Meta+o";
+        "kwin"."ExposeClass" = "Ctrl+F7";
+        "kwin"."Grid View" = "Meta+G";
+        "kwin"."Kill Window" = "Meta+Ctrl+Esc";
+        "kwin"."Overview" = "Meta+W";
+        "kwin"."Show Desktop" = "Meta+D";
+        "kwin"."Switch One Desktop Down" = "Meta+Ctrl+Down";
+        "kwin"."Switch One Desktop Up" = "Meta+Ctrl+Up";
+        "kwin"."Switch One Desktop to the Left" = "Meta+Ctrl+Left";
+        "kwin"."Switch One Desktop to the Right" = "Meta+Ctrl+Right";
+        "kwin"."Switch Window Down" = "Meta+Alt+Down";
+        "kwin"."Switch Window Left" = "Meta+Alt+Left";
+        "kwin"."Switch Window Right" = "Meta+Alt+Right";
+        "kwin"."Switch Window Up" = "Meta+Alt+Up";
+        "kwin"."Switch to Desktop 1" = "Ctrl+F1";
+        "kwin"."Switch to Desktop 2" = "Ctrl+F2";
+        "kwin"."Switch to Desktop 3" = "Ctrl+F3";
+        "kwin"."Switch to Desktop 4" = "Ctrl+F4";
+        "kwin"."Walk Through Windows" = "Alt+Tab";
+        "kwin"."Walk Through Windows (Reverse)" = "Alt+Shift+Tab";
+        "kwin"."Walk Through Windows of Current Application" = "Alt+`";
+        "kwin"."Walk Through Windows of Current Application (Reverse)" = "Alt+~";
+        "kwin"."Window Close" = "Alt+F4";
+        "kwin"."Window Fullscreen" = "Meta+F";
+        "kwin"."Window Maximize" = "Meta+PgUp";
+        "kwin"."Window Minimize" = "Meta+PgDown";
+        "kwin"."Window One Desktop Down" = "Meta+Ctrl+Shift+Down";
+        "kwin"."Window One Desktop Up" = "Meta+Ctrl+Shift+Up";
+        "kwin"."Window One Desktop to the Left" = "Meta+Ctrl+Shift+Left";
+        "kwin"."Window One Desktop to the Right" = "Meta+Ctrl+Shift+Right";
+        "kwin"."Window Operations Menu" = "Alt+F3";
+        "kwin"."Window Quick Tile Bottom" = "Meta+Down";
+        "kwin"."Window Quick Tile Left" = "Meta+Left";
+        "kwin"."Window Quick Tile Right" = "Meta+Right";
+        "kwin"."Window Quick Tile Top" = "Meta+Up";
+        "kwin"."Window to Next Screen" = "Meta+Shift+Right";
+        "kwin"."Window to Previous Screen" = "Meta+Shift+Left";
+        "kwin"."view_actual_size" = "Meta+0";
+        "kwin"."view_zoom_in" = ["Meta++" "Meta+=,Meta++" "Meta+=,Zoom In"];
+        "kwin"."view_zoom_out" = "Meta+-";
+        "mediacontrol"."nextmedia" = "Media Next";
+        "mediacontrol"."pausemedia" = "Media Pause";
+        "mediacontrol"."playpausemedia" = "Media Play";
+        "mediacontrol"."previousmedia" = "Media Previous";
+        "mediacontrol"."stopmedia" = "Media Stop";
+        "org_kde_powerdevil"."Decrease Keyboard Brightness" = "Keyboard Brightness Down";
+        "org_kde_powerdevil"."Decrease Screen Brightness" = "Monitor Brightness Down";
+        "org_kde_powerdevil"."Decrease Screen Brightness Small" = "Shift+Monitor Brightness Down";
+        "org_kde_powerdevil"."Hibernate" = "Hibernate";
+        "org_kde_powerdevil"."Increase Keyboard Brightness" = "Keyboard Brightness Up";
+        "org_kde_powerdevil"."Increase Screen Brightness" = "Monitor Brightness Up";
+        "org_kde_powerdevil"."Increase Screen Brightness Small" = "Shift+Monitor Brightness Up";
+        "org_kde_powerdevil"."PowerDown" = "Power Down";
+        "org_kde_powerdevil"."PowerOff" = "Power Off";
+        "org_kde_powerdevil"."Sleep" = "Sleep";
+        "org_kde_powerdevil"."Toggle Keyboard Backlight" = "Keyboard Light On/Off";
+        "org_kde_powerdevil"."powerProfile" = ["Battery" "Meta+B,Battery" "Meta+B,Switch Power Profile"];
+        "plasmashell"."activate application launcher" = ["Meta" "Alt+F1,Meta" "Alt+F1,Activate Application Launcher"];
+        "plasmashell"."activate task manager entry 1" = "Meta+1";
+        "plasmashell"."activate task manager entry 10" = ",Meta+0,Activate Task Manager Entry 10";
+        "plasmashell"."activate task manager entry 2" = "Meta+2";
+        "plasmashell"."activate task manager entry 3" = "Meta+3";
+        "plasmashell"."activate task manager entry 4" = "Meta+4";
+        "plasmashell"."activate task manager entry 5" = "Meta+5";
+        "plasmashell"."activate task manager entry 6" = "Meta+6";
+        "plasmashell"."activate task manager entry 7" = "Meta+7";
+        "plasmashell"."activate task manager entry 8" = "Meta+8";
+        "plasmashell"."activate task manager entry 9" = "Meta+9";
+        "plasmashell"."clipboard_action" = "Meta+Ctrl+X";
+        "plasmashell"."cycle-panels" = "Meta+Alt+P";
+        "plasmashell"."manage activities" = "Meta+Q";
+        "plasmashell"."next activity" = "Meta+A,none,Walk through activities";
+        "plasmashell"."previous activity" = "Meta+Shift+A,none,Walk through activities (Reverse)";
+        "plasmashell"."repeat_action" = ",Meta+Ctrl+R,Manually Invoke Action on Current Clipboard";
+        "plasmashell"."show dashboard" = "Ctrl+F12";
+        "plasmashell"."show-on-mouse-pos" = "Meta+V";
+        "plasmashell"."stop current activity" = "Meta+S";
+      };
+      configFile = {
+        "baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
+        "baloofilerc"."General"."dbVersion" = 2;
+        "baloofilerc"."General"."exclude filters" = "*~,*.part,*.o,*.la,*.lo,*.loT,*.moc,moc_*.cpp,qrc_*.cpp,ui_*.h,cmake_install.cmake,CMakeCache.txt,CTestTestfile.cmake,libtool,config.status,confdefs.h,autom4te,conftest,confstat,Makefile.am,*.gcode,.ninja_deps,.ninja_log,build.ninja,*.csproj,*.m4,*.rej,*.gmo,*.pc,*.omf,*.aux,*.tmp,*.po,*.vm*,*.nvram,*.rcore,*.swp,*.swap,lzo,litmain.sh,*.orig,.histfile.*,.xsession-errors*,*.map,*.so,*.a,*.db,*.qrc,*.ini,*.init,*.img,*.vdi,*.vbox*,vbox.log,*.qcow2,*.vmdk,*.vhd,*.vhdx,*.sql,*.sql.gz,*.ytdl,*.tfstate*,*.class,*.pyc,*.pyo,*.elc,*.qmlc,*.jsc,*.fastq,*.fq,*.gb,*.fasta,*.fna,*.gbff,*.faa,po,CVS,.svn,.git,_darcs,.bzr,.hg,CMakeFiles,CMakeTmp,CMakeTmpQmake,.moc,.obj,.pch,.uic,.npm,.yarn,.yarn-cache,__pycache__,node_modules,node_packages,nbproject,.terraform,.venv,venv,core-dumps,lost+found";
+        "baloofilerc"."General"."exclude filters version" = 9;
+        "kactivitymanagerdrc"."activities"."86469a11-347e-4c18-80c9-6b8097007faf" = "Default";
+        "kactivitymanagerdrc"."main"."currentActivity" = "86469a11-347e-4c18-80c9-6b8097007faf";
+        "kcminputrc"."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."NaturalScroll" = true;
+        "kded5rc"."Module-device_automounter"."autoload" = false;
+        "kdeglobals"."General"."AccentColor" = "61,253,225";
+        "kdeglobals"."General"."LastUsedCustomAccentColor" = "61,253,225";
+        "kdeglobals"."WM"."activeBackground" = "49,54,59";
+        "kdeglobals"."WM"."activeBlend" = "252,252,252";
+        "kdeglobals"."WM"."activeForeground" = "252,252,252";
+        "kdeglobals"."WM"."inactiveBackground" = "42,46,50";
+        "kdeglobals"."WM"."inactiveBlend" = "161,169,177";
+        "kdeglobals"."WM"."inactiveForeground" = "161,169,177";
+        "krunnerrc"."Plugins"."baloosearchEnabled" = false;
+        "kscreenlockerrc"."Daemon"."LockGrace" = 30;
+        "kscreenlockerrc"."Daemon"."Timeout" = 10;
+        "ksmserverrc"."General"."confirmLogout" = false;
+        "kwalletrc"."Wallet"."Close When Idle" = false;
+        "kwalletrc"."Wallet"."Close on Screensaver" = false;
+        "kwalletrc"."Wallet"."Enabled" = true;
+        "kwalletrc"."Wallet"."Idle Timeout" = 10;
+        "kwalletrc"."Wallet"."Launch Manager" = false;
+        "kwalletrc"."Wallet"."Leave Manager Open" = false;
+        "kwalletrc"."Wallet"."Leave Open" = true;
+        "kwalletrc"."Wallet"."Prompt on Open" = false;
+        "kwalletrc"."Wallet"."Use One Wallet" = true;
+        "kwalletrc"."org.freedesktop.secrets"."apiEnabled" = true;
+        "kwinrc"."Desktops"."Id_1" = "f6fe573b-0c88-4e60-9e9c-dad22349d906";
+        "kwinrc"."Desktops"."Number" = 1;
+        "kwinrc"."Desktops"."Rows" = 1;
+        "kwinrc"."Effect-overview"."BorderActivate" = 9;
+        "kwinrc"."Tiling"."padding" = 4;
+        "kwinrc"."Tiling/371dde38-88e3-542a-ad2d-e4a928792cf7"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+        "kwinrc"."Tiling/fc8b1433-8104-59d8-88f2-eb27dd82efa8"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
+        "kwinrc"."Xwayland"."Scale" = 1.5;
+        "plasma-localerc"."Formats"."LANG" = "en_US.UTF-8";
+        "plasmarc"."Wallpapers"."usersWallpapers" = "";
+      };
+      workspace.lookAndFeel = "org.kde.breezedark.desktop";
+    };
+  };
+}
