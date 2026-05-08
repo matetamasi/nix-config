@@ -4,12 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    systems.url = "github:nix-systems/default";
-
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     nixpkgs-stable.url = "nixpkgs/nixos-24.05";
 
@@ -47,63 +42,51 @@
     import-tree.url = "github:vic/import-tree";
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
     nixpkgs,
-    flake-utils,
-    nixpkgs-stable,
-    nixos-hardware,
-    disko,
-    agenix,
-    home-manager,
-    nixvim,
-    plasma-manager,
-    impermanence,
-    import-tree,
+    flake-parts,
     ...
-  } @ inputs: let
-    inherit (nixpkgs) lib;
+  }: let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-    zen-browser-pkg = inputs.zen-browser.packages."${system}".beta;
-    agenix-pkgs = agenix.packages."${system}";
-  in {
-    nixosConfigurations.nixos = lib.nixosSystem {
-      inherit system;
-      modules = [
-        nixos-hardware.nixosModules.framework-16-7040-amd
-        agenix.nixosModules.default
-        disko.nixosModules.default
-        home-manager.nixosModules.home-manager
-        impermanence.nixosModules.impermanence
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = [system];
 
-        (import-tree ./modules)
+      imports = [
+        (inputs.import-tree ./modules)
+        {
+          options.flake.modules = nixpkgs.lib.mkOption {
+            type = nixpkgs.lib.types.attrsOf (nixpkgs.lib.types.attrsOf nixpkgs.lib.types.unspecified);
+            default = {};
+            description = "Dendritic modules";
+          };
+        }
       ];
-      specialArgs = {
-        inherit pkgs-stable;
-        inherit agenix-pkgs;
-        inherit nixvim;
-        inherit zen-browser-pkg;
-        inherit plasma-manager;
+
+      perSystem = {
+        config,
+        pkgs,
+        system,
+        ...
+      }: {
+        devShells.default = let
+          nom-build = pkgs.writeShellScriptBin "nomb" ''
+            sudo nixos-rebuild switch --flake .#nixos --log-format internal-json -v |& nom --json
+          '';
+        in
+          pkgs.mkShell {
+            NIX_CONFIG = "experimental-features = nix-command flakes";
+            packages = with pkgs; [
+              nix-output-monitor
+              expect
+              nom-build
+              statix
+              nvd
+            ];
+          };
+
+        formatter = pkgs.alejandra;
       };
     };
-
-    devShells.${system}.default = let
-      nom-build = pkgs.writeShellScriptBin "nomb" ''
-        sudo nixos-rebuild switch --flake .#nixos --log-format internal-json -v |& nom --json
-      '';
-    in
-      pkgs.mkShell {
-        NIX_CONFIG = "experimental-features = nix-command flakes";
-        packages = with pkgs; [
-          nix-output-monitor
-          expect
-          nom-build
-          statix
-        ];
-      };
-
-    formatter.${system} = pkgs.alejandra;
-  };
 }

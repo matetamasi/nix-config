@@ -1,179 +1,126 @@
-# https://github.com/nix-community/impermanence#module-usage
-{
-  lib,
-  pkgs,
-  ...
-}: {
-  fileSystems."/persist".neededForBoot = true;
-  fileSystems."/persist/backup".neededForBoot = true;
-  environment.persistence."/persist" = {
-    hideMounts = true;
-    directories = [
-      "/var/lib/systemd/coredump"
-      "/var/lib/nixos"
-      "/var/lib/fprint"
-      "/etc/NetworkManager/system-connections"
-      "/var/lib/bluetooth"
-      "/var/lib/zerotier-one"
-      "/var/lib/docker"
-    ];
-    files = [
-      "/etc/machine-id" # for journalctl
-      "/etc/ssh/ssh_host_ed25519_key"
-      "/etc/ssh/ssh_host_ed25519_key.pub"
-      "/etc/ssh/ssh_host_rsa_key"
-      "/etc/ssh/ssh_host_rsa_key.pub"
+{...}: {
+  flake.modules.nixos."impermanence" =
+    # https://github.com/nix-community/impermanence#module-usage
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }: {
+      options.features.impermanence.enable = lib.mkEnableOption "system-wide impermanence";
 
-    ];
-    users.matetamasi = {
-      directories = [
-        # Folders I usually work in
-        "Downloads"
-        "Downloads/Torrent"
-        "Proton_drive"
+      config = lib.mkIf config.features.impermanence.enable {
+        fileSystems."/persist".neededForBoot = true;
+        fileSystems."/persist/backup".neededForBoot = true;
+        environment.persistence."/persist" = {
+          hideMounts = true;
+          directories = [
+            "/var/lib/systemd/coredump"
+            "/var/lib/nixos"
+            "/var/lib/fprint"
+            "/var/lib/bluetooth"
+          ];
+          files = [
+            "/etc/machine-id" # for journalctl
+            "/etc/ssh/ssh_host_ed25519_key"
+            "/etc/ssh/ssh_host_ed25519_key.pub"
+            "/etc/ssh/ssh_host_rsa_key"
+            "/etc/ssh/ssh_host_rsa_key.pub"
+          ];
+          users.matetamasi = {
+            directories = [
+              # Folders I usually work in
+              "Downloads"
+              "Downloads/Torrent"
+              "Proton_drive"
 
-        # Cache
-        ".cache"
+              # Cache
+              ".cache"
 
-        # Wine
-        ".wine"
+              # Wine
+              ".wine"
 
-        # KDE Plasma stuff (should start using plasma-manager instead)
-        ".local/share/kscreen"
-        ".local/share/kwalletd"
-        ".local/share/sddm"
-        ".local/share/zoxide"
+              ".local/share/zoxide"
 
-        # Login state for applications
-        ".mozilla/firefox"
-        ".config/Signal"
-        ".config/vesktop"
-        ".config/Caprine" # Messenger client
-        ".config/rclone"
-        ".config/Slack"
-        ".config/uppaal"
-        ".config/spotify"
-        ".config/Element"
-        ".local/share/teams-for-linux-profile"
+              # Login state for applications
+              ".config/rclone"
+              ".config/uppaal"
 
-        ".zen" # Zen browser
+              # Desktop entries & icons
+              ".local/share/applications"
+              ".local/share/icons"
 
-        # Chromium
-        ".config/chromium"
+              # Godot
+              ".config/godot"
+              ".local/share/godot"
 
-        # Desktop entries & icons
-        ".local/share/applications"
-        ".local/share/icons"
+              # Other
+              ".ssh" # SSH
+              ".gpg"
+            ];
+            files = [
+              ".local/state/cosmic-comp/outputs.ron" # Cosmic display configuration
+            ];
+          };
+        };
 
-        # Godot
-        ".config/godot"
-        ".local/share/godot"
+        environment.persistence."/persist/backup" = {
+          hideMounts = true;
+          directories = [
+          ];
+          users.matetamasi = {
+            directories = [
+              # Folders I usually work in
+              "dot"
+              "BME"
+              "MedveMatek"
+              "QMK"
+              "ZMK"
+              "Prog_misc"
+              "Gaming"
+              "Documents"
+              "Pictures"
 
-        # Steam
-        ".local/share/Steam"
+              # # Winboat
+              "winboat"
+              ".winboat"
 
-        # r2modman
-        ".config/r2modman"
-        ".config/r2modmanPlus-local"
+              # Cosmic desktop
+              ".config/cosmic"
 
-        # Other
-        ".ssh" # SSH
-        ".gpg"
+              # Other
+              ".local/bin"
+            ];
 
-        # Android development stuff
-        "Android"
-        ".android"
-        ".config/Google"
-        ".local/share/Google"
-        ".gitkraken"
-        ".config/GitKraken"
-        ".gradle"
+            files = [
+              ".bash_history"
+              ".config/zsh/.zsh_history"
+            ];
+          };
+        };
 
-        # IntelliJ
-        ".local/share/JetBrains"
-        ".config/JetBrains"
-
-        # Direnv
-        ".local/share/direnv/allow"
-
-        # Eclipse
-        ".eclipse"
-      ];
-      files = [
-        ".local/state/cosmic-comp/outputs.ron" # Cosmic display configuration
-        ".config/dconf/user" # virt-manager
-      ];
+        # Roll back to blank root on boot
+        boot.initrd.systemd.services.rollback = {
+          description = "Rollback ZFS datasets";
+          wantedBy = [
+            "initrd.target"
+          ];
+          after = [
+            "systemd-cryptsetup@crypted.service"
+            "zfs-import-zfspool.service"
+          ];
+          before = [
+            "sysroot.mount"
+          ];
+          path = with pkgs; [
+            zfs
+          ];
+          unitConfig.DefaultDependencies = "no";
+          serviceConfig.Type = "oneshot";
+          script = ''
+            zfs rollback -r zfspool/root@blank
+          '';
+        };
+      };
     };
-  };
-
-  environment.persistence."/persist/backup" = {
-    hideMounts = true;
-    directories = [
-      "/var/lib/libvirt"
-    ];
-    users.matetamasi = {
-      directories = [
-        # Folders I usually work in
-        "dot"
-        "BME"
-        "MedveMatek"
-        "QMK"
-        "ZMK"
-        "Prog_misc"
-        "Gaming"
-        "Documents"
-        "Pictures"
-
-        # # Winboat
-        "winboat"
-        ".winboat"
-
-        # Cosmic desktop
-        ".config/cosmic"
-
-        # Prism launcher (minecraft)
-        ".local/share/PrismLauncher"
-
-        # Steam/proton configuration layer
-        ".config/steamtinkerlaunch"
-
-        # Don't Starve Together
-        ".klei"
-
-        # Unrailed
-        ".local/share/UnrailedGame"
-
-        # Other
-        ".local/bin"
-      ];
-
-      files = [
-        ".bash_history"
-        ".config/zsh/.zsh_history"
-      ];
-    };
-  };
-
-  # Roll back to blank root on boot
-  boot.initrd.systemd.services.rollback = {
-    description = "Rollback ZFS datasets";
-    wantedBy = [
-      "initrd.target"
-    ];
-    after = [
-      "systemd-cryptsetup@crypted.service"
-      "zfs-import-zfspool.service"
-    ];
-    before = [
-      "sysroot.mount"
-    ];
-    path = with pkgs; [
-      zfs
-    ];
-    unitConfig.DefaultDependencies = "no";
-    serviceConfig.Type = "oneshot";
-    script = ''
-      zfs rollback -r zfspool/root@blank
-    '';
-  };
 }

@@ -18,7 +18,6 @@
         "kind"
         "menu"
       ];
-
     };
 
     settings.mapping = {

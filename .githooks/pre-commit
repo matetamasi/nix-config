@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -e
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
+echo "🛠️  Running pre-commit checks..."
+
+# 1. Run statix
+echo -n "Checking statix... "
+if statix check . > /dev/null 2>&1; then
+    echo -e "${GREEN}OK${NC}"
+else
+    echo -e "${RED}FAILED${NC}"
+    echo -e "${YELLOW}Detailed statix output:${NC}"
+    statix check . || true
+    echo -e "${RED}Please fix the statix errors above and try again.${NC}"
+    exit 1
+fi
+
+# 2. Run alejandra (check mode)
+echo -n "Checking formatting with alejandra... "
+if alejandra --quiet --check . > /dev/null 2>&1; then
+    echo -e "${GREEN}OK${NC}"
+else
+    echo -e "${RED}FAILED${NC}"
+    echo -e "${YELLOW}Formatting code now...${NC}"
+    alejandra --quiet .
+    echo -e "${RED}Files have been formatted! Please review the changes, run 'git add', and try committing again.${NC}"
+    exit 1
+fi
+
+echo -e "✅ ${GREEN}All pre-commit checks passed!${NC}"
+exit 0

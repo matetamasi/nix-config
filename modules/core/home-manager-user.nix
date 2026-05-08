@@ -1,9 +1,9 @@
-{
-  ...
-}: {
-  home-manager.users.matetamasi = {config, ...}: {
-    home.username = "matetamasi";
-    home.homeDirectory = "/home/${config.home.username}";
-    home.stateVersion = "23.11";
+{...}: {
+  flake.modules.nixos."home-manager-user" = {...}: {
+    home-manager.users.matetamasi = {config, ...}: {
+      home.username = "matetamasi";
+      home.homeDirectory = "/home/${config.home.username}";
+      home.stateVersion = "23.11";
+    };
   };
 }
