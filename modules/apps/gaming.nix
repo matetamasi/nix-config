@@ -19,9 +19,13 @@
       ];
     };
 
+    environment.systemPackages = with pkgs; [
+      steam-devices-udev-rules
+    ];
+
     home-manager.users.matetamasi = {
       home.packages = with pkgs; [
-        steam
+        (steam.override {extraPkgs = pkgs: [pkgs.hidapi];})
         protontricks
         steamtinkerlaunch
         protonup-qt
