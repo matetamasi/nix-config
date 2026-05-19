@@ -35,7 +35,7 @@
       htop-vim
       qmk-udev-rules
       libsecret
-      inputs.agenix.packages.${pkgs.system}.default
+      inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # For herbstluftwm - TODO: move to separate file, import conditionally
       pamixer
