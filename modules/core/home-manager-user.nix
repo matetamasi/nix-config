@@ -12,6 +12,8 @@
       home.username = "${osConfig.user.name}";
       home.homeDirectory = "/home/${config.home.username}";
       home.stateVersion = "23.11";
+
+      xdg.configFile."mimeapps.list".force = lib.mkIf config.xdg.mimeApps.enable true;
     };
   };
 }
