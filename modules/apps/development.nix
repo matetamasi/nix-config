@@ -14,6 +14,8 @@
       ".gradle"
       ".local/share/JetBrains"
       ".config/JetBrains"
+      ".config/github-copilot"
+      ".java/.userPrefs"
       ".local/share/direnv/allow"
       ".eclipse"
       ".gitkraken"
