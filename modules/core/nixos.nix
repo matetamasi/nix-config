@@ -69,7 +69,6 @@
     # Hardware bits
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = true;
-    hardware.steam-hardware.enable = true;
     hardware.keyboard.qmk.enable = true;
 
     # X11 / Keymap
@@ -93,7 +92,6 @@
 
     # Misc
     programs.nix-ld.enable = true;
-    programs.gamemode.enable = true;
 
     system.stateVersion = "23.11";
 
