@@ -12,7 +12,7 @@
       "/persist/backup".directories = [
         "/var/lib/libvirt"
       ];
-      "/persist".users.matetamasi.files = [
+      "/persist".users.${config.user.name}.files = [
         ".config/dconf/user" # virt-manager
       ];
     };
@@ -20,7 +20,7 @@
     # NixOS
     programs.dconf.enable = true;
 
-    users.users.matetamasi.extraGroups = ["libvirtd" "docker" "kvm"];
+    users.users.${config.user.name}.extraGroups = ["libvirtd" "libvirt" "docker" "kvm"];
 
     environment.systemPackages = with pkgs; [
       virt-manager

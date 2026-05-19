@@ -2,13 +2,14 @@
   flake.modules.nixos."zsh" = {
     lib,
     pkgs,
+    config,
     ...
   }: {
     # NixOS
     programs.zsh.enable = true;
 
     # Home Manager
-    home-manager.users.matetamasi = {
+    home-manager.users.${config.user.name} = {
       config,
       lib,
       ...

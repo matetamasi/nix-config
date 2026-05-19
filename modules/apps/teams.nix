@@ -5,11 +5,11 @@
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.matetamasi.directories = lib.mkIf config.features.impermanence.enable [
+    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
       ".local/share/teams-for-linux-profile"
     ];
 
-    home-manager.users.matetamasi = {config, ...}: let
+    home-manager.users.${config.user.name} = {config, ...}: let
       teams-icons = pkgs.runCommand "teams-custom-icons" {nativeBuildInputs = [pkgs.librsvg];} ''
         mkdir -p $out/share/icons/hicolor/512x512/apps
         rsvg-convert -w 512 -h 512 ${../../resources/icons/teams/teams-for-linux-BME.svg} -o $out/share/icons/hicolor/512x512/apps/teams-for-linux-BME.png

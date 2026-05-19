@@ -1,15 +1,28 @@
-{...}: {
-  flake.modules.nixos."users" = {pkgs, ...}: {
-    users.mutableUsers = false;
-    users.users = {
-      root.hashedPasswordFile = "/persist/passwords/root.pass";
+{lib, ...}: {
+  flake.modules.nixos."users" = {
+    pkgs,
+    config,
+    lib,
+    ...
+  }: {
+    options.user.name = lib.mkOption {
+      type = lib.types.str;
+      default = "matetamasi";
+      description = "The primary user's name";
+    };
 
-      matetamasi = {
-        hashedPasswordFile = "/persist/passwords/matetamasi.pass";
-        isNormalUser = true;
-        description = "Tamási Máté";
-        extraGroups = ["networkmanager" "wheel" "docker" "kvm" "libvirt" "dialout" "adbusers" "gamemode"];
-        shell = pkgs.zsh;
+    config = {
+      users.mutableUsers = false;
+      users.users = {
+        root.hashedPasswordFile = "/persist/passwords/root.pass";
+
+        ${config.user.name} = {
+          hashedPasswordFile = "/persist/passwords/${config.user.name}.pass";
+          isNormalUser = true;
+          description = "Tamási Máté";
+          extraGroups = ["networkmanager" "wheel"];
+          shell = pkgs.zsh;
+        };
       };
     };
   };

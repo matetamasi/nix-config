@@ -6,11 +6,11 @@
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.matetamasi.directories = lib.mkIf config.features.impermanence.enable [
+    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
       ".zen" # Zen browser
     ];
 
-    home-manager.users.matetamasi = {
+    home-manager.users.${config.user.name} = {
       # Nixpkgs config within Home Manager
       nixpkgs.config.allowUnfree = true;
 

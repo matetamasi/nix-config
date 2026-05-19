@@ -4,7 +4,7 @@
     lib,
     ...
   }: {
-    home-manager.users.matetamasi = {
+    home-manager.users.${config.user.name} = {
       programs.git = {
         enable = true;
         settings.user = {

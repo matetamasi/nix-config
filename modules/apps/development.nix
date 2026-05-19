@@ -6,7 +6,7 @@
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.matetamasi.directories = lib.mkIf config.features.impermanence.enable [
+    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
       "Android"
       ".android"
       ".config/Google"
@@ -26,6 +26,8 @@
       package = pkgs.jdk17;
     };
 
+    users.users.${config.user.name}.extraGroups = ["adbusers" "dialout"];
+
     environment.systemPackages = with pkgs; [
       jetbrains.idea
       kotlin
@@ -37,7 +39,7 @@
     ];
 
     # Home Manager
-    home-manager.users.matetamasi = {
+    home-manager.users.${config.user.name} = {
       config,
       pkgs,
       ...

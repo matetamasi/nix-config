@@ -6,7 +6,7 @@
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.matetamasi.directories = lib.mkIf config.features.impermanence.enable [
+    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
       ".mozilla/firefox"
       ".config/chromium"
     ];
@@ -50,7 +50,7 @@
     ];
 
     # Home Manager
-    home-manager.users.matetamasi = {
+    home-manager.users.${config.user.name} = {
       home.packages = with pkgs; [
         nerd-fonts.monaspace
         google-fonts

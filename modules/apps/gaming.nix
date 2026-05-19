@@ -6,12 +6,12 @@
     ...
   }: {
     environment.persistence = lib.mkIf config.features.impermanence.enable {
-      "/persist".users.matetamasi.directories = [
+      "/persist".users.${config.user.name}.directories = [
         ".local/share/Steam"
         ".config/r2modman"
         ".config/r2modmanPlus-local"
       ];
-      "/persist/backup".users.matetamasi.directories = [
+      "/persist/backup".users.${config.user.name}.directories = [
         ".local/share/PrismLauncher"
         ".config/steamtinkerlaunch"
         ".klei"
@@ -23,7 +23,7 @@
       steam-devices-udev-rules
     ];
 
-    home-manager.users.matetamasi = {
+    home-manager.users.${config.user.name} = {
       home.packages = with pkgs; [
         (steam.override {extraPkgs = pkgs: [pkgs.hidapi];})
         protontricks

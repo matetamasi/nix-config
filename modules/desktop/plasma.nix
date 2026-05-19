@@ -4,7 +4,7 @@
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.matetamasi.directories = lib.mkIf config.features.impermanence.enable [
+    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
       ".local/share/kscreen"
       ".local/share/kwalletd"
       ".local/share/sddm"
@@ -18,7 +18,7 @@
     security.pam.services.login.fprintAuth = false;
 
     # Home Manager
-    home-manager.users.matetamasi = {
+    home-manager.users.${config.user.name} = {
       programs.plasma = {
         enable = true;
 

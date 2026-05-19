@@ -27,7 +27,7 @@
             "/etc/ssh/ssh_host_rsa_key"
             "/etc/ssh/ssh_host_rsa_key.pub"
           ];
-          users.matetamasi = {
+          users.${config.user.name} = {
             directories = [
               # Folders I usually work in
               "Downloads"
@@ -68,7 +68,7 @@
           hideMounts = true;
           directories = [
           ];
-          users.matetamasi = {
+          users.${config.user.name} = {
             directories = [
               # Folders I usually work in
               "dot"

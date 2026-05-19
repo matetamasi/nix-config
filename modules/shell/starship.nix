@@ -1,6 +1,6 @@
 {...}: {
-  flake.modules.nixos."starship" = {...}: {
-    home-manager.users.matetamasi = {
+  flake.modules.nixos."starship" = {config, ...}: {
+    home-manager.users.${config.user.name} = {
       programs.starship = {
         enable = true;
         enableZshIntegration = true;

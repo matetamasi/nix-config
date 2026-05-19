@@ -5,7 +5,7 @@
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.matetamasi.directories = lib.mkIf config.features.impermanence.enable [
+    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
       ".config/Signal"
       ".config/vesktop"
       ".config/Caprine" # Messenger client
@@ -14,7 +14,7 @@
       ".config/Element"
     ];
 
-    home-manager.users.matetamasi = {
+    home-manager.users.${config.user.name} = {
       home.packages = with pkgs; [
         ncspot
         spotify
