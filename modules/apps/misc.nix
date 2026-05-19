@@ -83,6 +83,8 @@
       ];
 
       fonts.fontconfig.enable = true;
+
+      xdg.configFile."htop/htoprc".source = ../../resources/htop/htoprc;
     };
   };
 }
