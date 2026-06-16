@@ -68,6 +68,7 @@ _: {
           firefox
           keepass
           zoxide
+          (hunspell.withDicts (ds: [ds.en_US-large]))
           ungoogled-chromium
           qbittorrent
           wineWow64Packages.stable

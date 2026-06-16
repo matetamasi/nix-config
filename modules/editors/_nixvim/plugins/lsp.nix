@@ -51,49 +51,50 @@
           cssls.enable = true;
         };
       };
-    };
+      lspkind = {
+        enable = true;
+        cmp.enable = true;
+      };
+      cmp-buffer.enable = true;
+      cmp-nvim-lsp.enable = true;
+      cmp-path.enable = true;
+      cmp-treesitter.enable = true;
+      luasnip.enable = true;
 
-    conform-nvim = {
-      enable = true;
+      conform-nvim = {
+        enable = true;
 
-      settings = {
-        format_on_save = {
-          lsp_fallback = "fallback";
-          timeout_ms = 2000;
+        settings = {
+          format_on_save = {
+            lsp_fallback = "fallback";
+            timeout_ms = 2000;
+          };
+          notify_on_error = true;
+          formatters_by_ft = {
+            python = ["black"];
+            nix = ["alejandra"];
+            #TODO: further formatters
+
+            javascript = ["prettier"];
+            typescript = ["prettier"];
+            javascriptreact = ["prettier"];
+            typescriptreact = ["prettier"];
+            css = ["prettier"];
+            html = ["prettier"];
+            json = ["prettier"];
+            yaml = ["prettier"];
+          };
         };
-        notify_on_error = true;
-        formatters_by_ft = {
-          python = ["black"];
-          nix = ["alejandra"];
-          #TODO: further formatters
-
-          javascript = ["prettier"];
-          typescript = ["prettier"];
-          javascriptreact = ["prettier"];
-          typescriptreact = ["prettier"];
-          css = ["prettier"];
-          html = ["prettier"];
-          json = ["prettier"];
-          yaml = ["prettier"];
+      };
+      none-ls = {
+        enable = true;
+        sources.formatting = {
+          black.enable = true;
+          alejandra.enable = true;
         };
       };
     };
 
-    none-ls = {
-      enable = true;
-      sources.formatting = {
-        black.enable = true;
-        alejandra.enable = true;
-      };
-    };
-
-    cmp-nvim-lsp.enable = true;
-    lspkind.enable = true;
-    lspkind.cmp.enable = true;
-    luasnip.enable = true;
-    cmp-buffer.enable = true;
-    cmp-path.enable = true;
-    cmp-treesitter.enable = true;
     keymaps = [
       #rename
       {
