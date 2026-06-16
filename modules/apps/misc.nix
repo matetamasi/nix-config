@@ -78,7 +78,7 @@ _: {
 
       home.sessionVariables = {
         EDITOR = "nvim";
-        TERM = "konsole";
+        TERM = "ghostty";
         DEFAULT_BROWSER = "zen-beta";
       };
       home.sessionPath = [
