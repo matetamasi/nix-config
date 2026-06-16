@@ -1,4 +1,4 @@
-{...}: {
+_: {
   flake.modules.nixos."gaming" = {
     pkgs,
     config,
@@ -29,7 +29,7 @@
         enable = true;
         args = [
           "--prefer-output"
-          "DP-1,DP-2,DP-3,HDMI-A-1,HDMI-A-2,eDP-1"
+          "DP-1,DP-2,DP-3,DP-4,DP-5,DP-6,DP-7,DP-8,DP-9,DP-10,DP-11,DP-12,DP-13,DP-14,DP-15,HDMI-A-1,HDMI-A-2,eDP-1,eDP-2"
         ];
       };
       protontricks.enable = true;
@@ -45,11 +45,7 @@
 
     programs.gamescope = {
       enable = true;
-      capSysNice = true;
-      args = [
-        "--rt"
-        "--steam"
-      ];
+      capSysNice = false;
     };
 
     hardware.steam-hardware.enable = true;
@@ -67,14 +63,7 @@
         protonup-qt
         sc-controller
         r2modman # mod manager for ror2 and others
-        prismlauncher #Minecraft launcher
-        (makeDesktopItem {
-          name = "steam-gamescope";
-          desktopName = "Steam (Gamescope TV Mode)";
-          icon = "steam";
-          exec = "gamescope --prefer-output DP-1,DP-2,DP-3,HDMI-A-1,HDMI-A-2,eDP-1 -f -- steam -gamepadui";
-          categories = ["Game"];
-        })
+        prismlauncher # Minecraft launcher
       ];
     };
   };
