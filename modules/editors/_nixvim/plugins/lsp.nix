@@ -99,63 +99,77 @@
       {
         action.__raw = "vim.lsp.buf.rename";
         key = "<leader>rn";
-        options.silent = true;
-        options.expr = true;
-        options.desc = "LSP: [R]e[n]ame";
+        options = {
+          silent = true;
+          expr = true;
+          desc = "LSP: [R]e[n]ame";
+        };
         mode = ["n"];
       }
       #code actions
       {
         action.__raw = "vim.lsp.buf.code_action";
         key = "<leader>ca";
-        options.silent = true;
-        options.expr = true;
-        options.desc = "LSP: [C]ode [A]ction";
+        options = {
+          silent = true;
+          expr = true;
+          desc = "LSP: [C]ode [A]ction";
+        };
         mode = ["n"];
       }
       #goto definition
       {
         action.__raw = "vim.lsp.buf.definition";
         key = "gdd";
-        options.silent = true;
-        options.expr = true;
-        options.desc = "LSP: [G]oto [D]efinition";
+        options = {
+          silent = true;
+          expr = true;
+          desc = "LSP: [G]oto [D]efinition";
+        };
         mode = ["n"];
       }
       #goto declaration
       {
         action.__raw = "vim.lsp.buf.declaration";
         key = "gdc";
-        options.silent = true;
-        options.expr = true;
-        options.desc = "LSP: [G]oto [D]e[c]laration";
+        options = {
+          silent = true;
+          expr = true;
+          desc = "LSP: [G]oto [D]e[c]laration";
+        };
         mode = ["n"];
       }
       #goto implementation
       {
         action.__raw = "vim.lsp.buf.implementation";
         key = "gdi";
-        options.silent = true;
-        options.expr = true;
-        options.desc = "LSP: [G]oto [D] [I]mplementation";
+        options = {
+          silent = true;
+          expr = true;
+          desc = "LSP: [G]oto [D] [I]mplementation";
+        };
         mode = ["n"];
       }
       #goto type definition
       {
         action.__raw = "vim.lsp.buf.type_definition";
         key = "gdt";
-        options.silent = true;
-        options.expr = true;
-        options.desc = "LSP: [G]oto [D]efinition of [T]ype";
+        options = {
+          silent = true;
+          expr = true;
+          desc = "LSP: [G]oto [D]efinition of [T]ype";
+        };
         mode = ["n"];
       }
       #goto references (requires telescope!)
       {
         action.__raw = "require('telescope.builtin').lsp_references";
         key = "gdr";
-        options.silent = true;
-        options.expr = true;
-        options.desc = "LSP: [G]oto [D] [R]eferences";
+        options = {
+          silent = true;
+          expr = true;
+          desc = "LSP: [G]oto [D] [R]eferences";
+        };
         mode = ["n"];
       }
 
@@ -163,18 +177,22 @@
       {
         action.__raw = "vim.lsp.buf.hover";
         key = "K";
-        options.silent = true;
-        options.expr = true;
-        options.desc = "LSP: Hover";
+        options = {
+          silent = true;
+          expr = true;
+          desc = "LSP: Hover";
+        };
         mode = ["n"];
       }
       #signature docs
       {
         action.__raw = "vim.lsp.buf.signature_help";
         key = "<C-k>";
-        options.silent = true;
-        options.expr = true;
-        options.desc = "LSP: Signature docs";
+        options = {
+          silent = true;
+          expr = true;
+          desc = "LSP: Signature docs";
+        };
         mode = ["n"];
       }
 
@@ -182,8 +200,10 @@
       {
         action = "<cmd>lua require('conform').format()<CR>";
         key = "<leader>f";
-        options.silent = true;
-        options.desc = "LSP: [F]ormat";
+        options = {
+          silent = true;
+          desc = "LSP: [F]ormat";
+        };
         mode = ["n"];
       }
 
@@ -191,8 +211,10 @@
       {
         action = "<cmd>lua vim.diagnostic.goto_next()<CR>";
         key = "<leader>]";
-        options.silent = true;
-        options.desc = "LSP: Next diagnostic";
+        options = {
+          silent = true;
+          desc = "LSP: Next diagnostic";
+        };
         mode = ["n"];
       }
 
@@ -200,8 +222,10 @@
       {
         action = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
         key = "<leader>[";
-        options.silent = true;
-        options.desc = "LSP: Previous diagnostic";
+        options = {
+          silent = true;
+          desc = "LSP: Previous diagnostic";
+        };
         mode = ["n"];
       }
     ];

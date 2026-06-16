@@ -1,4 +1,4 @@
-{...}: {
+_: {
   flake.modules.nixos."home-manager-user" = {
     lib,
     config,
@@ -9,9 +9,11 @@
       config,
       ...
     }: {
-      home.username = "${osConfig.user.name}";
-      home.homeDirectory = "/home/${config.home.username}";
-      home.stateVersion = "23.11";
+      home = {
+        username = "${osConfig.user.name}";
+        homeDirectory = "/home/${config.home.username}";
+        stateVersion = "23.11";
+      };
 
       xdg.configFile."mimeapps.list".force = lib.mkIf config.xdg.mimeApps.enable true;
     };

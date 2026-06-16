@@ -1,4 +1,4 @@
-{...}: {
+_: {
   flake.modules.nixos."starship" = {config, ...}: {
     home-manager.users.${config.user.name} = {
       programs.starship = {

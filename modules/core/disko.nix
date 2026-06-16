@@ -1,5 +1,5 @@
-{...}: {
-  flake.modules.nixos."disko" = {...}: let
+_: {
+  flake.modules.nixos."disko" = _: let
     device = "/dev/nvme1n1";
   in {
     disko.devices = {

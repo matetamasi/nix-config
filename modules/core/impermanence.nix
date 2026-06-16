@@ -1,4 +1,4 @@
-{...}: {
+_: {
   flake.modules.nixos."impermanence" =
     # https://github.com/nix-community/impermanence#module-usage
     {

@@ -1,19 +1,21 @@
-{...}: {
+_: {
   flake.modules.nixos."zfs" = {pkgs, ...}: {
     # ZFS
     networking.hostId = "9aa64d3a";
-    boot.kernelPackages = pkgs.linuxPackages_6_18;
-    boot.kernelParams = [
-      "nohibernate"
-      "zfs.zfs_arc_max=17179869184"
-      "amdgpu.dcdebugmask=0x410"
-    ];
-    boot.supportedFilesystems = ["vfat" "zfs"];
-    boot.zfs = {
-      devNodes = "/dev/disk/by-id/";
-      forceImportRoot = false;
-      requestEncryptionCredentials = true;
-      package = pkgs.zfs_unstable;
+    boot = {
+      kernelPackages = pkgs.linuxPackages_6_18;
+      kernelParams = [
+        "nohibernate"
+        "zfs.zfs_arc_max=17179869184"
+        "amdgpu.dcdebugmask=0x410"
+      ];
+      supportedFilesystems = ["vfat" "zfs"];
+      zfs = {
+        devNodes = "/dev/disk/by-id/";
+        forceImportRoot = false;
+        requestEncryptionCredentials = true;
+        package = pkgs.zfs_unstable;
+      };
     };
     services.zfs = {
       autoScrub.enable = true;

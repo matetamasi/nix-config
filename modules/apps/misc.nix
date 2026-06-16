@@ -56,34 +56,36 @@ _: {
 
     # Home Manager
     home-manager.users.${config.user.name} = {
-      home.packages = with pkgs; [
-        masterpdfeditor4
-        bat
-        libreoffice-qt
-        kdePackages.filelight
-        wl-clipboard
-        piper
-        pavucontrol
-        firefox
-        keepass
-        zoxide
-        ungoogled-chromium
-        qbittorrent
-        wineWow64Packages.stable
-        winetricks
-        winboat
-        crosspipe
-        gemini-cli
-      ];
+      home = {
+        packages = with pkgs; [
+          masterpdfeditor4
+          bat
+          libreoffice-qt
+          kdePackages.filelight
+          wl-clipboard
+          piper
+          pavucontrol
+          firefox
+          keepass
+          zoxide
+          ungoogled-chromium
+          qbittorrent
+          wineWow64Packages.stable
+          winetricks
+          winboat
+          crosspipe
+          gemini-cli
+        ];
 
-      home.sessionVariables = {
-        EDITOR = "nvim";
-        TERM = "ghostty";
-        DEFAULT_BROWSER = "zen-beta";
+        sessionVariables = {
+          EDITOR = "nvim";
+          TERM = "ghostty";
+          DEFAULT_BROWSER = "zen-beta";
+        };
+        sessionPath = [
+          "$HOME/.local/bin"
+        ];
       };
-      home.sessionPath = [
-        "$HOME/.local/bin"
-      ];
 
       fonts.fontconfig.enable = true;
 
