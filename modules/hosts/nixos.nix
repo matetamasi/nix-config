@@ -36,6 +36,9 @@
       virtualization
       zfs
       zsh
+      mango
+      dms
+      terminal
     ];
   };
 }

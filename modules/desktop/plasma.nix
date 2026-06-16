@@ -1,4 +1,4 @@
-{...}: {
+_: {
   flake.modules.nixos."plasma" = {
     config,
     lib,
@@ -12,9 +12,6 @@
 
     # NixOS
     services.desktopManager.plasma6.enable = true;
-    services.displayManager.sddm.enable = true;
-    services.displayManager.sddm.wayland.enable = true;
-    services.displayManager.defaultSession = "plasma";
     security.pam.services.login.fprintAuth = false;
 
     # Home Manager
