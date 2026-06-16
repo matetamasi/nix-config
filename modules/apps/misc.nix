@@ -9,6 +9,7 @@ _: {
     environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
       ".mozilla/firefox"
       ".config/chromium"
+      ".gemini"
     ];
 
     # NixOS
