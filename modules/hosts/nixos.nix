@@ -21,7 +21,6 @@
       hardware-configuration
       home-manager
       home-manager-user
-      hyprland
       impermanence
       misc
       multimedia
