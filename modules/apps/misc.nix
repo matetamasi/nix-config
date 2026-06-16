@@ -1,4 +1,4 @@
-{...}: {
+_: {
   flake.modules.nixos."misc" = {
     pkgs,
     inputs,
@@ -49,11 +49,14 @@
       polybarFull
     ];
 
+    fonts.packages = with pkgs; [
+      nerd-fonts.monaspace
+      google-fonts
+    ];
+
     # Home Manager
     home-manager.users.${config.user.name} = {
       home.packages = with pkgs; [
-        nerd-fonts.monaspace
-        google-fonts
         masterpdfeditor4
         bat
         libreoffice-qt
