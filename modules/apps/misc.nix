@@ -36,17 +36,6 @@ _: {
       qmk-udev-rules
       libsecret
       inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
-
-      # For herbstluftwm - TODO: move to separate file, import conditionally
-      pamixer
-      arandr
-      xbacklight
-      playerctl
-      scrot
-      networkmanagerapplet
-      xinit
-      rofi
-      polybarFull
     ];
 
     fonts.packages = with pkgs; [
