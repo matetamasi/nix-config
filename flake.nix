@@ -48,6 +48,11 @@
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
+    angrr = {
+      url = "github:linyinfeng/angrr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     impermanence.url = "github:nix-community/impermanence";
     import-tree.url = "github:vic/import-tree";
   };

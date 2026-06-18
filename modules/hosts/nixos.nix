@@ -7,6 +7,7 @@
       inputs.disko.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
       inputs.impermanence.nixosModules.impermanence
+      inputs.angrr.nixosModules.angrr
 
       {
         _module.args = {inherit inputs;};
@@ -17,6 +18,7 @@
       development
       disko
       gaming
+      gc
       git
       hardware-configuration
       home-manager
