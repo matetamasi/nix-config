@@ -9,6 +9,8 @@ _: {
         inputs.nixvim.homeModules.nixvim
         ./_nixvim/nixvim.nix
       ];
+
+      programs.nixvim.nixpkgs.source = inputs.nixpkgs;
     };
   };
 }
