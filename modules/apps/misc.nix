@@ -20,8 +20,6 @@ _: {
       ripgrep
       file
       vim
-      alejandra
-      nix-output-monitor
       git
       tree
       coreutils-full

@@ -86,8 +86,22 @@
         ...
       }: {
         devShells.default = let
-          nom-build = pkgs.writeShellScriptBin "nomb" ''
-            sudo nixos-rebuild switch --flake .#nixos --log-format internal-json -v |& nom --json
+          nom-build = pkgs.writeShellScriptBin "n" ''
+            case "$1" in
+              b) action="build" ;;
+              s) action="switch" ;;
+              t) action="test" ;;
+              r) action="boot" ;;
+              *) echo "Unknown command: $1"; exit 1 ;;
+            esac
+            shift
+
+            if [ "$action" = "build" ]; then
+              nixos-rebuild "$action" --flake .#nixos --log-format internal-json --option eval-cache false "$@" |& nom --json
+            else
+              sudo -v
+              sudo nixos-rebuild "$action" --flake .#nixos --log-format internal-json --option eval-cache false "$@" |& nom --json
+            fi
           '';
         in
           pkgs.mkShell {
@@ -98,6 +112,7 @@
               nom-build
               statix
               nvd
+              alejandra
             ];
           };
 
