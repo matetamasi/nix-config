@@ -5,12 +5,8 @@
     pkgs,
     ...
   }: {
-    imports = [
-      inputs.mangowc.nixosModules.mango
-    ];
-
     # NixOS
-    programs.mangowc.enable = true;
+    programs.mango.enable = true;
     environment.systemPackages = with pkgs; [
       yazi
       grim
@@ -22,7 +18,7 @@
     # Home Manager
     home-manager.users.${config.user.name} = {...}: {
       imports = [
-        inputs.mangowc.hmModules.mango
+        inputs.mango.hmModules.mango
       ];
 
       home.file.".config/mango/scripts".source = ../../resources/mango/scripts;
