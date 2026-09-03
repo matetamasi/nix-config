@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos."gaming" = {
+  flake.modules.common."gaming" = {
     pkgs,
     config,
     lib,

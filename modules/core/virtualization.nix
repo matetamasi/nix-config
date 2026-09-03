@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos."virtualization" = {
+  flake.modules.common."virtualization" = {
     pkgs,
     config,
     lib,

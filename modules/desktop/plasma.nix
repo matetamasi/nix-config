@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos."plasma" = {
+  flake.modules.common."plasma" = {
     config,
     lib,
     ...

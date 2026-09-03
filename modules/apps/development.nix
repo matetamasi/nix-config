@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos."development" = {
+  flake.modules.common."development" = {
     pkgs,
     inputs,
     config,

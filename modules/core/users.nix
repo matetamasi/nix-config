@@ -1,5 +1,5 @@
-{lib, ...}: {
-  flake.modules.nixos."users" = {
+_: {
+  flake.modules.common."users" = {
     pkgs,
     config,
     lib,
@@ -12,16 +12,23 @@
     };
 
     config = {
-      users.mutableUsers = false;
-      users.users = {
-        root.hashedPasswordFile = "/persist/passwords/root.pass";
-
-        ${config.user.name} = {
-          hashedPasswordFile = "/persist/passwords/${config.user.name}.pass";
+      users = {
+        mutableUsers = false;
+        users.${config.user.name} = {
           isNormalUser = true;
           description = "Tamási Máté";
           extraGroups = ["networkmanager" "wheel"];
           shell = pkgs.zsh;
+        };
+      };
+      home-manager.users.${config.user.name} = {
+        osConfig,
+        config,
+        ...
+      }: {
+        home = {
+          username = "${osConfig.user.name}";
+          homeDirectory = "/home/${config.home.username}";
         };
       };
     };

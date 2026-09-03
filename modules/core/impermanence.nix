@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos."impermanence" =
+  flake.modules.common."impermanence" =
     # https://github.com/nix-community/impermanence#module-usage
     {
       config,

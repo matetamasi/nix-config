@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos."secrets" = {config, ...}: {
+  flake.modules.common."secrets" = {config, ...}: {
     # Secrets
     age = {
       identityPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];

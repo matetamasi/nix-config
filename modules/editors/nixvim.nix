@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos."nixvim" = {
+  flake.modules.common."nixvim" = {
     inputs,
     config,
     ...
@@ -9,6 +9,7 @@ _: {
         inputs.nixvim.homeModules.nixvim
         ./_nixvim/nixvim.nix
       ];
+      home.sessionVariables.EDITOR = "nvim";
 
       programs.nixvim.nixpkgs.source = inputs.nixpkgs;
     };

@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos."mango" = {
+  flake.modules.common."mango" = {
     config,
     lib,
     pkgs,

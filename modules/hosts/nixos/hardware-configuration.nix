@@ -19,6 +19,9 @@ _: {
         initrd.kernelModules = ["dm-snapshot"];
         kernelModules = ["kvm-amd"];
         extraModulePackages = [];
+        kernelParams = [
+          "amdgpu.dcdebugmask=0x410"
+        ];
       };
 
       # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

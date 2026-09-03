@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos."gc" = {
+  flake.modules.common."gc" = {
     config,
     lib,
     inputs,

@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos."dms" = {
+  flake.modules.common."dms" = {
     config,
     lib,
     pkgs,
@@ -46,12 +46,14 @@
     };
 
     # Home Manager
-    home-manager.users.${config.user.name} = {
+    home-manager.users.${config.user.name} = {config, ...}: {
       imports = [
         inputs.dms.homeModules.dank-material-shell
       ];
 
       home.file.".config/mango/scripts".source = ../../resources/mango/scripts;
+
+      xdg.configFile."mimeapps.list".force = lib.mkIf config.xdg.mimeApps.enable true;
 
       programs.ghostty.settings.theme = "dankcolors";
     };

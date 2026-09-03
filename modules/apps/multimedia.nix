@@ -1,5 +1,5 @@
-{inputs, ...}: {
-  flake.modules.nixos."multimedia" = {
+_: {
+  flake.modules.common."multimedia" = {
     pkgs,
     config,
     lib,

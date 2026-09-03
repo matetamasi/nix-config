@@ -1,9 +1,13 @@
 _: {
-  flake.modules.nixos."git" = {
+  flake.modules.common."git" = {
+    pkgs,
     config,
     lib,
     ...
   }: {
+    environment.systemPackages = with pkgs; [
+      git
+    ];
     home-manager.users.${config.user.name} = {
       programs.git = {
         enable = true;

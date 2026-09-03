@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos."zsh" = {
+  flake.modules.common."zsh" = {
     lib,
     pkgs,
     config,

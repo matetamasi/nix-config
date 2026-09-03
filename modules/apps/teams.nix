@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos."teams" = {
+  flake.modules.common."teams" = {
     pkgs,
     config,
     lib,

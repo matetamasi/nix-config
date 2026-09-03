@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos."terminal" = {
+  flake.modules.common."terminal" = {
     config,
     lib,
     pkgs,
@@ -9,7 +9,9 @@
       nerd-fonts._0xproto
     ];
 
-    home-manager.users.${config.user.name} = _: {
+    home-manager.users.${config.user.name} = {
+      home.sessionVariables.TERM = "ghostty";
+
       programs.ghostty = {
         enable = true;
         enableZshIntegration = true;

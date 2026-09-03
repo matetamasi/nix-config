@@ -1,13 +1,11 @@
 _: {
-  flake.modules.nixos."zfs" = {pkgs, ...}: {
+  flake.modules.common."zfs" = {pkgs, ...}: {
     # ZFS
-    networking.hostId = "9aa64d3a";
     boot = {
       kernelPackages = pkgs.linuxPackages_6_18;
       kernelParams = [
         "nohibernate"
         "zfs.zfs_arc_max=17179869184"
-        "amdgpu.dcdebugmask=0x410"
       ];
       supportedFilesystems = ["vfat" "zfs"];
       zfs = {
@@ -21,6 +19,10 @@ _: {
       autoScrub.enable = true;
       trim.enable = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      zfs-prune-snapshots
+    ];
 
     # Zram
     zramSwap = {

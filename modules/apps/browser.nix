@@ -1,5 +1,5 @@
 _: {
-  flake.modules.nixos."browser" = {
+  flake.modules.common."browser" = {
     inputs,
     pkgs,
     config,
@@ -18,6 +18,7 @@ _: {
         inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta
       ];
 
+      home.sessionVariables.DEFAULT_BROWSER = "zen-beta";
       # Default applications
       xdg.mimeApps = {
         enable = true;
