@@ -34,7 +34,35 @@
           features.impermanence.enable = false;
 
           system.stateVersion = "26.05";
-          home-manager.users.${config.user.name}.stateVersion = "26.05";
+          home-manager.users.${config.user.name}.home.stateVersion = "26.05";
+
+	  boot.loader.systemd-boot.enable = true;
+  	  boot.loader.efi.canTouchEfiVariables = true;
+
+  services = {
+  openssh = {
+    enable = true;
+    openFirewall = true;
+    ports = [22460];
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = ["matetamasi"];
+      PerSourcePenalties = "authfail:3600s";
+    };
+  };
+  ddclient = {
+    enable = true;
+    interval = "1min";
+    protocol = "dyndns2";
+    server = "update.dedyn.io";
+    username = "tamasi.dev";
+    passwordFile = "/home/matetamasi/tamasidev_token"; 
+    domains = [ "tamasi.dev" ];
+    usev4 = "webv4, webv4=checkip.dedyn.io";
+  };
+  };
         })
       ];
   };

@@ -2,33 +2,33 @@ _: {
   flake.modules.raserei."disko" = _: {
     disko.devices = {
       disk = {
-        main = {
-          device = "/dev/disk/by-id/nvme-eui.01000000000000008ce38e0400091afe";
-          type = "disk";
-          content = {
-            type = "gpt";
-            partitions = {
-              ESP = {
-                size = "1G";
-                type = "EF00";
-                content = {
-                  type = "filesystem";
-                  format = "vfat";
-                  mountpoint = "/boot";
-                  mountOptions = ["defaults" "umask=0077"];
-                };
-              };
-              root = {
-                size = "100%";
-                content = {
-                  type = "filesystem";
-                  format = "ext4";
-                  mountpoint = "/";
-                };
-              };
-            };
-          };
-        };
+        # main = {
+        #   device = "/dev/disk/by-id/nvme-eui.01000000000000008ce38e0400091afe";
+        #   type = "disk";
+        #   content = {
+        #     type = "gpt";
+        #     partitions = {
+        #       ESP = {
+        #         size = "1G";
+        #         type = "EF00";
+        #         content = {
+        #           type = "filesystem";
+        #           format = "vfat";
+        #           mountpoint = "/boot";
+        #           mountOptions = ["defaults" "umask=0077"];
+        #         };
+        #       };
+        #       root = {
+        #         size = "100%";
+        #         content = {
+        #           type = "filesystem";
+        #           format = "ext4";
+        #           mountpoint = "/";
+        #         };
+        #       };
+        #     };
+        #   };
+        # };
 
         data1 = {
           device = "/dev/disk/by-id/wwn-0x5000c500a6633d4b";
