@@ -6,21 +6,23 @@ _: {
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
-      "Android"
-      ".android"
-      ".config/Google"
-      ".local/share/Google"
-      ".gradle"
-      ".local/share/JetBrains"
-      ".config/JetBrains"
-      ".config/github-copilot"
-      ".java/.userPrefs"
-      ".local/share/direnv/allow"
-      ".eclipse"
-      ".gitkraken"
-      ".config/GitKraken"
-    ];
+    environment.persistence = lib.mkIf config.features.impermanence.enable {
+      "/persist".users.${config.user.name}.directories = [
+        "Android"
+        ".android"
+        ".config/Google"
+        ".local/share/Google"
+        ".gradle"
+        ".local/share/JetBrains"
+        ".config/JetBrains"
+        ".config/github-copilot"
+        ".java/.userPrefs"
+        ".local/share/direnv/allow"
+        ".eclipse"
+        ".gitkraken"
+        ".config/GitKraken"
+      ];
+    };
 
     # NixOS
     programs.java = {

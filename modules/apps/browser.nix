@@ -6,9 +6,11 @@ _: {
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
-      ".zen" # Zen browser
-    ];
+    environment.persistence = lib.mkIf config.features.impermanence.enable {
+      "/persist".users.${config.user.name}.directories = [
+        ".zen" # Zen browser
+      ];
+    };
 
     home-manager.users.${config.user.name} = {
       # Nixpkgs config within Home Manager

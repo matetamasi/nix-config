@@ -5,9 +5,11 @@ _: {
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
-      ".local/share/teams-for-linux-profile"
-    ];
+    environment.persistence = lib.mkIf config.features.impermanence.enable {
+      "/persist".users.${config.user.name}.directories = [
+        ".local/share/teams-for-linux-profile"
+      ];
+    };
 
     home-manager.users.${config.user.name} = {config, ...}: let
       teams-icons = pkgs.runCommand "teams-custom-icons" {nativeBuildInputs = [pkgs.librsvg];} ''

@@ -5,14 +5,16 @@ _: {
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
-      ".config/Signal"
-      ".config/vesktop"
-      ".config/Caprine" # Messenger client
-      ".config/Slack"
-      ".config/spotify"
-      ".config/Element"
-    ];
+    environment.persistence = lib.mkIf config.features.impermanence.enable {
+      "/persist".users.${config.user.name}.directories = [
+        ".config/Signal"
+        ".config/vesktop"
+        ".config/Caprine" # Messenger client
+        ".config/Slack"
+        ".config/spotify"
+        ".config/Element"
+      ];
+    };
 
     home-manager.users.${config.user.name} = {
       programs.spotify-player = {

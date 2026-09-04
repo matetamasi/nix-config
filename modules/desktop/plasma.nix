@@ -4,11 +4,13 @@ _: {
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
-      ".local/share/kscreen"
-      ".local/share/kwalletd"
-      ".local/share/sddm"
-    ];
+    environment.persistence = lib.mkIf config.features.impermanence.enable {
+      "/persist".users.${config.user.name}.directories = [
+        ".local/share/kscreen"
+        ".local/share/kwalletd"
+        ".local/share/sddm"
+      ];
+    };
 
     # NixOS
     services.desktopManager.plasma6.enable = true;

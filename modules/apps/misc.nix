@@ -6,11 +6,13 @@ _: {
     lib,
     ...
   }: {
-    environment.persistence."/persist".users.${config.user.name}.directories = lib.mkIf config.features.impermanence.enable [
-      ".mozilla/firefox"
-      ".config/chromium"
-      ".gemini"
-    ];
+    environment.persistence = lib.mkIf config.features.impermanence.enable {
+      "/persist".users.${config.user.name}.directories = [
+        ".mozilla/firefox"
+        ".config/chromium"
+        ".gemini"
+      ];
+    };
 
     # NixOS
     services.udev.packages = [pkgs.headsetcontrol];

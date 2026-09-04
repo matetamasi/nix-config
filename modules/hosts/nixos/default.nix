@@ -106,9 +106,11 @@
           systemd.enableEmergencyMode = false;
           features.impermanence.enable = true;
 
-          environment.persistence."/persist".directories = lib.mkIf config.features.impermanence.enable [
-            "/var/lib/zerotier-one"
-          ];
+          environment.persistence = lib.mkIf config.features.impermanence.enable {
+            "/persist".directories = [
+              "/var/lib/zerotier-one"
+            ];
+          };
 
           # Services
           services = {
