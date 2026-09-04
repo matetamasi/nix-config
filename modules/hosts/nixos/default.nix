@@ -47,6 +47,13 @@
           ...
         }: {
           _module.args = {inherit inputs;};
+
+          age.secrets.eduroam = {
+            file = ../../../secrets/eduroam.env.age;
+            owner = "root";
+            group = "root";
+          };
+
           networking = {
             hostName = "nixos";
             hostId = "9aa64d3a";
