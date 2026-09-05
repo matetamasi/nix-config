@@ -6,7 +6,11 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    nixpkgs-stable.url = "nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "nixpkgs/nixos-26.05";
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 

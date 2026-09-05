@@ -1,12 +1,13 @@
 {inputs, ...}: {
-  flake.nixosConfigurations.raserei = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.raserei = inputs.nixpkgs-stable.lib.nixosSystem {
     system = "x86_64-linux";
     modules =
       (with inputs; [
         agenix.nixosModules.default
         disko.nixosModules.default
-        home-manager.nixosModules.home-manager
+        home-manager-stable.nixosModules.home-manager
         impermanence.nixosModules.impermanence
+        angrr.nixosModules.angrr
       ])
       ++ (with inputs.self.modules.raserei; [
         hardware-configuration
@@ -30,11 +31,32 @@
       ++ [
         ({config, ...}: {
           _module.args = {inherit inputs;};
-          networking.hostName = "raserei";
+
+          age.secrets = {
+            matetamasi-password = {
+              file = ../../../secrets/raserei-matetamasi-password.age;
+              owner = "root";
+              group = "root";
+            };
+            root-password = {
+              file = ../../../secrets/raserei-root-password.age;
+              owner = "root";
+              group = "root";
+            };
+          };
+          networking = {
+            hostName = "raserei";
+            hostId = "8d9adac9";
+          };
           features.impermanence.enable = false;
 
           system.stateVersion = "26.05";
           home-manager.users.${config.user.name}.home.stateVersion = "26.05";
+
+          users.users = {
+            root.hashedPasswordFile = config.age.secrets.root-password.path;
+            ${config.user.name}. hashedPasswordFile = config.age.secrets.matetamasi-password.path;
+          };
 
           boot.loader.systemd-boot.enable = true;
           boot.loader.efi.canTouchEfiVariables = true;
