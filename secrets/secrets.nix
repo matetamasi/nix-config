@@ -5,4 +5,6 @@ in {
   "eduroam.env.age".publicKeys = [nixos];
   "raserei-matetamasi-password.age".publicKeys = [raserei];
   "raserei-root-password.age".publicKeys = [raserei];
+  "raserei-wg.age".publicKeys = [raserei];
+  "frammenwerken-wg.age".publicKeys = [nixos];
 }

@@ -12,6 +12,8 @@
       ++ (with inputs.self.modules.raserei; [
         hardware-configuration
         disko
+        ssh
+        wireguard
       ])
       ++ (with inputs.self.modules.common; [
         cli
