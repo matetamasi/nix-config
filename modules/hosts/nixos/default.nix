@@ -13,6 +13,7 @@
       ++ (with inputs.self.modules.nixos; [
         disko
         hardware-configuration
+        wireguard
       ])
       ++ (with inputs.self.modules.common; [
         cli
