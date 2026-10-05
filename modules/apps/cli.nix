@@ -26,7 +26,7 @@ _: {
         packages = with pkgs; [
           bat
           zoxide
-          (hunspell.withDicts (ds: [ds.en_US-large]))
+          (hunspell.withDicts (ds: [ds.en_US-large ds.hu_HU]))
         ];
         sessionVariables.EDITOR = lib.mkDefault "vim";
       };
