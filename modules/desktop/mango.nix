@@ -28,7 +28,7 @@
         systemd.enable = true;
         settings = {
           # Startup
-          exec-once = [
+          exec_once = [
             "dms run"
           ];
           # Window effect
@@ -49,13 +49,13 @@
           unfocused_opacity = 0.7;
 
           # Monitor rules
-          monitorrule = [
+          monitor_rule = [
             "model:M34WQ,width:3440,height:1440,refresh:144.001007,x:0,y:0"
             "model:0x0BC9,width:2560,height:1600,refresh:165,x:3440,y:800"
           ];
 
           # Tag rules
-          tagrule = [
+          tag_rule = [
             "id:1,monitor_model:M34WQ,layout_name:dwindle"
             "id:2,monitor_model:M34WQ,layout_name:dwindle"
             "id:3,monitor_model:M34WQ,layout_name:dwindle"
@@ -75,8 +75,8 @@
             "id:8,monitor_model:0x0BC9,layout_name:scroller"
             "id:9,monitor_model:0x0BC9,layout_name:scroller"
           ];
-          windowrule = [
-            "isfullscreen:1,title:Steam Big Picture Mode"
+          window_rule = [
+            "is_fullscreen:1,title:Steam Big Picture Mode"
           ];
           # Binds
           bind = [
@@ -189,7 +189,7 @@
             "SUPER+ALT,k,scroller_stack,u"
             "SUPER+ALT,l,scroller_stack,right"
           ];
-          keymode = {
+          key_mode = {
             quicklaunch = {
               bind = [
                 "NONE,escape,setkeymode,default"
@@ -218,8 +218,8 @@
           tag_animation_direction = 1;
           zoom_initial_ratio = 0.4;
           zoom_end_ratio = 0.8;
-          fadein_begin_opacity = 0.5;
-          fadeout_begin_opacity = 0.8;
+          fade_in_begin_opacity = 0.5;
+          fade_out_begin_opacity = 0.8;
           animation_duration_move = 500;
           animation_duration_open = 400;
           animation_duration_tag = 350;
@@ -230,56 +230,57 @@
           animation_curve_tag = "0.46,1.0,0.29,1";
           animation_curve_close = "0.08,0.92,0,1";
           animation_curve_focus = "0.46,1.0,0.29,1";
-          animation_curve_opafadeout = "0.5,0.5,0.5,0.5";
-          animation_curve_opafadein = "0.46,1.0,0.29,1";
+          animation_curve_opacity_fade_out = "0.5,0.5,0.5,0.5";
+          animation_curve_opacity_fade_in = "0.46,1.0,0.29,1";
 
           # Appearence
-          gappih = 5;
-          gappiv = 5;
-          gappoh = 10;
-          gappov = 10;
+          gap_inner_horizontal = 5;
+          gap_inner_vertical = 5;
+          gap_outer_horizontal = 10;
+          gap_outer_vertical = 10;
           scratchpad_width_ratio = 0.8;
           scratchpad_height_ratio = 0.9;
-          borderpx = 4;
+          border_px = 4;
           source = [
             "./dms/colors.conf"
           ];
-          rootcolor = "0x201b14ff";
-          dropcolor = "0x8FBA7C55";
-          splitcolor = "0xEB441EFF";
-          maximizescreencolor = "0x89aa61ff";
-          scratchpadcolor = "0x516c93ff";
-          globalcolor = "0xb153a7ff";
-          overlaycolor = "0x14a57cff";
+          root_color = "0x201b14ff";
+          drop_color = "0x8FBA7C55";
+          split_color = "0xEB441EFF";
+          maximized_screen_color = "0x89aa61ff";
+          scratchpad_color = "0x516c93ff";
+          global_color = "0xb153a7ff";
+          overlay_color = "0x14a57cff";
 
           # Keyboard
           repeat_rate = 25;
           repeat_delay = 600;
-          numlockon = 0;
+          numlock_on = 0;
           xkb_rules_layout = "hp";
 
-          # Mouse & Trackpad
+          # Mouse
           mouse_natural_scrolling = 0;
+          mouse_left_handed = 0;
+
+          #Trackpad
           disable_trackpad = 0;
           tap_to_click = 1;
           tap_and_drag = 1;
           drag_lock = 1;
           trackpad_natural_scrolling = 1;
-          disable_while_typing = 1;
-          left_handed = 0;
-          middle_button_emulation = 1;
-          sloppyfocus = 0;
+          trackpad_disable_while_typing = 1;
+          trackpad_left_handed = 0;
+          trackpad_middle_button_emulation = 1;
 
+          sloppy_focus = 0;
           enable_hotarea = 0;
-          ov_tab_mode = 1;
-          ov_no_resize = 1;
-          overviewgappi = 5;
-          overviewgappo = 15;
+          overview_gap_inner = 5;
+          overview_gap_outer = 15;
 
           # Dwindle
           dwindle_smart_split = 0;
-          dwindle_hsplit = 0;
-          dwindle_vsplit = 0;
+          dwindle_horizontal_split = 0;
+          dwindle_vertical_split = 0;
           dwindle_preserve_split = 0;
           dwindle_smart_resize = 0;
           dwindle_drop_simple_split = 0;
@@ -297,9 +298,9 @@
 
           # Master
           new_is_master = 1;
-          default_mfact = 0.55;
-          default_nmaster = 1;
-          smartgaps = 0;
+          default_master_factor = 0.55;
+          default_master_count = 1;
+          smart_gaps = 0;
 
           # General
           circle_layout = "dwindle,scroller";
@@ -307,8 +308,8 @@
           no_border_when_single = 0;
           axis_bind_apply_timeout = 100;
           focus_on_activate = 1;
-          idleinhibit_ignore_visible = 1;
-          warpcursor = 0;
+          idle_inhibit_ignore_visible = 1;
+          warp_cursor = 0;
           focus_cross_monitor = 0;
           exchange_cross_monitor = 1;
           focus_cross_tag = 0;
