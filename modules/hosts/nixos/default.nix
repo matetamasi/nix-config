@@ -137,6 +137,7 @@
               alsa.enable = true;
               alsa.support32Bit = true;
               pulse.enable = true;
+              wireplumber.enable = true;
             };
             # X11 / Keymap
             xserver.enable = true;

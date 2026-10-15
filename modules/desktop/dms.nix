@@ -44,6 +44,19 @@
       enableCalendarEvents = true;
       enableClipboardPaste = true;
     };
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = lib.mkForce [
+        pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gtk
+      ];
+      config.mango = {
+        default = lib.mkForce ["hyprland" "gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = lib.mkForce ["hyprland"];
+        "org.freedesktop.impl.portal.Screenshot" = lib.mkForce ["hyprland"];
+      };
+    };
 
     # Home Manager
     home-manager.users.${config.user.name} = {config, ...}: {
@@ -52,7 +65,6 @@
       ];
 
       home.file.".config/mango/scripts".source = ../../resources/mango/scripts;
-
       xdg.configFile."mimeapps.list".force = lib.mkIf config.xdg.mimeApps.enable true;
 
       programs.ghostty.settings.theme = "dankcolors";
