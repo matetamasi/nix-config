@@ -29,7 +29,6 @@
         networking
         core
         nixvim
-        plasma
         secrets
         starship
         teams
