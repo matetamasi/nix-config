@@ -11,6 +11,7 @@ _: {
         ".mozilla/firefox"
         ".config/chromium"
         ".gemini"
+        ".config/keepassxc"
       ];
     };
 
@@ -42,7 +43,7 @@ _: {
           piper
           pavucontrol
           firefox
-          keepass
+          keepassxc
           ungoogled-chromium
           qbittorrent
           wineWow64Packages.stable

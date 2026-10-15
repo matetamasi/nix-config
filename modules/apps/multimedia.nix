@@ -50,6 +50,18 @@ _: {
         file.".config/zathura/zathurarc".text = ''
           map <C-i> recolor
         '';
+
+        sessionVariables = {
+          SIGNAL_PASSWORD_STORE = "gnome-libsecret";
+        };
+      };
+      xdg.desktopEntries.signal = {
+        name = "Signal";
+        exec = "signal-desktop --password-store=gnome-libsecret %U";
+        icon = "signal-desktop";
+        terminal = false;
+        categories = ["Network" "InstantMessaging" "Chat"];
+        mimeType = ["x-scheme-handler/sgnl" "x-scheme-handler/signalcaptcha"];
       };
     };
   };
