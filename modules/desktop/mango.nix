@@ -56,7 +56,7 @@
 
           border_radius = 0;
           focused_opacity = 1.0;
-          unfocused_opacity = 0.7;
+          unfocused_opacity = 1.0;
 
           # Monitor rules
           monitor_rule = [
