@@ -21,8 +21,18 @@
         inputs.mango.hmModules.mango
       ];
 
-      home.file.".config/mango/scripts".source = ../../resources/mango/scripts;
+      home = {
+        file.".config/mango/scripts".source = ../../resources/mango/scripts;
 
+        pointerCursor = {
+          enable = true;
+          name = "Bibata-Modern-Classic";
+          package = pkgs.bibata-cursors;
+          size = 24;
+          gtk.enable = true;
+          x11.enable = true;
+        };
+      };
       wayland.windowManager.mango = {
         enable = true;
         systemd.enable = true;
@@ -315,9 +325,10 @@
           focus_cross_tag = 0;
           enable_floating_snap = 0;
           snap_distance = 30;
-          cursor_size = 24;
           drag_tile_to_tile = 1;
           drag_tile_small = 1;
+          cursor_theme = "Bibata-Modern-Classic";
+          cursor_size = 24;
         };
       };
     };
