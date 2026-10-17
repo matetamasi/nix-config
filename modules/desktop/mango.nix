@@ -87,6 +87,7 @@
           ];
           window_rule = [
             "is_fullscreen:1,title:Steam Big Picture Mode"
+            "is_fullscreen:1,is_fake_fullscreen:1,force_render:1,app_id:steam_app_2071280"
           ];
           # Binds
           bind = [
