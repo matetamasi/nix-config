@@ -1,4 +1,4 @@
-{inputs, ...}: {
+_: {
   flake.modules.common."terminal" = {
     config,
     lib,
@@ -22,6 +22,13 @@
           custom-shader = "shaders/cursor_sweep.glsl";
           mouse-scroll-multiplier = "precision:0.2,discrete:0.75";
           font-family = "0xProto Nerd Font";
+
+          keybind = [
+            "ctrl+plus=increase_font_size:1"
+            "ctrl+numpad_add=increase_font_size:1"
+            "ctrl+shift+equal=increase_font_size:1"
+            "ctrl+shift+plus=increase_font_size:1"
+          ];
         };
       };
     };
