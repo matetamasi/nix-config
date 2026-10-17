@@ -186,6 +186,10 @@
             "SUPER,Tab,toggleoverview,"
             "SUPER,s,toggle_scratchpad"
 
+            # Scroller
+            "SUPER+ALT,e,switch_proportion_preset,"
+          ];
+          bindc = [
             # Dwindle
             "SUPER+ALT,h,dwindle_split_horizontal"
             "SUPER+ALT,j,dwindle_split_vertical"
@@ -193,7 +197,6 @@
             "SUPER+ALT,l,dwindle_split_horizontal"
 
             # Scroller
-            "SUPER+ALT,e,switch_proportion_preset,"
             "SUPER+ALT,h,scroller_stack,left"
             "SUPER+ALT,j,scroller_stack,down"
             "SUPER+ALT,k,scroller_stack,u"
