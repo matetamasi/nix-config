@@ -8,5 +8,6 @@
     ./others.nix
     ./neo-tree.nix
     ./qmk-nvim.nix
+    ./typst.nix
   ];
 }

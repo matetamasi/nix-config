@@ -1,21 +1,23 @@
-{
-  pkgs,
-  pkgs-stable,
-  ...
-}: {
+{pkgs, ...}: {
   programs.nixvim = {
     plugins = {
       lsp = {
         enable = true;
         servers = {
+          ltex = {
+            enable = true;
+            settings = {
+              language = "en-US";
+              enabled = ["typst"];
+            };
+            filetypes = ["typst"];
+          };
           elixirls.enable = true;
           gleam.enable = true;
-          #prolog_ls.enable = true;
           nil_ls.enable = true;
           bashls.enable = true;
           clangd.enable = true;
           csharp_ls.enable = true;
-          #jsonls.enable = true;
           jdtls.enable = true;
           kotlin_language_server = {
             enable = true;
