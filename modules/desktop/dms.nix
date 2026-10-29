@@ -44,17 +44,27 @@
       enableCalendarEvents = true;
       enableClipboardPaste = true;
     };
+    environment.sessionVariables = {
+      GTK_USE_PORTAL = "1";
+    };
+
     xdg.portal = {
       enable = true;
       xdgOpenUsePortal = true;
       extraPortals = lib.mkForce [
         pkgs.xdg-desktop-portal-hyprland
         pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-termfilechooser
       ];
       config.mango = {
         default = lib.mkForce ["hyprland" "gtk"];
         "org.freedesktop.impl.portal.ScreenCast" = lib.mkForce ["hyprland"];
         "org.freedesktop.impl.portal.Screenshot" = lib.mkForce ["hyprland"];
+        "org.freedesktop.impl.portal.FileChooser" = lib.mkForce ["termfilechooser"];
+      };
+      config.common = {
+        default = lib.mkForce ["gtk"];
+        "org.freedesktop.impl.portal.FileChooser" = lib.mkForce ["termfilechooser"];
       };
     };
 
@@ -65,9 +75,11 @@
       ];
 
       home.file.".config/mango/scripts".source = ../../resources/mango/scripts;
-      xdg.configFile."mimeapps.list".force = lib.mkIf config.xdg.mimeApps.enable true;
-
-      programs.ghostty.settings.theme = "dankcolors";
+      xdg.configFile = {
+        "mimeapps.list".force = lib.mkIf config.xdg.mimeApps.enable true;
+        "xdg-desktop-portal-termfilechooser/config".source = ../../resources/yazi/termfilechooser.conf;
+        "xdg-desktop-portal-termfilechooser/yazi-filepicker-wrapper.sh".source = ../../resources/yazi/filepicker-wrapper.sh;
+      };
     };
   };
 }
