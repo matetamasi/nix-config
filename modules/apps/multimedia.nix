@@ -16,18 +16,29 @@ _: {
       ];
     };
 
+    age.secrets.spotify = {
+      file = ../../secrets/spotify-client-id.age;
+      owner = config.user.name;
+    };
+
     home-manager.users.${config.user.name} = {
-      programs.spotify-player = {
-        enable = true;
-        package = pkgs.spotify-player.overrideAttrs (old: {
-          cargoBuildFeatures = (old.cargoBuildFeatures or old.buildFeatures or []) ++ ["pixelate"];
-        });
-        settings = {
-          enable_notify = false;
-          cover_img_pixels = 48;
-          cover_img_length = 16;
-          cover_img_width = 8;
-          enable_audio_visualization = true;
+      programs = {
+        spotify-player = {
+          enable = true;
+          package = pkgs.spotify-player.overrideAttrs (old: {
+            cargoBuildFeatures = (old.cargoBuildFeatures or old.buildFeatures or []) ++ ["pixelate"];
+          });
+          settings = {
+            enable_notify = false;
+            cover_img_pixels = 48;
+            cover_img_length = 16;
+            cover_img_width = 8;
+            enable_audio_visualization = true;
+            client_id_command = {
+              command = "cat";
+              args = [config.age.secrets.spotify.path];
+            };
+          };
         };
       };
 
