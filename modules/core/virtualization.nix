@@ -12,8 +12,8 @@ _: {
       "/persist/backup".directories = [
         "/var/lib/libvirt"
       ];
-      "/persist".users.${config.user.name}.files = [
-        ".config/dconf/user" # virt-manager
+      "/persist".users.${config.user.name}.directories = [
+        ".config/dconf" # virt-manager
       ];
     };
 
