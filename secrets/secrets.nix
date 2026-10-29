@@ -7,4 +7,5 @@ in {
   "raserei-root-password.age".publicKeys = [raserei];
   "raserei-wg.age".publicKeys = [raserei];
   "frammenwerken-wg.age".publicKeys = [nixos];
+  "spotify-client-id.age".publicKeys = [nixos];
 }
