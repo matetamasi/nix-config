@@ -8,7 +8,7 @@ _: {
     environment.persistence = lib.mkIf config.features.impermanence.enable {
       "/persist".users.${config.user.name}.directories = [
         ".config/Signal"
-        ".config/vesktop"
+        # ".config/vesktop"
         ".config/Caprine" # Messenger client
         ".config/Slack"
         ".config/spotify"
@@ -23,6 +23,7 @@ _: {
 
     home-manager.users.${config.user.name} = {
       programs = {
+        vesktop.enable = true;
         spotify-player = {
           enable = true;
           package = pkgs.spotify-player.overrideAttrs (old: {
@@ -50,7 +51,6 @@ _: {
           kdePackages.kcolorchooser
           haruna
           zathura
-          vesktop
           element-desktop
           krita
           signal-desktop
