@@ -8,6 +8,8 @@ _: {
 
     networking.wireguard.interfaces.wg0 = {
       ips = ["10.0.0.2/30"];
+      # Default 1420 is too large for some networks (e.g. mobile hotspots)
+      mtu = 1280;
       privateKeyFile = config.age.secrets.frammenwerken-wg.path;
 
       peers = [
