@@ -23,7 +23,21 @@
       ];
 
       home.file.".config/mango/scripts".source = ../../resources/mango/scripts;
+      programs.yazi = {
+        enable = true;
+        plugins.wl-clipboard = {
+          package = pkgs.yaziPlugins.wl-clipboard;
         };
+        keymap.mgr.prepend_keymap = [
+          {
+            on = ["<C-y>"];
+            run = "plugin wl-clipboard";
+          }
+          {
+            on = ["<C-c>"];
+            run = "plugin wl-clipboard";
+          }
+        ];
       };
       wayland.windowManager.mango = {
         enable = true;
