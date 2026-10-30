@@ -13,17 +13,14 @@
     environment = {
       persistence."/persist/backup".users.${config.user.name} = {
         directories = lib.mkIf config.features.impermanence.enable [
-          ".config/DankMaterialShell"
-          ".local/state/DankMaterialShell"
-        ];
-        files = lib.mkIf config.features.impermanence.enable [
-          ".config/mango/dms/colors.conf"
-          ".config/ghostty/themes/dankcolors"
+          ".config/dms"
+          ".local/state/dms"
         ];
       };
 
       systemPackages = with pkgs; [
         ddcutil
+        matugen
       ];
     };
 
@@ -39,9 +36,9 @@
     programs.dank-material-shell = {
       enable = true;
       enableSystemMonitoring = true;
-      enableDynamicTheming = true;
+      enableDynamicTheming = false;
       enableAudioWavelength = true;
-      enableCalendarEvents = true;
+      enableCalendarEvents = false;
       enableClipboardPaste = true;
     };
     environment.sessionVariables = {

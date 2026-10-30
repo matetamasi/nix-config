@@ -7,6 +7,7 @@
   }: {
     # NixOS
     programs.mango.enable = true;
+    environment.etc."mango/config.conf".text = "";
     environment.systemPackages = with pkgs; [
       yazi
       grim
@@ -21,16 +22,7 @@
         inputs.mango.hmModules.mango
       ];
 
-      home = {
-        file.".config/mango/scripts".source = ../../resources/mango/scripts;
-
-        pointerCursor = {
-          enable = true;
-          name = "Bibata-Modern-Classic";
-          package = pkgs.bibata-cursors;
-          size = 24;
-          gtk.enable = true;
-          x11.enable = true;
+      home.file.".config/mango/scripts".source = ../../resources/mango/scripts;
         };
       };
       wayland.windowManager.mango = {
@@ -256,9 +248,6 @@
           scratchpad_width_ratio = 0.8;
           scratchpad_height_ratio = 0.9;
           border_px = 4;
-          source = [
-            "./dms/colors.conf"
-          ];
           root_color = "0x201b14ff";
           drop_color = "0x8FBA7C55";
           split_color = "0xEB441EFF";

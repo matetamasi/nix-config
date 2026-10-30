@@ -39,6 +39,7 @@
         mango
         dms
         terminal
+        stylix
       ])
       ++ [
         ({

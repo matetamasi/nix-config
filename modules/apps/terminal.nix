@@ -17,7 +17,6 @@ _: {
         enableZshIntegration = true;
         systemd.enable = true;
         settings = {
-          theme = "dankcolors";
           cursor-style = "block";
           custom-shader = "shaders/cursor_sweep.glsl";
           mouse-scroll-multiplier = "precision:0.2,discrete:0.75";

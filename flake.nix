@@ -64,6 +64,11 @@
 
     impermanence.url = "github:nix-community/impermanence";
     import-tree.url = "github:vic/import-tree";
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
