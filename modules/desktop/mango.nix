@@ -14,6 +14,7 @@
       slurp
       satty
       wayfreeze
+      jq # For window screenshots
     ];
 
     # Home Manager
