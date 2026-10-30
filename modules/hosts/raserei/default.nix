@@ -17,6 +17,12 @@
         ddclient
         user-auth
       ])
+      ++ (with inputs.self.modules.selfhosting; [
+        caddy
+        authelia
+        headscale
+        mail
+      ])
       ++ (with inputs.self.modules.common; [
         cli
         gc
