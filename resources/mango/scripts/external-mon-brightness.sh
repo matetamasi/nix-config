@@ -12,7 +12,7 @@ else
     exit 1
 fi
 
-MONITOR_ID=$(dms ipc brightness list | grep '^ddc:' | head -n 1 | sed 's/ .*//')
+MONITOR_ID=$(dms ipc brightness list | grep '^[a-z]*:DP-[0-9]* ' | head -n 1 | sed 's/ .*//')
 
 if [[ -n "$MONITOR_ID" ]]; then
     dms ipc brightness "$CMD" "$STEP" "$MONITOR_ID"
