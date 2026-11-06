@@ -47,7 +47,6 @@ _: {
         extraPackages = with pkgs; [
           alsa-utils
           alsa-lib
-          gtk2
           gtk3
           gtk4
           qemu
