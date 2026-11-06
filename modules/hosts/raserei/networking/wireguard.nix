@@ -11,6 +11,7 @@ _: {
       wireguard.interfaces.wg0 = {
         ips = ["10.0.0.1/30"];
         listenPort = 51820;
+        mtu = 1280; # peer network limitations may not allow larger packets
         privateKeyFile = config.age.secrets.raserei-wg.path;
         peers = [
           {
