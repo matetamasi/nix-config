@@ -41,6 +41,8 @@ _: {
               hidapi
               libgourou
             ];
+          # extest.enable only covers 32 bit client, this is needed for the 64 bit client
+          extraEnv.LD_PRELOAD = "${pkgs.extest}/lib/libextest.so:${pkgs.pkgsi686Linux.extest}/lib/libextest.so";
         };
       };
 
